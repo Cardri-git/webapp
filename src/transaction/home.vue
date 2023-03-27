@@ -243,7 +243,7 @@
                 <div class="col-6 d-flex justify-content-between">
                   <label for="" style="position: relative">
                     <span
-                      class="material-icons"
+                      class="material-icons mysearchicon"
                       style="margin-right: 20px d-none d-lg-block d-md-block"
                       >search</span
                     >
@@ -1012,5 +1012,10 @@ table:-webkit-scrollbar {
   height: 0px; /* height of horizontal scrollbar ← You're missing this */
   width: 0px; /* width of vertical scrollbar */
   border: none;
+}
+.mysearchicon {
+  @media (max-width: 750px) {
+    display: none;
+  }
 }
 </style>

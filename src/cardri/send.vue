@@ -721,7 +721,7 @@
 
             <div class="col-md-6 col-lg-6">
               <div
-                class="card mycard2"
+                class="card"
                 style="background: rgba(18, 189, 137, 0.1)"
                 @click="tocardri('bank')"
               >
@@ -765,7 +765,7 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <div
-                class="card"
+                class="card mycard2"
                 @click="toForeign"
                 style="background: rgba(249, 115, 22, 0.1)"
               >

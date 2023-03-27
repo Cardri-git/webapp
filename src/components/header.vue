@@ -38,14 +38,19 @@
         </div>
 
         <div
+          class="material-icons"
           style="
             border-radius: 100%;
             align-items: center;
             font-size: 6px;
+            display: flex;
+            height: 14px;
+            width: 14px;
 
             background: #7e57ff;
             color: #fff;
-            margin-top: 10px;
+            margin-top: 15%;
+
             padding: 2px;
             margin-left: 20px;
             text-align: center;

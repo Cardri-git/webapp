@@ -703,10 +703,31 @@
               padding: 12px;
               border: none;
             "
+            v-if="cardstatus == true"
             :disabled="clickme2 == true ? true : false"
             @click="freezecard"
           >
             <span style="color: #fff" v-if="clickme2 == false">Freeze Card</span>
+            <vue-loaders-ball-clip-rotate
+              color="#fff"
+              scale="1"
+              v-if="clickme2 == true"
+            ></vue-loaders-ball-clip-rotate>
+          </button>
+          <button
+            class="btn btn-primary"
+            style="
+              margin-top: 20px;
+              background: green;
+              font-size: 12px;
+              padding: 12px;
+              border: none;
+            "
+            v-if="cardstatus == false"
+            :disabled="clickme2 == true ? true : false"
+            @click="unfreezecard"
+          >
+            <span style="color: #fff" v-if="clickme2 == false">Unfreeze Card</span>
             <vue-loaders-ball-clip-rotate
               color="#fff"
               scale="1"
@@ -726,6 +747,7 @@
           >
             Card Details
           </button>
+          <!--
           <button
             class="btn btn-primary"
             style="
@@ -738,6 +760,7 @@
           >
             View Transaction
           </button>
+          -->
           <!-- Title -->
         </div>
       </div>
@@ -1019,6 +1042,7 @@ export default {
       listcurrency: [],
       successloading: false,
       eachcard: "",
+      cardstatus: true,
       error: false,
       expiredate: "",
       loadermessage: "Please wait",
@@ -1274,6 +1298,7 @@ export default {
     },
     async showcarddetails(card) {
       this.eachcard = card;
+      this.cardstatus = card.is_active;
       await axios
         .get(`api/getbalcance?card_id=${card.card_id}`)
         .then((res) => {
@@ -1442,7 +1467,6 @@ export default {
           axios
             .post("api/freezecard", data)
             .then((res) => {
-              console.log(res);
               // console.log(res.data.status);
               if (res.data.status == "success") {
                 this.clickme2 = false;
@@ -1477,8 +1501,65 @@ export default {
                 }
               });
             });
-        } else {
-          this.logoutTimer = null;
+        }
+      });
+    },
+    async unfreezecard() {
+      this.$swal({
+        title: `<h4 style='font-size:12x;color:#202020'>Are you Sure ?</h4>`,
+        text: "Are you sure you want to unfreeze this card ? ",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#4705AF",
+        cancelButtonColor: "#4A4E50",
+        confirmButtonText: "Continue",
+        width: "300",
+        iconHtml: "؟",
+
+        //  icon: "warning",
+      }).then((result) => {
+        if (result.isConfirmed == true) {
+          this.clickme2 = true;
+          const data = {
+            card_id: this.eachcard.card_id,
+          };
+          axios
+            .post("api/unfreezecard", data)
+            .then((res) => {
+              // console.log(res.data.status);
+              if (res.data.status == "success") {
+                this.clickme2 = false;
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:#202020'>Success!!!</h4>`,
+                  text: `${res.data.message}`,
+                  type: "success",
+                  icon: "success",
+
+                  width: 300,
+                }).then((result) => {
+                  if (result.value) {
+                    location.reload();
+                  }
+                });
+              }
+            })
+            .catch((e) => {
+              console.log(e);
+              this.clickme2 = false;
+
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:#202020'>Failed!!!</h4>`,
+                text: `Failed`,
+                type: "error",
+                icon: "error",
+
+                width: 300,
+              }).then((result) => {
+                if (result.value) {
+                  location.reload();
+                }
+              });
+            });
         }
       });
     },
@@ -1507,7 +1588,7 @@ export default {
             confirmButtonText: "Continue",
           }).then((result) => {
             if (result.value) {
-              this.$router.push("../profile/login");
+              this.$router.push("../settings/setting");
             }
           });
         }
@@ -1524,11 +1605,10 @@ export default {
             confirmButtonText: "Continue",
           }).then((result) => {
             if (result.value) {
-              this.$router.push("../profile/login");
+              this.$router.push("../settings/setting");
             }
           });
         }
-        console.log(response);
         if (response.data.data.address != "2") {
           this.bvnstatus = false;
           this.bmessage = response.data.data.bmessage;
@@ -1542,7 +1622,7 @@ export default {
             confirmButtonText: "Continue",
           }).then((result) => {
             if (result.value) {
-              this.$router.push("../profile/login");
+              this.$router.push("../settings/setting");
             }
           });
         }

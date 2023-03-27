@@ -17,8 +17,6 @@
 
               <span class="close material-icons" @click="closeModal">close</span>
             </div>
-
-            <WebCamUI :fullscreenState="false" @photoTaken="photoTaken" />
           </div>
         </form>
       </div>
@@ -215,7 +213,7 @@
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
-          <form @submit.prevent="sendAddress">
+          <form @submit.prevent="sendAddress" enctype="multipart/form-data">
             <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
@@ -258,19 +256,19 @@
                 required
                 v-model="state"
                 class="form-control"
-                id="Wallet"
-                @change="this.amount = plan.amount"
+                @change="getlga(state.name, state.id)"
               >
                 <option
-                  v-for="item in myplans"
+                  v-for="item in states"
                   :key="item"
                   :value="{
                     id: item.id,
-                    amount: item.price,
+
                     name: item.name,
-                    plan: item.plan,
                   }"
-                ></option>
+                >
+                  {{ item.name }}
+                </option>
               </select>
             </div>
 
@@ -282,16 +280,9 @@
                 <label for="Wallet">City</label>
               </div>
               <select type="tel" required v-model="city" class="form-control" id="Wallet">
-                <option
-                  v-for="item in city"
-                  :key="item"
-                  :value="{
-                    id: item.id,
-                    amount: item.price,
-                    name: item.name,
-                    plan: item.plan,
-                  }"
-                ></option>
+                <option v-for="item in selectedstates" :key="item" :value="item.name">
+                  {{ item.name }}
+                </option>
               </select>
             </div>
 
@@ -353,8 +344,16 @@
                   display: flex;
                   justify-content: center;
                 "
+                @click="$refs.fileInput.click()"
               >
-                <input type="file" required accept="image/*" @change="getimage($event)" />
+                <input
+                  type="file"
+                  id="fileInput"
+                  ref="fileInput"
+                  required
+                  accept="image/*"
+                  @change="onSelectedFile"
+                />
                 <span style="font-weight: 600; color: #4705af; font-size: 13px"
                   >Upload aIage of your ID card</span
                 >
@@ -950,6 +949,8 @@ export default {
       mainloader: false,
       oldpassword: "",
       newpassword: "",
+      lga: [],
+      states: [],
       cpassword: "",
       name: "",
       address: "",
@@ -1056,14 +1057,65 @@ export default {
       email: "",
       bvn: "",
       code: "",
+      myselectedstate: [],
+      selectedstates: [],
+      imagename: "",
+      image: "",
+      formdaat: "",
+      formdata: new FormData(),
+      file: "",
+      imageUrl: "",
     };
   },
   methods: {
+    getlga(name, id) {
+      this.myselectedstate.push(name);
+
+      this.selectedstates = this.lga[id];
+    },
     photoTaken(data) {
       console.log("image blob: ", data.blob);
       console.log("image data url", data.image_data_url);
     },
-    async sendAddress() {},
+    onSelectedFile(event) {
+      console.log(event)
+      const files = event.target.files;
+      let filename = files[0].name;
+      if (filename.lastIndexOf(".") <= 0) {
+        alert("no");
+      }
+      const fileReader = new FileReader();
+      fileReader.addEventListener("load", () => {
+        this.imageUrl = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.image = files[0];
+
+      this.formdata.append("image", this.image, this.image.name);
+    },
+    async sendAddress() {
+      const data = {
+        address: this.homeaddress,
+        city: this.city,
+        state: this.state.name,
+        country: "Nigeria",
+        postal_code: this.postalcode,
+        house_no: this.housenumber,
+        id_type: this.type,
+        id_no: this.idnumber,
+        id_image: this.formdata,
+      };
+      console.log(data);
+
+      axios
+        .post("/api/submitaddress", data)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     async confirmCode() {
       this.filldata = false;
       this.clickme = true;
@@ -1219,7 +1271,7 @@ export default {
           this.clickme = true;
 
           axios
-            .post("delete")
+            .post("api/auth/delete")
             .then((res) => {
               console.log(res);
               if (res.data.data.status == "true") {
@@ -1472,6 +1524,33 @@ export default {
   },
 
   async mounted() {
+    const url = "https://api.inec-sans.com/v1/get_states";
+    const headers = {
+      "Content-Type": "application/json",
+      //'Authorization': 'Bearer {your-access-token}'
+    };
+    const options = {
+      method: "GET", // change to POST, PUT, DELETE, etc. if needed
+      headers: headers,
+    };
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((res) => {
+        this.lga = res.result.data.lgas;
+        this.states = res.result.data.state;
+      })
+      .catch((error) => console.error(error));
+    /*
+    fetch("https://api.inec-sans.com/v1/get_states")
+      .then((res) => {
+        console.log(res);
+        this.lga = res.data.result.data.lgas;
+        this.states = res.data.result.data.state;
+      })
+      .catch((error) => console.error(error));
+      */
+
     await axios
       .get("api/getdatils")
       .then((response) => {

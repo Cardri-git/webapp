@@ -380,6 +380,17 @@
                   "
                   v-if="item.currency == 'AED'"
                 />
+                <img
+                  src="../assets/images/shilling.svg"
+                  alt=""
+                  style="
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 10%;
+                    margin-right: 10px;
+                  "
+                  v-if="item.currency == 'KES'"
+                />
                 <span style="font-size: 12px; font-weight: 600">{{ item.name }}</span>
               </div>
 
@@ -642,7 +653,7 @@
                   </div>
                   <span class="text_ngn">{{ defaultname }} </span>
                 </div>
-                <div class="eyef" style="align=items: center">
+                <div class="eyef" style="align-items: center">
                   <span
                     class="material-icons"
                     @click="clickeye"
@@ -704,7 +715,7 @@
               </div>
             </div>
           </div>
-          <div class="drop d-lg-flex">
+          <div class="drop d-lg-flex cursor-pointer">
             <img src="@/assets/images/drop.svg" alt="" @click="toadddedwallet" />
           </div>
         </div>
@@ -873,11 +884,9 @@
             </div>
             <div class="col-lg-9 col-md-9 py-2">
               <div class="row">
-                <div class="col-6 d-flex justify-content-end">
+                <div class="col-6 d-flex justify-content-center">
                   <label for="" style="position: relative">
-                    <span
-                      class="material-icons d-none d-lg-block d-md-block"
-                      style="margin-right: 20px"
+                    <span class="material-icons mysearchicon" style="margin-right: 20px"
                       >search</span
                     >
                     <input
@@ -1227,12 +1236,12 @@ export default {
           image: "AED.svg",
         },
         {
-          name: "Kenya shilling",
+          name: "Kenya  Shilling",
           currency: "KES",
           status: 0,
           balance: 0,
           ledger: 0,
-          image: "AED.svg",
+          image: "shilling.svg",
         },
       ],
     };
@@ -1241,7 +1250,6 @@ export default {
   methods: {
     getIndex(index) {
       this.selectedindex = index;
-
       this.defaultcurrenct = this.currency[this.selectedindex].currency;
       this.defaultbalance = this.currency[this.selectedindex].balance;
       this.defaultavailable = this.currency[this.selectedindex].ledger;
@@ -1334,11 +1342,13 @@ export default {
     },
   },
   async mounted() {
-    this.selectedindex = localStorage.setItem(
-      "index",
-      this.selectedindex == undefined ? this.selectedindex : localStorage.getItem("index")
-    );
-    this.selectedindex = parseInt(localStorage.getItem("index"));
+    const myindex = parseInt(localStorage.getItem("index"));
+
+    if (myindex == undefined || myindex == null || myindex == "" || isNaN(myindex)) {
+      this.selectedindex = 0;
+    } else {
+      this.selectedindex = myindex;
+    }
 
     await axios
       .get("api/getdatils")
@@ -1353,8 +1363,6 @@ export default {
         this.bankName = response.data.data.bankname;
         this.currency[0].balance = response.data.data.ngn_b;
         this.currency[0].ledger = response.data.data.ngn_ld;
-
-        
 
         this.currency[1].balance = response.data.data.commission;
         this.currency[1].ledger = 0;
@@ -1838,7 +1846,8 @@ tr td {
 }
 input {
   background: #f5f5f5;
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   outline: none;
   border-radius: 5px !important;
 
@@ -1910,6 +1919,11 @@ label {
 .mysearchtran {
   @media (max-width: 750px) {
     margin-left: 10px;
+  }
+}
+.mysearchicon {
+  @media (max-width: 750px) {
+    display: none;
   }
 }
 </style>

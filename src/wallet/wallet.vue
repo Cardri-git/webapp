@@ -797,7 +797,7 @@
                   </div>
                   <span class="text_ngn">{{ defaultname }} </span>
                 </div>
-                <div class="eyef" style="align=items: center">
+                <div class="eyef" style="align-items: center">
                   <span
                     class="material-icons"
                     @click="clickeye"
@@ -885,9 +885,11 @@
             </div>
             <div class="col-lg-9 col-md-9 py-2">
               <div class="row">
-                <div class="col-6 d-flex justify-content-end">
+                <div class="col-6 d-flex justify-content-center">
                   <label for="" style="position: relative">
-                    <span class="material-icons" style="margin-right: 20px">search</span>
+                    <span class="material-icons mysearchicon" style="margin-right: 20px"
+                      >search</span
+                    >
                     <input
                       type="search"
                       style="border: none; border-radius: 5px; font-size: 14px"
@@ -1278,7 +1280,7 @@ export default {
       this.defaultcurrenct = this.currency[this.selectedindex].currency;
       this.defaultbalance = this.currency[this.selectedindex].balance;
       this.defaultavailable = this.currency[this.selectedindex].ledger;
-      localStorage.setItem('index',this.selectedindex)
+      localStorage.setItem("index", this.selectedindex);
       this.defaultname = this.currency[this.selectedindex].name;
       var modal = document.getElementById("mywallet");
 
@@ -1389,11 +1391,13 @@ export default {
   },
 
   async mounted() {
-    this.selectedindex = localStorage.setItem(
-      "index",
-      this.selectedindex == undefined ? this.selectedindex : localStorage.getItem("index")
-    );
-    this.selectedindex = parseInt(localStorage.getItem("index"));
+    const myindex = parseInt(localStorage.getItem("index"));
+
+    if (myindex == undefined || myindex == null || myindex == "" || isNaN(myindex)) {
+      this.selectedindex = 0;
+    } else {
+      this.selectedindex = myindex;
+    }
     await axios
       .get("api/getdatils")
       .then((response) => {
@@ -1404,9 +1408,6 @@ export default {
         this.lname = response.data.data.lname;
         this.currency[0].balance = response.data.data.ngn_b;
         this.currency[0].ledger = response.data.data.ngn_ld;
-
-      
-
 
         console.log(this.defaultbalance);
         this.currency[1].balance = response.data.data.commission;
@@ -1864,11 +1865,11 @@ tr td {
 }
 input {
   background: #f5f5f5;
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   outline: none;
   border-radius: 5px !important;
 
-  padding-left: 30px;
   font-size: 12px;
 }
 label {
@@ -1947,5 +1948,10 @@ table:-webkit-scrollbar {
 
 .round input[type="checkbox"]:checked + label:after {
   opacity: 1 !important;
+}
+.mysearchicon {
+  @media (max-width: 750px) {
+    display: none;
+  }
 }
 </style>
