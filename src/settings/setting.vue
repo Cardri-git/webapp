@@ -213,7 +213,7 @@
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
-          <form @submit.prevent="sendAddress" enctype="multipart/form-data">
+          <form @submit.prevent="sendAddress">
             <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
@@ -344,23 +344,26 @@
                   display: flex;
                   justify-content: center;
                 "
-                @click="$refs.fileInput.click()"
               >
                 <input
                   type="file"
-                  id="fileInput"
-                  ref="fileInput"
                   required
                   accept="image/*"
-                  @change="onSelectedFile"
+                  @change="onSelectedFile($event)"
                 />
                 <span style="font-weight: 600; color: #4705af; font-size: 13px"
                   >Upload aIage of your ID card</span
                 >
               </label>
             </div>
-
-            <button type="submit" class="btn">Continue</button>
+            <button type="submit" class="btn" :disabled="filldata ? false : true">
+              <span style="color: #fff" v-if="clickme == false">Continue</span>
+              <vue-loaders-ball-clip-rotate
+                color="#fff"
+                scale="1"
+                v-if="clickme == true"
+              ></vue-loaders-ball-clip-rotate>
+            </button>
           </form>
         </div>
       </div>
@@ -503,7 +506,7 @@
                 v-model="newpassword"
                 class="form-control"
                 id="Wallet"
-                placeholder="Enter Old Password"
+                placeholder="Enter New Password"
               />
             </div>
             <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
@@ -519,7 +522,7 @@
                 v-model="cpassword"
                 class="form-control"
                 id="Wallet"
-                placeholder="Enter Old Password"
+                placeholder="Confirm Password"
                 @keyup="checkpassword"
               />
             </div>
@@ -941,6 +944,9 @@ export default {
       moment: moment,
       transaction: [],
       meterNumber: "",
+      filledsetamount: false,
+      amount: 0,
+
       plans: [],
       accountName: "",
       accountNumber: "",
@@ -962,7 +968,7 @@ export default {
       postalcode: "",
       type: "",
       idnumber: "",
-
+      filldata2: true,
       bankName: "",
       alertstatus: false,
       status: "",
@@ -1056,6 +1062,7 @@ export default {
       myplans: [],
       email: "",
       bvn: "",
+      clickme6: false,
       code: "",
       myselectedstate: [],
       selectedstates: [],
@@ -1064,7 +1071,7 @@ export default {
       formdaat: "",
       formdata: new FormData(),
       file: "",
-      imageUrl: "",
+      imageUrl: "../assets/images/4.svg",
     };
   },
   methods: {
@@ -1078,7 +1085,7 @@ export default {
       console.log("image data url", data.image_data_url);
     },
     onSelectedFile(event) {
-      console.log(event)
+      this.filldata = true;
       const files = event.target.files;
       let filename = files[0].name;
       if (filename.lastIndexOf(".") <= 0) {
@@ -1090,31 +1097,47 @@ export default {
       });
       fileReader.readAsDataURL(files[0]);
       this.image = files[0];
-
-      this.formdata.append("image", this.image, this.image.name);
     },
     async sendAddress() {
-      const data = {
-        address: this.homeaddress,
-        city: this.city,
-        state: this.state.name,
-        country: "Nigeria",
-        postal_code: this.postalcode,
-        house_no: this.housenumber,
-        id_type: this.type,
-        id_no: this.idnumber,
-        id_image: this.formdata,
-      };
-      console.log(data);
+      this.clickme = true;
+      this.filldata = false;
+      const formdata = new FormData();
+      formdata.append("id_image", this.image, this.image.name);
+      formdata.append("city", this.city);
+      formdata.append("address", this.homeaddress);
+      formdata.append("state", this.state.name);
+      formdata.append("country", this.country);
+      formdata.append("postal_code", this.postalcode);
+      formdata.append("house_no", this.housenumber);
+      formdata.append("id_type", this.type);
+      formdata.append("id_no", this.idnumber);
 
       axios
-        .post("/api/submitaddress", data)
-        .then((res) => {
-          console.log(res);
+        .post("/api/submitaddress", formdata)
+        .then(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Success</h4>`,
+            text: `Address and Indentity saved successfully, Await confirmation`,
+            type: "success",
+            icon: "success",
+            width: 300,
+          }).then((res) => {
+            if (res.isConfirmed == true) {
+              location.reload();
+            }
+          });
         })
-        .catch((e) => {
-          console.log(e);
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:red'>Error</h4>`,
+            text: `An error occured`,
+            type: "error",
+            icon: "error",
+            width: 300,
+          });
         });
+      this.filldata = false;
+      this.clickme = false;
     },
     async confirmCode() {
       this.filldata = false;
@@ -1330,56 +1353,7 @@ export default {
         this.filldata = false;
       }
     },
-    sendAirtime() {
-      const data = {
-        charges: parseFloat(this.airtimecharges) * parseFloat(this.amount),
-        network_id: this.service.id,
-        plan_id: "",
-        phone: this.number,
-        type: 1,
-        amount: this.amount,
-        network: this.service.name,
-      };
-      localStorage.setItem("form", JSON.stringify(data));
-      this.$router.push("../transaction/payment/7fthnkTYvbRtKLu&");
-    },
-    async sendCableTv() {
-      this.filldata = false;
-      this.clickme = true;
-      const data = {
-        password: this.oldpassword,
-        newpassword: this.newpassword,
-      };
-      await axios
-        .post("api/updatepassword", data)
-        .then((res) => {
-          this.$swal({
-            title: `<h4 style='font-size:14x;color:#202020'>Success!!!</h4>`,
-            text: `${res.data.message}`,
-            type: "success",
-            icon: "success",
 
-            width: 300,
-            confirmButtonText: "Continue",
-          }).then((result) => {
-            if (result.value) {
-              location.reload();
-            }
-          });
-        })
-        .catch((e) => {
-          this.filldata == true, this.clickme == false;
-          this.$swal({
-            title: `<h4 style='font-size:14x;color:red'>Failed!!!</h4>`,
-            text: `${e.response.data.message}`,
-            type: "error",
-            icon: "error",
-
-            width: 300,
-            confirmButtonText: "Continue",
-          });
-        });
-    },
     tocabletv() {
       var modal = document.getElementById("myModal");
       modal.style.display = "none";

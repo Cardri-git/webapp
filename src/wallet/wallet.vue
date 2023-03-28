@@ -612,6 +612,7 @@
                   :value="item.currency"
                 />
               </div>
+
               <button
                 :disabled="mywallet != '' ? false : true"
                 :style="mywallet != '' ? '  background: #4705af' : 'background:#6E7173'"

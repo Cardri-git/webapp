@@ -47,7 +47,7 @@
               "
             >
               <router-link
-                to="../forget/password"
+                to="../forget/reset"
                 style="
                   text-align: right;
                   gont-weight: 400;
@@ -91,7 +91,11 @@
 
           <h5>
             Don't have an account ?
-            <router-link to="/auth/registerform/1">Sign Up</router-link>
+            <router-link
+              to="/auth/registerform/1"
+              style="text-decoration: none; font-weight: 600"
+              >Sign Up</router-link
+            >
           </h5>
         </div>
       </div>
@@ -184,26 +188,38 @@ export default {
             this.alertstatus = true;
             this.message = "Login Succesful";
             this.status = "success";
-            localStorage.setItem("xconfig", res.data.data.phone);
             this.$router.push("../dashboard/home");
 
-            setTimeout(() => {
-              this.alertstatus = false;
+            if (res.data.data.p_status == "false") {
+              localStorage.setItem("xconfig", res.data.data.phone);
 
-              if (res.data.data.p_status == "true") {
+              this.alertstatus = true;
+              this.status = "failed";
+              this.clickme = false;
+
+              this.message = "Your phone Number has not been verified.";
+              setTimeout(() => {
+                this.alertstatus = false;
+                this.$router.push("../auth/type");
+              }, 3000);
+            } else if (res.data.data.e_status == "false") {
+              localStorage.setItem("xconfig", res.data.data.email);
+
+              this.alertstatus = true;
+              this.status = "failed";
+              this.clickme = false;
+
+              this.message = "Your email Number has not been verified.";
+              setTimeout(() => {
+                this.alertstatus = false;
+                this.$router.push("../auth/verifyemail");
+              }, 3000);
+            } else {
+              setTimeout(() => {
+                this.alertstatus = false;
                 this.$router.push("../dashboard/home");
-              } else {
-                this.alertstatus = true;
-                this.status = "failed";
-                this.clickme = false;
-
-                this.message = "Your phone Number has not been verified.";
-                setTimeout(() => {
-                  this.alertstatus = false;
-                  this.$router.push("../auth/type");
-                }, 3000);
-              }
-            }, 3000);
+              }, 3000);
+            }
           })
           .catch((e) => {
             this.alertstatus = true;
@@ -213,7 +229,7 @@ export default {
               this.clickme = false;
 
               this.message =
-                "Your are account has been deleted or suspended, kindly contact customer care.";
+                "Your  account has been deleted or suspended, kindly contact customer care.";
             } else {
               this.status = "failed";
               this.message =

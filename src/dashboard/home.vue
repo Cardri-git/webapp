@@ -1105,6 +1105,7 @@ import axios from "axios";
 import moment from "moment";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { mapActions } from "vuex";
 export default {
   name: "myHome",
   components: {
@@ -1248,6 +1249,9 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      signOut: "auth/signOut",
+    }),
     getIndex(index) {
       this.selectedindex = index;
       this.defaultcurrenct = this.currency[this.selectedindex].currency;
@@ -1434,6 +1438,17 @@ export default {
         }
         if (response.data.data.p_status == "true") {
           this.confirmindex += 1;
+        } else {
+          this.signOut().then(() => {
+            this.$router.push("../../auth/login");
+          });
+        }
+        if (response.data.data.e_status == "true") {
+          this.confirmindex += 1;
+        } else {
+          this.signOut().then(() => {
+            this.$router.push("../../auth/login");
+          });
         }
       })
       .catch((e) => {

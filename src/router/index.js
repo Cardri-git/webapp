@@ -11,6 +11,10 @@ import HomePage from '../home'
 import Register from '../auth/register.vue'
 import RegisterForm from '../auth/registerform.vue'
 import Type from '../auth/type.vue'
+import Reset from '../forget/reset.vue'
+import Openemail from '../forget/openemail.vue'
+import Confirmcode from '../forget/confirmcode.vue'
+
 import Verify from '../auth/verify.vue'
 import Login from '../auth/login.vue'
 import Loader from '../auth/loader.vue'
@@ -33,6 +37,8 @@ import Transaction from '../transaction/home.vue'
 
 import axios from 'axios'
 import store  from '@/store'
+import verifyemailVue from '@/auth/verifyemail.vue';
+import confirmcodeVue from '../auth/confirmcodebyemail.vue';
 
 axios.defaults.baseURL = 'https://api.cardri.ng/'
 const routes = [{
@@ -283,6 +289,36 @@ const routes = [{
         path: '/auth/type',
         name: 'Verify Type',
         component: Type,
+      
+    },
+    {
+        path: '/forget/reset',
+        name: 'Reset Password',
+        component: Reset,
+      
+    },
+    {
+        path: '/forget/confirmcode',
+        name: 'Confirm Code',
+        component: Confirmcode,
+      
+    },
+    {
+        path: '/forget/openemail',
+        name: 'Password Rest',
+        component: Openemail,
+      
+    },
+    {
+        path: '/auth/verifyemail',
+        name: 'verify email',
+        component: verifyemailVue,
+      
+    },
+    {
+        path: '/auth/confirmcodebyemail',
+        name: 'ConfirmEmail',
+        component: confirmcodeVue,
       
     },
     {

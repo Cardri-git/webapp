@@ -33,6 +33,62 @@ export default {
             let response =  await axios.post('api/auth/verifyphone',payload);
             return dispatch('attempt',response)
         },
+        async sendEmail({dispatch},payload){
+          //  let response =  await axios.post('api/sendresetcode',payload);
+          
+            return new Promise((resolve ,reject)=>{
+                axios.post('api/sendresetcode', payload).then((response)=>{
+                   resolve(response)
+                  dispatch('')
+                }).catch((err)=>{
+                   reject(err)
+               })
+
+           })
+        },
+        async confirmpasswordbyemail({dispatch},payload){
+            //  let response =  await axios.post('api/sendresetcode',payload);
+            
+              return new Promise((resolve ,reject)=>{
+                  axios.post('api/resetpasswordwithcode', payload).then((response)=>{
+                     resolve(response)
+                    dispatch('')
+                  }).catch((err)=>{
+                     reject(err)
+                 })
+  
+             })
+          },
+          async verifyemail({dispatch},payload){
+            //  let response =  await axios.post('api/sendresetcode',payload);
+            
+              return new Promise((resolve ,reject)=>{
+                  axios.post('api/auth/verifyemail', payload).then((response)=>{
+                     resolve(response)
+                    dispatch('')
+                  }).catch((err)=>{
+                     reject(err)
+                 })
+  
+             })
+          },
+          async confirmcodeemail({dispatch},payload){
+            //  let response =  await axios.post('api/sendresetcode',payload);
+            
+              return new Promise((resolve ,reject)=>{
+                  axios.post('api/auth/confirm_email', payload).then((response)=>{
+                     resolve(response)
+                    dispatch('')
+                  }).catch((err)=>{
+                     reject(err)
+                 })
+  
+             })
+          },
+        async confirmCode({dispatch},payload){
+            let response =  await axios.post('api/auth/verifyemail',payload);
+            return dispatch('attempt',response)
+        },
         async sendCode({dispatch},payload){
             let response =  await axios.post('api/auth/confirm_phone',payload);
             return dispatch('attempt',response)
