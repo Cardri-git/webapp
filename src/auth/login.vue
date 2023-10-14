@@ -11,33 +11,30 @@
           <h3>LOGIN</h3>
           <p>Welcome back! Kindly enter your details</p>
           <form @submit.prevent="submitForm">
-            <div class="row">
-              <div class="col">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Email address"
-                  required
-                  v-model="id"
-                  @keyup="getvalidated"
-                  autocomplete="off"
-                />
-              </div>
+            <div class="form-group my-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Email address"
+                required
+                v-model="id"
+                @keyup="getvalidated"
+                autocomplete="off"
+              />
             </div>
 
-            <div class="row">
-              <div class="col">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                  required
-                  autocomplete="off"
-                  v-model="password"
-                  @keyup="getvalidated"
-                />
-              </div>
+            <div class="form-group my-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                required
+                autocomplete="off"
+                v-model="password"
+                @keyup="getvalidated"
+              />
             </div>
+
             <div
               style="
                 text-align: right;
@@ -69,7 +66,11 @@
                 outline: none;
                 padding: 11px;
               "
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               :disabled="filldata ? false : true"
             >
               <span style="color: #fff" v-if="clickme == false">Continue</span>
@@ -79,11 +80,13 @@
                 v-if="clickme == true"
               ></vue-loaders-ball-clip-rotate>
             </button>
-
-            <vue-recaptcha
-              @verify="mxVerify"
-              sitekey="6Lc9TsMkAAAAAL93BDipCVz5zqH9pawcYxldc74y"
-            ></vue-recaptcha>
+            <div style="max-width: 200px">
+              <vue-recaptcha
+                @verify="mxVerify"
+                style=""
+                sitekey="6Lc9TsMkAAAAAL93BDipCVz5zqH9pawcYxldc74y"
+              ></vue-recaptcha>
+            </div>
             <small style="font-weight: 600; color: red" v-if="error">
               {{ errorcaptcha }}</small
             >
@@ -233,7 +236,9 @@ export default {
             } else {
               this.status = "failed";
               this.message =
-                e.code == "ERR_NETWORK" ? "Network Error" : e.response.data.message;
+                e.code == "ERR_NETWORK"
+                  ? "Network Error"
+                  : e.response.data.message;
               this.clickme = false;
             }
             setTimeout(() => {
@@ -371,5 +376,8 @@ input[type="number"]:focus,
   align-items: center;
   display: flex;
   justify-content: center;
+}
+.rc-anchor-container {
+  width: 200px;
 }
 </style>

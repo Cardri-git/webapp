@@ -16,10 +16,12 @@
           <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Mobile Data</h3>
 
+
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendData">
+
             <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
@@ -61,11 +63,8 @@
                 @change="this.amount = plan.amount"
               >
                 <option
-                  v-for="item in (mtnapi == '1' && service.id == '1') ||
-                  (airtelapi == '2' && service.id == '2') ||
-                  (gloapi == '2' && service.id == '4')
-                    ? filterplans.slice(mtnapi == '1' && service.id == '1' ? (0, 6) : '')
-                    : myplans"
+                  v-for="item in (mtnapi === '1' && id === '1') ? filterplans.slice(0,6) : (mtnapi === '3' && id === '1')  ? filtermtnplan : (mtnapi === '2' && id === '1') ? plansdata2[1] : (airtelapi === '2' && id === '4') ? filterplans : (airtelapi === '3' && id === '4') ?  filterairtelplan : (gloapi === '2' && id === '2') ? filterplans  : (gloapi === '3' && id == '2') ?  filterglolan  : (mobileapi === '1' && id === '3') ? airtimeplans : filtermobileplan"
+                 
                   :key="item"
                   :value="{
                     id:
@@ -591,6 +590,7 @@ export default {
       amount: 0,
       selectedbox: 1,
       mtnapi: "",
+      mobileapi:'',
       fname: "",
       username: "",
       moment: moment,
@@ -602,6 +602,7 @@ export default {
       loader: false,
       loadermessage: "Please wait",
       mainloader: false,
+      airtimeplans:[],
       name: "",
       address: "",
       phone: "",
@@ -615,6 +616,7 @@ export default {
       message: "",
       service: [],
       myplans2: [],
+      gloplas:[],
       provider: [
         {
           name: "Ikeja Electric Payment - IKEDC",
@@ -704,22 +706,34 @@ export default {
   methods: {
     getdataplan() {
       const id = this.service.id;
-      if (id == 1) {
+      this.id = this.service.id
+      
+      this.airtimeplans = this.plansdata2[this.id]
+    
+
+      
+     
         if (this.mtnapi == "1") {
           this.myplans2 = this.plansdata;
-          this.id = "1";
+         // this.id = "1";
         } else {
           this.myplans = this.plansdata2[id];
         }
-      }
+      
+      
+      
       if (id == "2") {
-        if (this.airtelapi == "1") {
-          this.myplans = this.plansdata2[id];
-        } else {
-          this.myplans2 = this.plansdata;
+       
           this.id = "4";
-        }
       }
+      if(id == '4'){
+        this.id = '2'
+      }
+      if(id == '3'){
+        this.id = '3'
+        
+      }
+      /*
       if (id == "4") {
         if (this.gloapi == "1") {
           this.myplans = this.plansdata2[id];
@@ -731,6 +745,9 @@ export default {
       if (id == "3") {
         this.myplans = this.plansdata2[id];
       }
+      console.log(this.id)
+      */
+      
     },
     sendData() {
       var current = new Date();
@@ -752,7 +769,6 @@ export default {
         m: "web",
         planname: this.plan.planname,
       };
-      console.log(data);
       localStorage.setItem("form", JSON.stringify(data));
       this.$router.push("../transaction/payment/7fthnkTYvbRtKLu&");
     },
@@ -911,6 +927,7 @@ export default {
         reciever: this.meterNumber,
         type: 5,
         status: 1,
+        clubkonnectdata:[],
         ref: moment(current).format("YYYYMMDDHHm") + Math.random() * 1000,
         amount: this.amount,
         plan: this.plan.variation_code,
@@ -932,14 +949,7 @@ export default {
       this.$router.push("../transaction/payment/75dgagTvdjRESvd&");
     },
   },
-  computed: {
-    ...mapGetters(["user"]),
-    filterplans: function () {
-      return this.myplans2.filter((item) => {
-        return item.planid.match(this.id);
-      });
-    },
-  },
+
 
   async mounted() {
     await axios
@@ -972,13 +982,13 @@ export default {
     await axios
       .get("api/getmanagement")
       .then((res) => {
-        console.log(res);
         this.charges = res.data.data.cbill;
         this.airtimecharges = res.data.data.caitime;
         this.mtnapi = res.data.data.mtnapi;
         this.airtelapi = res.data.data.airtelapi;
         this.gloapi = res.data.data.gloapi;
         this.datacharges = res.data.data.cdata;
+        this.mobileapi = res.data.data.mobileapi
 
         this.loading = false;
       })
@@ -989,7 +999,6 @@ export default {
       .get("api/smeplans?type=data")
       .then((res) => {
         this.plansdata2 = res.data.data.data;
-        console.log(this.plansdata2);
       })
       .catch((e) => {
         console.log(e);
@@ -997,12 +1006,49 @@ export default {
     await axios
       .get("/api/getmtnplans")
       .then((res) => {
+       console.log(res)
         this.plansdata = res.data.data;
-        console.log(this.plansdata);
       })
       .catch((e) => {
         console.log(e);
       });
+      await axios
+      .get("/api/getclubconnectdata")
+      .then((res) => {
+        console.log(res)
+       this.clubkonnectdata =   res.data.data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
+  computed: {
+    ...mapGetters(["user"]),
+    filterplans: function () {
+      return this.plansdata.filter((item) => {
+        return item.planid.match(this.id);
+      });
+    },
+    filtermtnplan : function(){
+      return this.clubkonnectdata?.filter((item)=>{
+        return item.network.match('01')
+      })
+    },
+    filterglolan : function(){
+      return this.clubkonnectdata?.filter((item)=>{
+        return item.network.match('02')
+      })
+    },
+    filtermobileplan : function(){
+      return this.clubkonnectdata?.filter((item)=>{
+        return item.network.match('03')
+      })
+    },
+    filterairtelplan : function(){
+      return this.clubkonnectdata?.filter((item)=>{
+        return item.network.match('04')
+      })
+    }
   },
 };
 </script>

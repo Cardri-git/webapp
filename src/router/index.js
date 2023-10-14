@@ -1,12 +1,9 @@
+import {createRouter, createWebHistory} from 'vue-router';
 
 
+// import store  from '@/store'
 
-import { createRouter, createWebHistory } from 'vue-router';
-
-
-//import store  from '@/store'
-
-import  Dashboard from '../dashboard/home'
+import Dashboard from '../dashboard/home'
 import HomePage from '../home'
 import Register from '../auth/register.vue'
 import RegisterForm from '../auth/registerform.vue'
@@ -14,7 +11,9 @@ import Type from '../auth/type.vue'
 import Reset from '../forget/reset.vue'
 import Openemail from '../forget/openemail.vue'
 import Confirmcode from '../forget/confirmcode.vue'
-
+import Customer from '../customer/home.vue'
+import Customerdetails from '../customer/customers.vue'
+import PrimaryAccount from '../customer/primary.vue'
 import Verify from '../auth/verify.vue'
 import Login from '../auth/login.vue'
 import Loader from '../auth/loader.vue'
@@ -32,340 +31,351 @@ import Referral from '../referral/refer.vue'
 import Soon from '../available/soon.vue'
 
 import Transaction from '../transaction/home.vue'
+import VerfiyBvn from '../auth/verifybvn.vue'
 
-
-
+import confirmBvn from '../auth/confirmbvnbycode.vue'
 import axios from 'axios'
-import store  from '@/store'
+import store from '@/store'
 import verifyemailVue from '@/auth/verifyemail.vue';
 import confirmcodeVue from '../auth/confirmcodebyemail.vue';
+import Setpin from '../auth/setpin.vue'
 
 axios.defaults.baseURL = 'https://api.cardri.ng/'
-const routes = [{
+const routes = [
+    {
         path: '/dashboard/home',
         name: 'Home',
         component: Dashboard,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
+
+
+    },
+    {
+        path: '/customer/home',
+        name: 'Customer',
+        component: Customer,
+        beforeEnter: (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
+
+            }
+            next()
+        }
+
+
+    },
+    {
+        path: '/customer/customers/:id',
+        name: ' Customer Details',
+        component: Customerdetails,
+        beforeEnter: (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
+
+            }
+            next()
+        }
+
+
     },
     {
         path: '/wallet/wallet',
         name: 'Wallet',
         component: Wallet,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
+        path: '/customer/primary',
+        name: 'Primary Account',
+        component: PrimaryAccount,
+        beforeEnter: (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
+
+            }
+            next()
+        }
+
+
+    }, {
         path: '/transaction/home',
         name: 'Transaction',
         component: Transaction,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/cardri/pay',
         name: 'Cardri Pay',
         component: Pay,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/available/soon',
         name: 'Available Soon',
         component: Soon,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/settings/setting',
         name: 'Setting',
         component: Settings,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/referral/refer',
         name: 'Referral',
         component: Referral,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/swap/fund',
         name: 'Swap fund',
         component: Swap,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/market/home',
         name: 'P2P',
         component: Market,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/bill/home',
         name: 'Bill',
         component: Bill,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/success/1',
         name: 'Success ',
         component: Success,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/transaction/payment/:form',
         name: 'Payment',
         component: Payment,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/cardri/send',
         name: 'Send money',
         component: send,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
+        path: '/auth/setpin',
+        name: 'Set PIN',
+        component: Setpin,
+        beforeEnter: (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
+
+            }
+            next()
+        }
+
+
+    }, {
         path: '/card/home',
         name: 'Card',
         component: Card,
         beforeEnter: (to, from, next) => {
-            if(!store.getters['auth/authenticated']){
-                return next({
-                    name:'Login'
-                })
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
 
             }
             next()
         }
-        
-      
-    },
-    {
+
+
+    }, {
         path: '/',
         name: 'Homepage',
-        component: HomePage,
-      
-    },
-    {
+        component: HomePage
+
+    }, {
         path: '/auth/register',
         name: 'Register',
         component: Register,
         beforeEnter: (to, from, next) => {
-            if(store.getters['auth/authenticated']){
-                return next({
-                    name:'Home'
-                })
+            if (store.getters['auth/authenticated']) {
+                return next({name: 'Home'})
 
             }
             next()
         }
-    },
-    {
+    }, {
         path: '/auth/type',
         name: 'Verify Type',
-        component: Type,
-      
-    },
-    {
+        component: Type
+
+    }, {
+        path: '/auth/verifybvn',
+        name: 'Verify BVN',
+        component: VerfiyBvn
+
+    }, {
+        path: '/auth/confirmbvnbycode',
+        name: 'Verify Code',
+        component: confirmBvn
+
+    }, {
         path: '/forget/reset',
         name: 'Reset Password',
-        component: Reset,
-      
-    },
-    {
+        component: Reset
+
+    }, {
         path: '/forget/confirmcode',
         name: 'Confirm Code',
-        component: Confirmcode,
-      
-    },
-    {
+        component: Confirmcode
+
+    }, {
         path: '/forget/openemail',
         name: 'Password Rest',
-        component: Openemail,
-      
-    },
-    {
+        component: Openemail
+
+    }, {
         path: '/auth/verifyemail',
         name: 'verify email',
-        component: verifyemailVue,
-      
-    },
-    {
+        component: verifyemailVue
+
+    }, {
         path: '/auth/confirmcodebyemail',
         name: 'ConfirmEmail',
-        component: confirmcodeVue,
-      
-    },
-    {
+        component: confirmcodeVue
+
+    }, {
         path: '/auth/loader',
         name: 'Loader',
-        component: Loader,
-      
-    },
-    {
+        component: Loader
+
+    }, {
         path: '/auth/verify',
         name: 'Verify Registration',
-        component: Verify,
-      
-    },
-    {
+        component: Verify
+
+    }, {
         path: '/auth/login',
         name: 'Login',
         component: Login,
         beforeEnter: (to, from, next) => {
-            if(store.getters['auth/authenticated']){
-                return next({
-                    name:'Home'
-                })
+            if (store.getters['auth/authenticated']) {
+                return next({name: 'Home'})
 
             }
             next()
         }
-    },
-    {
+    }, {
         path: '/auth/registerform/:type',
         name: 'Registers',
-        component: RegisterForm,
-      
+        component: RegisterForm
+
     },
-   
+
 ]
 
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
-    routes,
+    routes
 })
-
 
 
 router.beforeEach((to, from, next) => {
 
-    document.title = `${ to.name}`
+    document.title = `${
+        to.name
+    }`
     next()
 
 
@@ -373,7 +383,4 @@ router.beforeEach((to, from, next) => {
 })
 
 
-
-  
- 
 export default router

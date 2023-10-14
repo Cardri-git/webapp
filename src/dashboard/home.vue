@@ -18,10 +18,17 @@
             >close</span
           >
         </div>
-        <div class="card" style="border: none; margin-top: 30px; padding: 0px !important">
+        <div
+          class="card"
+          style="border: none; margin-top: 30px; padding: 0px !important"
+        >
           <div
             class="card-body"
-            style="padding: 5px !important; margin: 0px !important; cursor: pointer"
+            style="
+              padding: 5px !important;
+              margin: 0px !important;
+              cursor: pointer;
+            "
           >
             <div
               class="d-flex justify-content-between align-center mt-2"
@@ -40,11 +47,24 @@
             </div>
             <div
               class="d-flex justify-content-between align-center mt-2"
-              v-if="selectedItem.type == 16"
+              v-if="
+                selectedItem.type == 16 && selectedItem.reciever != username
+              "
             >
               <span>Bought from</span>
               <span style="font-weight: 600; font-size: 14px">{{
                 selectedItem.reciever
+              }}</span>
+            </div>
+            <div
+              class="d-flex justify-content-between align-center mt-2"
+              v-if="
+                selectedItem.type == 16 && selectedItem.reciever == username
+              "
+            >
+              <span>Buyer</span>
+              <span style="font-weight: 600; font-size: 14px">{{
+                selectedItem.user
               }}</span>
             </div>
             <div
@@ -70,7 +90,11 @@
               <span>Service</span>
               <span
                 v-if="selectedItem.type == 1"
-                style="font-weight: 600; font-size: 14px; text-transform: uppercase"
+                style="
+                  font-weight: 600;
+                  font-size: 14px;
+                  text-transform: uppercase;
+                "
               >
                 {{
                   selectedItem.name == 1
@@ -87,7 +111,11 @@
               </span>
               <span
                 v-if="selectedItem.type == 2"
-                style="font-weight: 600; font-size: 14px; text-transform: uppercase"
+                style="
+                  font-weight: 600;
+                  font-size: 14px;
+                  text-transform: uppercase;
+                "
               >
                 {{
                   selectedItem.name == 1
@@ -175,20 +203,45 @@
             </div>
             <div
               class="d-flex justify-content-between align-center mt-2"
+              v-if="selectedItem.type == 2"
+            >
+              <span>Plan</span>
+              <span style="font-weight: 600; font-size: 14px">{{
+                selectedItem.plan
+              }}</span>
+            </div>
+
+            <div
+              class="d-flex justify-content-between align-center mt-2"
+              v-if="selectedItem.type == 12"
+            >
+              <span>Receiver Name</span>
+              <span
+                style="
+                  font-weight: 600;
+                  font-size: 14px;
+                  text-transform: lowercase;
+                "
+                >{{ selectedItem.network }}</span
+              >
+            </div>
+            <div
+              class="d-flex justify-content-between align-center mt-2"
               v-if="selectedItem.type != 20"
             >
               <span>Amount Paid</span>
               <span
                 style="font-weight: 600; font-size: 14px"
-                v-if="selectedItem.type != 17"
+                v-if="selectedItem.type != 17 && selectedItem.type != 18"
                 >&#8358;{{ selectedItem.amount }}</span
               >
               <span
                 style="font-weight: 600; font-size: 14px"
-                v-if="selectedItem.type == 17"
-                >&#36;{{ selectedItem.amount }}</span
+                v-if="selectedItem.type == 17 || selectedItem.type == 18"
+                >&#36;{{ selectedItem.amount / 100 }}</span
               >
             </div>
+            <!--
             <div class="d-flex justify-content-between align-center mt-2">
               <span>Amount Before</span>
               <span style="font-weight: 600; font-size: 14px"
@@ -201,6 +254,7 @@
                 >&#8358;{{ selectedItem.bafter }}</span
               >
             </div>
+            -->
 
             <div class="d-flex justify-content-between align-center mt-2">
               <span>Date</span>
@@ -235,10 +289,17 @@
             >close</span
           >
         </div>
-        <div class="card" style="border: none; margin-top: 30px; padding: 0px !important">
+        <div
+          class="card"
+          style="border: none; margin-top: 30px; padding: 0px !important"
+        >
           <div
             class="card-body"
-            style="padding: 5px !important; margin: 0px !important; cursor: pointer"
+            style="
+              padding: 5px !important;
+              margin: 0px !important;
+              cursor: pointer;
+            "
           >
             <div
               class="justify-content-between align-center mt-2"
@@ -262,9 +323,10 @@
                 <img
                   src="../assets/images/NGNs.svg"
                   alt=""
+                  width="20px"
                   style="
-                    width: 30px;
-                    height: 30px;
+                    width: 20px;
+                    height: 20px;
                     border-radius: 10%;
                     margin-right: 10px;
                   "
@@ -272,6 +334,7 @@
                 />
                 <img
                   src="../assets/images/Euro.svg"
+                  width="20px"
                   alt=""
                   style="
                     width: 30px;
@@ -329,8 +392,8 @@
                   src="../assets/images/US.svg"
                   alt=""
                   style="
-                    width: 30px;
-                    height: 30px;
+                    width: 20px;
+                    height: 20px;
                     border-radius: 10%;
                     margin-right: 10px;
                   "
@@ -391,7 +454,9 @@
                   "
                   v-if="item.currency == 'KES'"
                 />
-                <span style="font-size: 12px; font-weight: 600">{{ item.name }}</span>
+                <span style="font-size: 12px; font-weight: 600">{{
+                  item.name
+                }}</span>
               </div>
 
               <div>
@@ -426,7 +491,10 @@
           <h3>Receive Money</h3>
           {{ user }}
 
-          <span class="close material-icons" @click="closeModal" style="cursor: pointer"
+          <span
+            class="close material-icons"
+            @click="closeModal"
+            style="cursor: pointer"
             >close</span
           >
         </div>
@@ -482,7 +550,11 @@
 
           <button
             class="btn btn-primary w-100"
-            style="background: #4705af !important; font-size: 12px; border: none"
+            style="
+              background: #4705af !important;
+              font-size: 12px;
+              border: none;
+            "
             type="button"
             @click="copyURL(accountNumber)"
           >
@@ -497,7 +569,11 @@
       <headers :firstname="fname" :lastname="lname" />
       <div class="bgbig">
         <div class="backtag">
-          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
+          <img
+            src="@/assets/images/back.svg"
+            alt=""
+            @click="this.$router.go(-1)"
+          />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -658,7 +734,9 @@
                     class="material-icons"
                     @click="clickeye"
                     style="cursor: pointer"
-                    >{{ hidemybalance == true ? "visibility_off" : "visibility" }}</span
+                    >{{
+                      hidemybalance == true ? "visibility_off" : "visibility"
+                    }}</span
                   >
                   <span
                     class="material-icons d-lg-none"
@@ -669,7 +747,10 @@
                 </div>
               </div>
               <div class="mybalance">
-                <h5 style="margin-left: 40px !important" v-if="hidemybalance == false">
+                <h5
+                  style="margin-left: 40px !important"
+                  v-if="hidemybalance == false"
+                >
                   <span v-if="defaultcurrenct == 'USD'">&#36;</span>
                   <span v-if="defaultcurrenct == 'NGN'">&#8358;</span>
                   <span v-if="defaultcurrenct == 'EUR'">&euro;</span>
@@ -683,7 +764,10 @@
                   <span v-if="defaultcurrenct == 'KES'">&#404;</span>
                   {{ new Intl.NumberFormat().format(defaultbalance) }}
                 </h5>
-                <h5 style="margin-left: 40px !important" v-if="hidemybalance == true">
+                <h5
+                  style="margin-left: 40px !important"
+                  v-if="hidemybalance == true"
+                >
                   ********
                 </h5>
 
@@ -716,7 +800,11 @@
             </div>
           </div>
           <div class="drop d-lg-flex cursor-pointer">
-            <img src="@/assets/images/drop.svg" alt="" @click="toadddedwallet" />
+            <img
+              src="@/assets/images/drop.svg"
+              alt=""
+              @click="toadddedwallet"
+            />
           </div>
         </div>
         <div class="row" style="margin: 5px">
@@ -724,7 +812,6 @@
             <div
               class="row"
               style="
-                max-width: 500px;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
@@ -764,13 +851,18 @@
           </div>
         </div>
 
-        <div class="balamcebar border kyc" style="display: block !important">
-          <div class="row" v-if="confirmindex != 4">
+        <div
+          class="balamcebar border kyc"
+          style="display: block !important"
+          v-if="confirmindex != 4"
+        >
+          <div class="row">
             <div class="col-lg-6 col-md-6">
               <div class="kyc-title">
                 <h5>Complete your KYC</h5>
                 <span
-                  >You're almost there, activate your account to increase your limit</span
+                  >You're almost there, activate your account to increase your
+                  limit</span
                 >
                 <div class="complete_kyc">
                   <div class="form-group">
@@ -786,7 +878,9 @@
                         :style="`width:${(confirmindex / 4) * 100}%`"
                         class="mycomrange"
                       ></div>
-                      <span class="myrangenum">{{ (confirmindex / 4) * 100 }}%</span>
+                      <span class="myrangenum"
+                        >{{ (confirmindex / 4) * 100 }}%</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -814,15 +908,17 @@
                 <div class="text-service">
                   <h5 class="card-title">Send Money Globally</h5>
                   <p class="card-text">
-                    Send money directly to suppliers and merchant across borders in over
-                    80 countries
+                    Send money directly to suppliers and merchant across borders
+                    in over 80 countries
                   </p>
                   <router-link
                     to="../../cardri/pay"
                     type="button"
                     style="color: #12bd89 !important"
                     >Get Started
-                    <span class="material-icons" style="color: #12bd89 !important"
+                    <span
+                      class="material-icons"
+                      style="color: #12bd89 !important"
                       >arrow_forward</span
                     ></router-link
                   >
@@ -837,15 +933,17 @@
                 <div class="text-service">
                   <h5 class="card-title">Create Virtual Card</h5>
                   <p class="card-text">
-                    Pay with dollar virtual card invoices easily via email, chats or
-                    social media to customers.
+                    Pay with dollar virtual card invoices easily via email,
+                    chats or social media to customers.
                   </p>
                   <router-link
                     to="../../card/home"
                     type="button"
                     style="color: #f97316 !important"
                     >Get Started
-                    <span class="material-icons" style="color: #f97316 !important"
+                    <span
+                      class="material-icons"
+                      style="color: #f97316 !important"
                       >arrow_forward</span
                     ></router-link
                   >
@@ -867,7 +965,9 @@
                     type="button"
                     style="color: #7e57ff !important"
                     >Get Started
-                    <span class="material-icons" style="color: #7e57ff !important"
+                    <span
+                      class="material-icons"
+                      style="color: #7e57ff !important"
                       >arrow_forward</span
                     ></router-link
                   >
@@ -876,113 +976,24 @@
             </div>
           </div>
         </div>
-
-        <div class="table">
-          <div class="row d-flex" style="align-items: center">
-            <div class="col-lg-3 col-md-3">
-              <h6>Transaction History</h6>
-            </div>
-            <div class="col-lg-9 col-md-9 py-2">
-              <div class="row">
-                <div class="col-6 d-flex justify-content-center">
-                  <label for="" style="position: relative">
-                    <span class="material-icons mysearchicon" style="margin-right: 20px"
-                      >search</span
-                    >
-                    <input
-                      type="search"
-                      class="mysearchtran"
-                      style="border: none; border-radius: 5px; font-size: 14px"
-                      placeholder="Search Transaction"
-                      v-model="search"
-                    />
-                  </label>
-                </div>
-                <div class="col-6">
-                  <div class="row">
-                    <div class="col-6 d-flex justify-content-end">
-                      <div class="dropdown mydropdown">
-                        <button
-                          class="btn dropdown-toggle"
-                          type="button"
-                          id="dropdownMenuButton"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          style="background: #f5f5f5; outline: none"
-                          @click="dropmenu"
-                        >
-                          Filter
-                        </button>
-                        <div
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton"
-                          id="dropmenu"
-                        >
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1">From</label>
-                            <input type="date" class="form-control" v-model="from" />
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1">To</label>
-                            <input type="date" class="form-control" v-model="to" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6 d-flex justify-content-end">
-                      <button
-                        style="
-                          background: #4705af;
-                          border: none;
-                          color: #fff;
-                          width: 30px;
-                          height: 30px;
-                          font-size: 14px;
-                          padding: 7px;
-                          margin-right: 20px;
-                          border-radius: 5px;
-                        "
-                        @click="download"
-                      >
-                        <span class="material-icons" style="font-size: 14px"
-                          >download</span
-                        >
-                      </button>
-                      <button
-                        style="
-                          background: #4705af;
-                          border: none;
-                          color: #fff;
-                          width: 30px;
-                          height: 30px;
-                          font-size: 14px;
-                          padding: 7px;
-                          border-radius: 5px;
-                        "
-                        @click="reload"
-                      >
-                        <span class="material-icons" style="font-size: 14px"
-                          >refresh</span
-                        >
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="d-flex" style="align-items: center; padding:20px 20px 0px 20px; justify-content:space-between; margin-top:10px">
+              <h6 class="transaction_history">Recent</h6>
+              <span class="view-all" @click="gototransaction">View all</span>
+            
+        </div>
+        <div class="table" style="padding:20px">
+         
           <div class="table_section" id="content">
             <table>
               <thead>
                 <tr>
-                  <th>TRX ID</th>
-                  <th>Amount</th>
-                  <th>Beneficiary</th>
+                  <th style="text-align:left">TRX ID</th>
+                  <th style="text-align:left">Amount</th>
+                  <th style="text-align:left">Beneficiary</th>
 
-                  <th>PYMT Type</th>
-                  <th>Status</th>
-                  <th>Date</th>
+                  <th style="text-align:left">PYMT Type</th>
+                  <th style="text-align:left">Status</th>
+                  <th style="text-align:left">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -991,21 +1002,32 @@
                   :key="item.id"
                   @click="todetails(item)"
                 >
-                  <td>{{ item.ref }}</td>
+                  <td style="text-align:left">{{ item.ref }}</td>
 
-                  <td v-if="item.type != 20 && item.type != 17">
+                  <td
+                  style="text-align:left"
+                    v-if="item.type != 20 && item.type != 17 && item.type != 18"
+                  >
                     &#8358;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
-                  <td v-if="item.type == 17 || item.type == 20">
+                  <td v-if="item.type == 20" style="text-align:left">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
+                  <td v-if="item.type == 17" style="text-align:left">
+                    &#36;
+                    {{ Intl.NumberFormat().format(item.amount / 100) }}
+                  </td>
+                  <td v-if="item.type == 18" style="text-align:left">
+                    &#36;
+                    {{ Intl.NumberFormat().format(item.amount / 100) }}
+                  </td>
 
-                  <td v-if="item.type == 16">{{ item.user }}</td>
-                  <td v-if="item.type == 18">{{ item.plan }}</td>
-                  <td v-if="item.type == 20">Dollar Card</td>
-                  <td v-if="item.type == 12">{{ item.reciever }}</td>
+                  <td v-if="item.type == 16" style="text-align:left">{{ item.user }}</td>
+                  <td v-if="item.type == 18" style="text-align:left">{{ item.plan }}</td>
+                  <td v-if="item.type == 20" style="text-align:left">Dollar Card</td>
+                  <td v-if="item.type == 12" style="text-align:left">{{ item.reciever }}</td>
                   <td
                     v-if="
                       item.type != 20 &&
@@ -1013,11 +1035,12 @@
                       item.type != 12 &&
                       item.type != 18
                     "
+                    style="text-align:left"
                   >
                     {{ item.reciever }}
                   </td>
 
-                  <td v-if="item.type == 1">
+                  <td v-if="item.type == 1" style="text-align:left">
                     {{
                       item.name == 1
                         ? "MTN"
@@ -1031,7 +1054,7 @@
                     }}
                     Airtime
                   </td>
-                  <td v-if="item.type == 2">
+                  <td v-if="item.type == 2" style="text-align:left">
                     {{
                       item.name == 1
                         ? "MTN"
@@ -1056,6 +1079,10 @@
                   <td v-if="item.type == 10">Upgrade Account</td>
                   <td v-if="item.type == 17">Card Funding</td>
                   <td v-if="item.type == 15">Currency Swap</td>
+                  <td v-if="item.type == 19">Stamp Duty</td>
+
+                  <td v-if="item.type == 30">API Transfer</td>
+
 
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
                   <td>
@@ -1069,14 +1096,14 @@
                         border-radius: 5px;
                       "
                       :style="
-                        item.status == 1
+                        item.status == 1 || item.status == 2
                           ? 'background: #12BD89;padding-left:12px;padding-right:12px'
                           : item.status == 5
                           ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
                           : 'background:#F82738;padding-left:15px;padding-right:16px'
                       "
                       >{{
-                        item.status == 1
+                        item.status == 1 || item.status == 2
                           ? "Success"
                           : item.status == 5
                           ? "Processing"
@@ -1084,7 +1111,9 @@
                       }}</span
                     >
                   </td>
-                  <td>{{ moment(item.created_at).format("DD-MM-YYYY h:ma") }}</td>
+                  <td>
+                    {{ moment(item.created_at).format("DD-MM-YYYY h:ma") }}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1267,6 +1296,9 @@ export default {
     clickeye() {
       this.hidemybalance = !this.hidemybalance;
     },
+    gototransaction(){
+      this.$router.push('/transaction/home')
+    },
     todetails(item) {
       var modals = document.getElementById("myModals");
       modals.style.display = "block";
@@ -1303,6 +1335,7 @@ export default {
         }, 3000);
       } catch ($e) {
         this.alertstatus = true;
+
         (this.status = "failed"), (this.message = "Failed to copy");
         setTimeout(() => {
           this.alertstatus = false;
@@ -1348,7 +1381,12 @@ export default {
   async mounted() {
     const myindex = parseInt(localStorage.getItem("index"));
 
-    if (myindex == undefined || myindex == null || myindex == "" || isNaN(myindex)) {
+    if (
+      myindex == undefined ||
+      myindex == null ||
+      myindex == "" ||
+      isNaN(myindex)
+    ) {
       this.selectedindex = 0;
     } else {
       this.selectedindex = myindex;
@@ -1430,6 +1468,9 @@ export default {
         if (response.data.data.p_status == "false") {
           this.$router.push("../auth/type");
         }
+        if (response.data.data.bvnstatus == null) {
+          this.$router.push("../auth/verifybvn");
+        }
         if (response.data.data.bvnstatus == "true") {
           this.confirmindex += 1;
         }
@@ -1443,6 +1484,10 @@ export default {
             this.$router.push("../../auth/login");
           });
         }
+        if (response.data.data.pinstatus !== "true") {
+          this.$router.push("../../auth/setpin");
+        }
+
         if (response.data.data.e_status == "true") {
           this.confirmindex += 1;
         } else {
@@ -1458,6 +1503,7 @@ export default {
     await axios
       .get("api/gettransaction")
       .then((res) => {
+        console.log(res)
         this.transaction = res.data.data.reverse();
         this.loading = false;
       })
@@ -1571,14 +1617,23 @@ export default {
       .mybalance h5 {
         font-size: 1.7rem;
         font-weight: 700;
-        margin-top: 5px;
-        margin-bottom: 10px;
         color: #fff;
+        margin:0px;
         @media (max-width: 750px) {
           font-size: 1.3rem !important;
         }
       }
       .mybalance {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top:15px;
+        @media (max-width: 750px) {
+          gap: 4px;
+          margin-top:0px;
+
+        }
+        
         .myledger {
           font-weight: 400;
           font-size: 0.9rem;
@@ -1722,7 +1777,6 @@ export default {
     }
   }
   .table {
-    margin-top: 20px;
     overflow: auto;
     @media (max-width: 500px) {
       overflow-x: scroll;
@@ -1940,5 +1994,25 @@ label {
   @media (max-width: 750px) {
     display: none;
   }
+}
+.transaction_history{
+  font-size: 1rem;
+  color: #202020;
+  font-weight: 600;
+  padding:0px;
+  margin:0px;
+  line-height:19.6px
+}
+.view-all{
+  font-size: 1rem;
+  color: #4705af;
+  font-weight: 600;
+  padding:0px;
+  margin:0px;
+  line-height:19.6px;
+  cursor: pointer;
+}
+td{
+  text-align: left !important;
 }
 </style>

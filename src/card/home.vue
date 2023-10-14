@@ -9,87 +9,42 @@
       <!-- Card creation info-->
       <div id="mycardcreationinfo" class="modal">
         <!-- Modal content -->
-        <div class="modal-content" style="max-width: 400px !important; width: 100%">
-          <div class="d-flex justify-content-between" style="align-item: center">
+        <div class="modal-content" style="width: 100%">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Virtual Card</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
-          <div
-            style="
-              text-align: center;
-              font-weight: 500;
-              font-size: 1rem;
-              margin-top: 20px;
-            "
-          >
-            Use the Cardri Virtual Card for secure online transactions and contactless
-            payments in different currencies anywhere you are.
-          </div>
-          <h3 style="font-size: 16px; font-weight: 600; margin-top: 30px">Card Limit</h3>
-          <ul
-            style="
-              list-style: none;
-              font-size: 0.9rem;
-              font-weight: 400;
-              margin-left: -30px;
-            "
-          >
-            <li>- Maximum single deposit $10,000</li>
-            <li>- Maximum single transaction $10,000</li>
-            <li>- Maximum card balance $10,000</li>
-            <li>- Monthly transaction limit $25,000</li>
-            <li>- Maximum of 5 Dollar cards can be created</li>
-          </ul>
 
           <h3 style="font-size: 16px; font-weight: 600; margin-top: 30px">
             Card Creation Fee
           </h3>
           <p>
-            The Naira equivalent of $4 would be debited from your Cardri wallet for every
-            Dolar card created.
+            The Naira equivalent of {{ cardcreatebridgecardcfee }} Naira would
+            be debited from your cardri wallet for every Dollar card created.
           </p>
 
-          <h3 style="font-size: 16px; font-weight: 600; margin-top: 30px">
-            Rates & Conversion
-          </h3>
-          <p>
-            At the point of funding your dollar card, the current exchage rate will be
-            made known to you, and the equivalent in Naira will be debited from your
-            Cardri wallet.
-          </p>
-
-          <h3 style="font-size: 16px; font-weight: 600; margin-top: 30px">
-            Transaction Fees
-          </h3>
-          <p>Per transaction, the following transaction fees are applicable:</p>
-          <ul
-            style="
-              list-style: none;
-              font-size: 0.9rem;
-              font-weight: 400;
-              margin-left: -30px;
-            "
-          >
-            <li>- $0.5 - $50 = $0.5</li>
-            <li>- $0.5 - $50 = $0.5</li>
-            <li>- $0.5 - $50 = $0.5</li>
-          </ul>
           <h3 style="font-size: 16px; font-weight: 600; margin-top: 30px">
             Funding Fees
           </h3>
           <p>
-            A fixed fee of $1.5 (in Naira) would be debited from your Cardri wallet by our
-            USD card partner when funding your dollar card.
+            A fixed fee of {{ bridgecardfees }} Naira when funding your dollar
+            card. Plus {{ cardmbridgecardcfee }} Naira on first funding of every
+            month.
           </p>
 
           <h3 style="font-size: 16px; font-weight: 600; margin-top: 30px">
             Card Maintenance Fees
           </h3>
-          <p>
-            A fee of $3 would be charged by our USD card partner at the end of the month
-            if the card is used for transaction within a month.
-          </p>
+          <p>No maintenance fee.</p>
+
+          <h3 style="font-size: 16px; font-weight: 600; margin-top: 30px">
+            Card Limit
+          </h3>
+          <p>Not More than 10,000 per month.</p>
 
           <div class="form-check">
             <input
@@ -98,15 +53,15 @@
               value=""
               id="flexCheckDefault"
               checked
-              style="margin-right: 20px"
+              style="margin-right: 20px; accent-color: rgb(71, 5, 175)"
             />
-            <label
+            <span
               class="form-check-label"
               for="flexCheckDefault"
-              style="font-size: 0.9rem"
+              style="font-size: 0.8rem; overflow: hidden"
             >
               I have read and understood the above card terms and conditions.
-            </label>
+            </span>
           </div>
           <div class="form-check">
             <input
@@ -115,24 +70,20 @@
               v-model="check"
               value=""
               id="flexCheckDefault"
-              style="margin-right: 20px"
+              style="margin-right: 20px; accent-color: rgb(71, 5, 175)"
               @change="this.check == this.check"
             />
             <label
               class="form-check-label"
               for="flexCheckDefault"
-              style="font-size: 0.9rem"
+              style="font-size: 0.8rem"
             >
               I accepts the above terms and conditions.
             </label>
           </div>
-          <p>
-            You can create more than one virtual card. Label or name the card for easy
-            identification.
-          </p>
 
           <button
-            class="btn btn-primary"
+            class="btn btn-primary mt-2"
             @click="showtitle"
             style="background: #4705af"
             :disabled="check == false ? true : false"
@@ -147,7 +98,10 @@
       <div id="myfund" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Fund card</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
@@ -155,7 +109,9 @@
 
           <form @submit.prevent="fundcard">
             <div class="form-group">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Amount in USD</label
               >
               <input
@@ -166,18 +122,26 @@
                 v-model="amtusd"
                 required
                 @keyup="
-                  this.amtnaira = parseFloat(this.bridgerate) * parseFloat(this.amtusd);
+                  this.amtnaira =
+                    parseFloat(this.bridgerate) * parseFloat(this.amtusd);
                   this.amtnaira = this.amtnaira + parseFloat(bridgecardfees);
                 "
               />
               <div
-                style="color: red; font-weight: 600; text-align: center; font-size: 12px"
+                style="
+                  color: red;
+                  font-weight: 600;
+                  text-align: center;
+                  font-size: 12px;
+                "
               >
                 1USD = {{ bridgerate }}NGN
               </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Amount to deduct(Naira)</label
               >
               <input
@@ -189,7 +153,12 @@
                 readonly
               />
               <div
-                style="color: red; font-weight: 600; text-align: center; font-size: 12px"
+                style="
+                  color: red;
+                  font-weight: 600;
+                  text-align: center;
+                  font-size: 12px;
+                "
               >
                 Card Fees = &#8358;{{ bridgecardfees }}
               </div>
@@ -215,7 +184,10 @@
       <div id="myTitle" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Title</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
@@ -223,7 +195,9 @@
 
           <form @submit.prevent="createCard">
             <div class="form-group">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Title</label
               >
               <input
@@ -240,7 +214,9 @@
                 style="padding: 12px; margin-top: 20px"
                 :disabled="clickme == true ? true : false"
               >
-                <span style="color: #fff" v-if="clickme == false">Continue</span>
+                <span style="color: #fff" v-if="clickme == false"
+                  >Continue</span
+                >
                 <vue-loaders-ball-clip-rotate
                   color="#fff"
                   scale="1"
@@ -255,7 +231,10 @@
       <div id="mycardinfo" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Card Information</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
@@ -263,7 +242,9 @@
 
           <form>
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Card Name</label
               >
               <input
@@ -288,14 +269,18 @@
                 @click="copyURL(eachcard.card_name)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
 
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Card Number</label
               >
               <input
@@ -320,13 +305,17 @@
                 @click="copyURL(eachcard.card_number)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Expire Date</label
               >
               <input
@@ -351,13 +340,17 @@
                 @click="copyURL(expiredate)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >CVV</label
               >
               <input
@@ -382,13 +375,17 @@
                 @click="copyURL(eachcard.cvv)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Billing Address</label
               >
               <input
@@ -413,13 +410,17 @@
                 @click="copyURL(billingaddress)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Zip Code</label
               >
               <input
@@ -444,14 +445,18 @@
                 @click="copyURL(billingxip)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
 
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >City</label
               >
               <input
@@ -476,13 +481,17 @@
                 @click="copyURL(billingcity)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >State</label
               >
               <input
@@ -507,13 +516,17 @@
                 @click="copyURL(billingstate)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
             <div class="form-group" style="position: relative">
-              <label for="exampleInputEmail1" style="font-weight: 600; line-height: 40px"
+              <label
+                for="exampleInputEmail1"
+                style="font-weight: 600; line-height: 40px"
                 >Country</label
               >
               <input
@@ -538,18 +551,27 @@
                 @click="copyURL(billingcountry)"
               >
                 copy
-                <span class="material-icons" style="color: #7e57ff; font-size: 11px"
+                <span
+                  class="material-icons"
+                  style="color: #7e57ff; font-size: 11px"
                   >content_copy</span
                 >
               </span>
             </div>
             <button
               class="btn btn-primary"
-              style="background: red; font-size: 12px; padding: 12px; border: none"
+              style="
+                background: red;
+                font-size: 12px;
+                padding: 12px;
+                border: none;
+              "
               :disabled="clickme2 == true ? true : false"
               @click="freezecard"
             >
-              <span style="color: #fff" v-if="clickme2 == false">Freeze Card</span>
+              <span style="color: #fff" v-if="clickme2 == false"
+                >Freeze Card</span
+              >
               <vue-loaders-ball-clip-rotate
                 color="#fff"
                 scale="1"
@@ -565,7 +587,10 @@
       <div id="mycard" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Card</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
@@ -588,12 +613,26 @@
                 align-items: center;
               "
             >
-              <div class="d-flex justify-content-between" style="align-items: center">
-                <img src="@/assets/images/cardrilogo.svg" alt="" class="img-fluid" />
-                <img src="@/assets/images/mastercard.svg" alt="" class="img-fluid" />
+              <div
+                class="d-flex justify-content-between"
+                style="align-items: center"
+              >
+                <img
+                  src="@/assets/images/cardrilogo.svg"
+                  alt=""
+                  class="img-fluid"
+                />
+                <img
+                  src="@/assets/images/mastercard.svg"
+                  alt=""
+                  class="img-fluid"
+                />
               </div>
 
-              <div style="align-items: center; margin-top: 1rem" class="mycardholder1">
+              <div
+                style="align-items: center; margin-top: 1rem"
+                class="mycardholder1"
+              >
                 <span style="color: #fff; font-size: 1rem; word-spacing: 1.1rem"
                   >**** **** **** {{ cardnumber }}</span
                 >
@@ -652,7 +691,12 @@
             </span>
           </div>
           <div
-            style="color: #4a4e50; text-align: center; font-size: 13px; margin-top: 20px"
+            style="
+              color: #4a4e50;
+              text-align: center;
+              font-size: 13px;
+              margin-top: 20px;
+            "
           >
             Current Balance
           </div>
@@ -665,7 +709,7 @@
             "
             class="py-2 px-4"
           >
-            &#36;{{ this.balance }}.00
+            &#36;{{ this.balance / 100 }}
           </h3>
           <button
             class="btn btn-primary"
@@ -707,7 +751,9 @@
             :disabled="clickme2 == true ? true : false"
             @click="freezecard"
           >
-            <span style="color: #fff" v-if="clickme2 == false">Freeze Card</span>
+            <span style="color: #fff" v-if="clickme2 == false"
+              >Freeze Card</span
+            >
             <vue-loaders-ball-clip-rotate
               color="#fff"
               scale="1"
@@ -727,7 +773,9 @@
             :disabled="clickme2 == true ? true : false"
             @click="unfreezecard"
           >
-            <span style="color: #fff" v-if="clickme2 == false">Unfreeze Card</span>
+            <span style="color: #fff" v-if="clickme2 == false"
+              >Unfreeze Card</span
+            >
             <vue-loaders-ball-clip-rotate
               color="#fff"
               scale="1"
@@ -769,7 +817,10 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Card Type</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
@@ -786,14 +837,22 @@
           >
             <div
               class="card-body"
-              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
+              style="
+                padding: 5px !important;
+                margin: 0px !important;
+                cursor: pointer;
+              "
             >
-              <img src="@/assets/images/bluewallet.svg" alt="" style="float: left" />
+              <img
+                src="@/assets/images/bluewallet.svg"
+                alt=""
+                style="float: left"
+              />
               <div style="overflow: hidden">
                 <h3 style="margin: 5px">Virtual card</h3>
                 <p style="margin: 5px; font-size: 12px">
-                  Create and top up your card with cash or digital assets. Shop online
-                  without restrictions.
+                  Create and top up your card with cash or digital assets. Shop
+                  online without restrictions.
                 </p>
               </div>
             </div>
@@ -811,12 +870,16 @@
               class="card-body"
               style="padding: 5px !important; margin: 0px !important"
             >
-              <img src="@/assets/images/bluewallet.svg" alt="" style="float: left" />
+              <img
+                src="@/assets/images/bluewallet.svg"
+                alt=""
+                style="float: left"
+              />
               <div style="overflow: hidden">
                 <h3 style="margin: 5px">Physical card</h3>
                 <p style="margin: 5px; font-size: 12px">
-                  Withdraw cash from your Cardri wallet balance at any of over 40 million
-                  POS terminal in 200+ countries worlwide.
+                  Withdraw cash from your Cardri wallet balance at any of over
+                  40 million POS terminal in 200+ countries worlwide.
                 </p>
               </div>
             </div>
@@ -828,7 +891,11 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
+          <img
+            src="@/assets/images/back.svg"
+            alt=""
+            @click="this.$router.go(-1)"
+          />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -844,7 +911,9 @@
               "
               v-if="bvnstatus == true"
             >
-              <span class="material-icons" style="font-size: 20px; margin-right: 10px"
+              <span
+                class="material-icons"
+                style="font-size: 20px; margin-right: 10px"
                 >add</span
               >
               <span style="font-size: 13px">Create Card</span>
@@ -912,8 +981,13 @@
                             class="mycardholder1"
                           >
                             <span
-                              style="color: #fff; font-size: 1rem; word-spacing: 1.1rem"
-                              >**** **** **** {{ item.card_number.slice(-4) }}</span
+                              style="
+                                color: #fff;
+                                font-size: 1rem;
+                                word-spacing: 1.1rem;
+                              "
+                              >**** **** ****
+                              {{ item.card_number.slice(-4) }}</span
                             >
                           </div>
 
@@ -921,11 +995,16 @@
                             style="align-items: center; margin-top: 1.9rem"
                             class="mycardholder2 row"
                           >
-                            <div class="col-6" style="font-size: 0.8rem; color: #fff">
+                            <div
+                              class="col-6"
+                              style="font-size: 0.8rem; color: #fff"
+                            >
                               {{ item.card_name }}
                             </div>
                             <div class="col-6">
-                              <div style="font-size: 0.8rem; color: #fff">Exp Date:</div>
+                              <div style="font-size: 0.8rem; color: #fff">
+                                Exp Date:
+                              </div>
                               <div style="font-size: 0.8rem; color: #fff">
                                 {{ item.expiry_month }} /{{ item.expiry_year }}
                               </div>
@@ -1012,6 +1091,7 @@ export default {
       rate: 0,
       amountfrom: 0,
       amountto: 0,
+      cardmbridgecardcfee: 0,
       selectedcurrency: "",
       selectedcountry: "",
       clickme: false,
@@ -1068,6 +1148,7 @@ export default {
       cardnumber: "",
       balance: "0",
       purposes: [],
+      cardcreatebridgecardcfee: 0,
       foreignAccountNumber: "",
       foreigncountry: "",
       foreigncurrency: "",
@@ -1257,28 +1338,8 @@ export default {
       modal.style.display = "block";
     },
     async tocardri() {
-      await axios
-        .post("api/createholder")
-        .then((res) => {
-          if (res.data.success == "true") {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "block";
-          }
-        })
-        .catch(() => {
-          this.$swal({
-            title: `<h4 style='font-size:14x;color:red'>Failed!!!</h4>`,
-            text: `Unable to create Card , Contact our customer services..`,
-            type: "success",
-            icon: "success",
-
-            width: 300,
-          }).then((result) => {
-            if (result.value) {
-              location.reload();
-            }
-          });
-        });
+      var modal = document.getElementById("myModal");
+      modal.style.display = "block";
     },
     toForeign() {
       var modal = document.getElementById("myForeign");
@@ -1290,11 +1351,38 @@ export default {
       var modal = document.getElementById("myfund");
       modal.style.display = "block";
     },
-    showtitle() {
-      var modal = document.getElementById("myModal");
-      modal.style.display = "none";
-      var title = document.getElementById("myTitle");
-      title.style.display = "block";
+    async showtitle() {
+      if (this.bridgecard != 1) {
+        await axios
+          .post("api/createholder")
+          .then((res) => {
+            if (res.data.success == "true") {
+              var modal = document.getElementById("myModal");
+              modal.style.display = "none";
+              var title = document.getElementById("myTitle");
+              title.style.display = "block";
+            }
+          })
+          .catch(() => {
+            this.$swal({
+              title: `<h4 style='font-size:14x;color:red'>Failed!!!</h4>`,
+              text: `Unable to create Card , Contact our customer services..`,
+              type: "error",
+              icon: "error",
+
+              width: 300,
+            }).then((result) => {
+              if (result.value) {
+                location.reload();
+              }
+            });
+          });
+      } else {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+        var title = document.getElementById("myTitle");
+        title.style.display = "block";
+      }
     },
     async showcarddetails(card) {
       this.eachcard = card;
@@ -1312,7 +1400,8 @@ export default {
       var result = Object.keys(this.eachcard.billing_address).map((key) => [
         this.eachcard.billing_address[key],
       ]);
-      this.expiredate = this.eachcard.expiry_month + "/" + this.eachcard.expiry_year;
+      this.expiredate =
+        this.eachcard.expiry_month + "/" + this.eachcard.expiry_year;
       this.billingaddress = result[0];
       this.billingcity = result[1];
       this.billingcountry = result[2];
@@ -1363,6 +1452,7 @@ export default {
       const data = {
         title: this.mytitle,
       };
+
       await axios
         .post("api/createcard", data)
         .then((res) => {
@@ -1574,6 +1664,7 @@ export default {
         this.username = response.data.data.username;
         this.fname = response.data.data.fname;
         this.lname = response.data.data.lname;
+        this.bridgecard = response.data.data.bridgecard;
 
         if (response.data.data.bvnstatus == "") {
           this.bvnstatus = false;
@@ -1644,8 +1735,10 @@ export default {
     await axios
       .get("api/getmanagement")
       .then((res) => {
+        this.cardcreatebridgecardcfee = res.data.data.cardcreatebridgecardcfee;
         this.bridgerate = res.data.data.bridgerate;
         this.bridgecardfees = res.data.data.bridgecardcfee;
+        this.cardmbridgecardcfee = res.data.data.cardmbridgecardcfee;
         this.loading = false;
       })
       .catch((e) => {
@@ -1885,6 +1978,9 @@ form {
 }
 .d-block {
   cursor: pointer;
+}
+p {
+  font-size: 0.8rem;
 }
 .no-border {
   border: 0 !important;

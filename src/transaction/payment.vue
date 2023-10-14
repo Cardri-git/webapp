@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="max-width:2000px;width:100%;margin:0px auto">
     <div
-      class="container-xxl"
+      class="w-100"
       style="background: rgba(245, 245, 255, 1); margin-top: 0px !important"
       v-if="this.$route.params.form == 'TYYSbqjdnfiw273&'"
     >
@@ -105,7 +105,9 @@
                       padding: 0px !important;
                     "
                   >
-                    &#8358;{{ parseFloat(forms.charges) + parseFloat(forms.amount) }}
+                    &#8358;{{
+                      parseFloat(forms.charges) + parseFloat(forms.amount)
+                    }}
                   </h6>
                 </div>
                 <div
@@ -126,8 +128,8 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="col">
+            <div class="row d-flex justify-content-center">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -137,7 +139,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -147,7 +149,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -157,7 +159,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -170,7 +172,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -221,7 +227,9 @@
           <p>Please enter your PIN to confirm the transaction.</p>
           <form action="" @submit.prevent="SwapCurrency">
             <div class="py-2 bg-white">
-              <p style="text-align: center; font-size: 12px">You are swapping</p>
+              <p style="text-align: center; font-size: 12px">
+                You are swapping
+              </p>
               <div class="d-flex justify-content-center">
                 <span
                   style="
@@ -336,7 +344,7 @@
             </div>
 
             <div class="row">
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -346,7 +354,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -356,7 +364,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -366,7 +374,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -379,7 +387,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -430,7 +442,9 @@
           <p>Please enter your PIN to confirm the transaction.</p>
           <form action="" @submit.prevent="sendForeign">
             <div class="py-2 bg-white">
-              <p style="text-align: center; font-size: 12px">You are transferring</p>
+              <p style="text-align: center; font-size: 12px">
+                You are transferring
+              </p>
               <div class="d-flex justify-content-center">
                 <span
                   style="
@@ -521,7 +535,8 @@
                       padding: 0px !important;
                     "
                   >
-                    1{{ forms.currencyfrom }} : {{ parseFloat(forms.rate).toFixed(4) }}
+                    1{{ forms.currencyfrom }} :
+                    {{ parseFloat(forms.rate).toFixed(4) }}
                     {{ forms.bencurrency }}
                   </h6>
                 </div>
@@ -537,7 +552,10 @@
                       padding: 0px !important;
                     "
                   >
-                    {{ parseFloat(forms.rate).toFixed(4) * parseFloat(forms.amount) }}
+                    {{
+                      parseFloat(forms.rate).toFixed(4) *
+                      parseFloat(forms.amount)
+                    }}
                     {{ forms.bencurrency }}
                   </h6>
                 </div>
@@ -577,7 +595,7 @@
             </div>
 
             <div class="row">
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -587,7 +605,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -597,7 +615,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -607,7 +625,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -620,7 +638,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -795,7 +817,7 @@
             </div>
 
             <div class="row">
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -805,7 +827,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -815,7 +837,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -825,7 +847,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -838,7 +860,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1007,7 +1033,7 @@
             </div>
 
             <div class="row">
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1017,7 +1043,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1027,7 +1053,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1037,7 +1063,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1050,7 +1076,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1220,7 +1250,7 @@
             </div>
 
             <div class="row">
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1230,7 +1260,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1240,7 +1270,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1250,7 +1280,7 @@
                   @keyup="getvalidated"
                 />
               </div>
-              <div class="col">
+              <div class="col-3">
                 <input
                   type="password"
                   maxlength="1"
@@ -1263,7 +1293,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1334,7 +1368,12 @@ export default {
       sendOtp: "auth/sendOtp",
     }),
     getvalidated() {
-      if (this.pin1 != "" && this.pin2 != "" && this.pin3 != "" && this.pin4 != "") {
+      if (
+        this.pin1 != "" &&
+        this.pin2 != "" &&
+        this.pin3 != "" &&
+        this.pin4 != ""
+      ) {
         this.filldata = true;
       } else {
         this.filldata = false;
@@ -1370,235 +1409,285 @@ export default {
     async sendTransfer() {
       this.filldata = false;
       this.clickme = true;
-      /*
       const data = {
-        amount: this.forms.amount,
-        accountcode: this.forms.accountcode,
-        naration: this.forms.naration,
-        bns: this.forms.bns,
-        accountname: this.forms.accountname,
-        accountnumber: this.forms.accountnumber,
-        m: "web",
-        sesid: this.forms.sesid,
-        bankname: this.forms.bankname,
+        pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
       };
-      */
       await axios
-        .post(`api/transfer`, this.forms)
-        .then((res) => {
-          if (res.data.success == "true") {
-            setTimeout(() => {
-              localStorage.removeItem("form");
-              this.$router.push("../../success/1");
-            }, 3000);
-          } else {
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = "Failed";
-            this.clickme = false;
-            this.filldata = true;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
+        .post("/api/verifypin", data)
+        .then(() => {
+          axios
+            .post(`api/transfer`, this.forms)
+            .then((res) => {
+              if (res.data.success == "true") {
+                setTimeout(() => {
+                  localStorage.removeItem("form");
+                  this.$router.push("../../success/1");
+                }, 3000);
+              } else {
+                this.clickme = false;
+                this.filldata = true;
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
 
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          }
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: `Failed Transaction`,
+                  type: "error",
+                  icon: "error",
+
+                  width: 300,
+                });
+              }
+            })
+            .catch((e) => {
+              e;
+              this.clickme = false;
+
+              this.pin1 = "";
+              this.pin2 = "";
+              this.pin3 = "";
+              this.pin4 = "";
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                text: `Failed Transaction`,
+                type: "error",
+                icon: "error",
+
+                width: 300,
+              });
+            });
         })
-        .catch((e) => {
-          e;
-          this.clickme = false;
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Invalid pin`,
+            type: "error",
+            icon: "error",
 
-          this.alertstatus = true;
-          this.status = "failed";
-          this.message = "Failed";
-          this.pin1 = "";
-          this.pin2 = "";
-          this.pin3 = "";
-          this.pin4 = "";
-          setTimeout(() => {
-            this.alertstatus = false;
-          }, 3000);
+            width: 300,
+          });
         });
     },
     async buyairtime() {
       this.filldata = false;
       this.clickme = true;
 
+      const data = {
+        pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
+      };
       await axios
-        .post(`api/transaction`, this.forms)
-        .then((res) => {
-          console.log(res);
-          if (res.data.data.status == true || res.data.data.success == true) {
-            setTimeout(() => {
-              localStorage.removeItem("form");
-              this.$router.push("../../success/1");
-            }, 3000);
-          } else {
-            this.clickme = false;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
+        .post("/api/verifypin", data)
+        .then(() => {
+          axios
+            .post(`api/transaction`, this.forms)
+            .then((res) => {
+              if (res.data.success == "true") {
+                setTimeout(() => {
+                  localStorage.removeItem("form");
+                  this.$router.push("../../success/1");
+                }, 3000);
+              } else {
+                this.clickme = false;
+                this.filldata = true;
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: `Failed Transaction`,
+                  type: "error",
+                  icon: "error",
 
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = "Transaction failed";
-            this.filldata = false;
+                  width: 300,
+                });
 
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          }
+                setTimeout(() => {
+                  this.alertstatus = false;
+                }, 3000);
+              }
+            })
+            .catch(() => {
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                text: `Failed Transaction`,
+                type: "error",
+                icon: "error",
+
+                width: 300,
+              }).then((result) => {
+                if (result.value) {
+                  location.reload();
+                }
+              });
+            });
         })
-        .catch((e) => {
-          console.log(e);
-          this.clickme = false;
-          if (e.response.data.status == "fail") {
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = "An unknown error occured";
-            this.filldata = true;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Invalid pin`,
+            type: "error",
+            icon: "error",
 
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          } else {
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = e.response.data.message;
-            this.filldata = true;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
-
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          }
+            width: 300,
+          }).then((result) => {
+            if (result.value) {
+              location.reload();
+            }
+          });
         });
     },
 
     async buyelectricity() {
       this.filldata = false;
       this.clickme = true;
-      //  const current = new Date();
 
-      /*const data = {
-        reciever: this.forms.billersCode,
-        type: this.forms.type,
-        status: 1,
-        ref: moment(current).format("YYYYMMDDHHm") + Math.random() * 1000,
-        amount: this.forms.amount,
-        plan: this.forms.variation_code,
-        name: this.forms.metername,
-        network: this.forms.ename,
-        cref: moment(current).format("YYYYMMDDHHm"),
-        serveid: this.forms.serviceID,
-        ph: this.forms.phone,
-        am: this.forms.amount,
-        bi: this.forms.billersCode,
-        variationcode: this.forms.variation_code,
-        requestid: moment(current).format("YYYYMMDDHHm") + Math.random() * 1000,
-        fr: "",
-        st: this.forms.ename,
-        m: "web",
+      const data = {
+        pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
       };
-      */
-
       await axios
-        .post(`api/transaction`, this.forms)
-        .then((res) => {
-          console.log(res);
+        .post("/api/verifypin", data)
+        .then(() => {
+          axios
+            .post(`api/transaction`, this.forms)
+            .then((res) => {
+              if (res.data.success == "true") {
+                setTimeout(() => {
+                  localStorage.removeItem("form");
+                  this.$router.push("../../success/1");
+                }, 3000);
+              } else {
+                this.clickme = false;
+                this.filldata = true;
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: `Failed Transaction`,
+                  type: "error",
+                  icon: "error",
 
-          setTimeout(() => {
-            localStorage.removeItem("form");
-            this.$router.push("../../success/1");
-          }, 3000);
+                  width: 300,
+                });
+
+                setTimeout(() => {
+                  this.alertstatus = false;
+                }, 3000);
+              }
+            })
+            .catch(() => {
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                text: `Failed Transaction`,
+                type: "error",
+                icon: "error",
+
+                width: 300,
+              }).then((result) => {
+                if (result.value) {
+                  location.reload();
+                }
+              });
+            });
         })
-        .catch((e) => {
-          this.clickme = false;
-          this.clickme = false;
-          if (e.response.data.status == "fail") {
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = "An unknown error occured";
-            this.filldata = true;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Invalid pin`,
+            type: "error",
+            icon: "error",
 
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          } else {
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = e.response.data.message;
-            this.filldata = true;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
-
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          }
+            width: 300,
+          }).then((result) => {
+            if (result.value) {
+              location.reload();
+            }
+          });
         });
     },
     async SwapCurrency() {
       this.filldata = false;
       this.clickme = true;
 
+      const data = {
+        pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
+      };
       await axios
-        .post(`api/createforexmain`, this.forms)
-        .then((res) => {
-          console.log(res);
+        .post("/api/verifypin", data)
+        .then(() => {
+          axios
+            .post(`api/createforexmain`, this.forms)
+            .then((res) => {
+              console.log(res);
 
-          setTimeout(() => {
-            localStorage.removeItem("form");
-            this.$router.push("../../success/1");
-          }, 3000);
+              setTimeout(() => {
+                localStorage.removeItem("form");
+                this.$router.push("../../success/1");
+              }, 3000);
+            })
+            .catch((e) => {
+              this.clickme = false;
+              if (e.response.status == 422) {
+                this.filldata = true;
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: e.response.data.message,
+                  type: "error",
+                  icon: "error",
+
+                  width: 300,
+                }).then((result) => {
+                  if (result.value) {
+                    location.reload();
+                  }
+                });
+
+                setTimeout(() => {
+                  this.alertstatus = false;
+                }, 3000);
+              } else {
+                this.filldata = true;
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: `Failed Transaction`,
+                  type: "error",
+                  icon: "error",
+
+                  width: 300,
+                }).then((result) => {
+                  if (result.value) {
+                    location.reload();
+                  }
+                });
+              }
+            });
         })
-        .catch((e) => {
-          console.log(e);
-          this.clickme = false;
-          if (e.response.status == 422) {
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = e.response.data.message;
-            this.filldata = true;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Invalid pin`,
+            type: "error",
+            icon: "error",
 
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          } else {
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = "Failed";
-            this.filldata = true;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
-
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          }
+            width: 300,
+          }).then((result) => {
+            if (result.value) {
+              location.reload();
+            }
+          });
         });
     },
     sendCode() {
@@ -1633,90 +1722,152 @@ export default {
     async sendForeign() {
       this.filldata = false;
       this.clickme = true;
-
+      const data = {
+        pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
+      };
       await axios
-        .post(`api/makepayment`, this.forms)
-        .then((res) => {
-          console.log(res);
-          if (res.data.code != 400) {
-            setTimeout(() => {
-              localStorage.removeItem("form");
-              this.$router.push("../../success/1");
-            }, 3000);
-          } else {
-            this.clickme = false;
-            this.filldata = true;
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = res.data.message;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          }
+        .post("/api/verifypin", data)
+        .then(() => {
+          axios
+            .post(`api/makepayment`, this.forms)
+            .then((res) => {
+              console.log(res);
+              if (res.data.code != 400) {
+                setTimeout(() => {
+                  localStorage.removeItem("form");
+                  this.$router.push("../../success/1");
+                }, 3000);
+              } else {
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: res.data.message,
+                  type: "error",
+                  icon: "error",
+
+                  width: 300,
+                }).then((result) => {
+                  if (result.value) {
+                    location.reload();
+                  }
+                });
+              }
+            })
+            .catch((e) => {
+              console.log(e);
+              this.pin1 = "";
+              this.pin2 = "";
+              this.pin3 = "";
+              this.pin4 = "";
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                text: `An error occur`,
+                type: "error",
+                icon: "error",
+
+                width: 300,
+              }).then((result) => {
+                if (result.value) {
+                  location.reload();
+                }
+              });
+            });
         })
-        .catch((e) => {
-          console.log(e);
-          this.pin1 = "";
-          this.pin2 = "";
-          this.pin3 = "";
-          this.pin4 = "";
-          this.clickme = false;
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Invalid pin`,
+            type: "error",
+            icon: "error",
 
-          this.alertstatus = true;
-          this.status = "failed";
-          this.message = "An error Occur";
-
-          setTimeout(() => {
-            this.alertstatus = false;
-          }, 3000);
+            width: 300,
+          }).then((result) => {
+            if (result.value) {
+              location.reload();
+            }
+          });
         });
     },
     async buyingcurrency() {
       this.filldata = false;
       this.clickme = true;
 
+      const data = {
+        pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
+      };
       await axios
-        .post(`api/buycurrency`, this.forms)
-        .then((res) => {
-          console.log(res);
-          if (res.data.code != 400) {
-            setTimeout(() => {
-              localStorage.removeItem("form");
-              this.$router.push("../../success/1");
-            }, 3000);
-          } else {
-            this.clickme = false;
-            this.filldata = true;
-            this.alertstatus = true;
-            this.status = "failed";
-            this.message = res.data.message;
-            this.pin1 = "";
-            this.pin2 = "";
-            this.pin3 = "";
-            this.pin4 = "";
-            setTimeout(() => {
-              this.alertstatus = false;
-            }, 3000);
-          }
-        })
-        .catch((e) => {
-          console.log(e);
-          this.clickme = false;
+        .post("/api/verifypin", data)
+        .then(() => {
+          axios
+            .post(`api/buycurrency`, this.forms)
+            .then((res) => {
+              console.log(res);
+              if (res.data.code != 400) {
+                setTimeout(() => {
+                  localStorage.removeItem("form");
+                  this.$router.push("../../success/1");
+                }, 3000);
+              } else {
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: res.data.message,
+                  type: "error",
+                  icon: "error",
 
-          this.alertstatus = true;
-          this.status = "failed";
-          this.message = "Failed";
-          this.pin1 = "";
-          this.pin2 = "";
-          this.pin3 = "";
-          this.pin4 = "";
-          setTimeout(() => {
-            this.alertstatus = false;
-          }, 3000);
+                  width: 300,
+                }).then((result) => {
+                  if (result.value) {
+                    location.reload();
+                  }
+                });
+              }
+            })
+            .catch((e) => {
+              console.log(e);
+              this.clickme = false;
+
+              this.pin1 = "";
+              this.pin2 = "";
+              this.pin3 = "";
+              this.pin4 = "";
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                text: `An error occur`,
+                type: "error",
+                icon: "error",
+
+                width: 300,
+              }).then((result) => {
+                if (result.value) {
+                  location.reload();
+                }
+              });
+            });
+        })
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Invalid pin`,
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          }).then((result) => {
+            if (result.value) {
+              location.reload();
+            }
+          });
         });
     },
   },
@@ -1734,6 +1885,9 @@ export default {
 .container {
   margin: 0rem auto;
   padding: 1rem;
+  max-width:2000px !important;
+  width:100%;
+  margin:0px auto;
 
   .mybodytag {
     max-width: 300px;
@@ -1761,6 +1915,7 @@ export default {
       border-radius: 5px;
     }
     img {
+      
       @media (max-width: 750px) {
         width: 100px;
         margin-top: 30px;

@@ -10,7 +10,10 @@
       <div id="myModals" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Transaction Details</h3>
 
             <span
@@ -26,7 +29,11 @@
           >
             <div
               class="card-body"
-              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
+              style="
+                padding: 5px !important;
+                margin: 0px !important;
+                cursor: pointer;
+              "
             >
               <div
                 class="d-flex justify-content-between align-center mt-2"
@@ -45,11 +52,24 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="selectedItem.type == 16"
+                v-if="
+                  selectedItem.type == 16 && selectedItem.reciever != username
+                "
               >
                 <span>Bought from</span>
                 <span style="font-weight: 600; font-size: 14px">{{
                   selectedItem.reciever
+                }}</span>
+              </div>
+              <div
+                class="d-flex justify-content-between align-center mt-2"
+                v-if="
+                  selectedItem.type == 16 && selectedItem.reciever == username
+                "
+              >
+                <span>Buyer</span>
+                <span style="font-weight: 600; font-size: 14px">{{
+                  selectedItem.user
                 }}</span>
               </div>
               <div
@@ -75,7 +95,11 @@
                 <span>Service</span>
                 <span
                   v-if="selectedItem.type == 1"
-                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
+                  style="
+                    font-weight: 600;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                  "
                 >
                   {{
                     selectedItem.name == 1
@@ -92,7 +116,11 @@
                 </span>
                 <span
                   v-if="selectedItem.type == 2"
-                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
+                  style="
+                    font-weight: 600;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                  "
                 >
                   {{
                     selectedItem.name == 1
@@ -180,6 +208,34 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
+                v-if="selectedItem.type == 12"
+              >
+                <span>Receiver Name</span>
+                <span
+                  style="
+                    font-weight: 600;
+                    font-size: 14px;
+                    text-transform: lowercase;
+                  "
+                  >{{ selectedItem.network }}</span
+                >
+              </div>
+              <div
+                class="d-flex justify-content-between align-center mt-2"
+                v-if="selectedItem.type == 2"
+              >
+                <span>Plan</span>
+                <span
+                  style="
+                    font-weight: 600;
+                    font-size: 14px;
+                    text-transform: lowercase;
+                  "
+                  >{{ selectedItem.plan }}</span
+                >
+              </div>
+              <div
+                class="d-flex justify-content-between align-center mt-2"
                 v-if="selectedItem.type != 20"
               >
                 <span>Amount Paid</span>
@@ -191,9 +247,10 @@
                 <span
                   style="font-weight: 600; font-size: 14px"
                   v-if="selectedItem.type == 17"
-                  >&#36;{{ selectedItem.amount }}</span
+                  >&#36;{{ selectedItem.amount / 100 }}</span
                 >
               </div>
+              <!--
               <div class="d-flex justify-content-between align-center mt-2">
                 <span>Amount Before</span>
                 <span style="font-weight: 600; font-size: 14px"
@@ -206,6 +263,7 @@
                   >&#8358;{{ selectedItem.bafter }}</span
                 >
               </div>
+              -->
 
               <div class="d-flex justify-content-between align-center mt-2">
                 <span>Date</span>
@@ -230,7 +288,10 @@
       <div id="mywallet" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Wallet</h3>
 
             <span
@@ -246,7 +307,11 @@
           >
             <div
               class="card-body"
-              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
+              style="
+                padding: 5px !important;
+                margin: 0px !important;
+                cursor: pointer;
+              "
             >
               <div
                 class="justify-content-between align-center mt-2"
@@ -271,8 +336,8 @@
                     src="../assets/images/NGNs.svg"
                     alt=""
                     style="
-                      width: 30px;
-                      height: 30px;
+                      width: 20px;
+                      height: 20px;
                       border-radius: 10%;
                       margin-right: 10px;
                     "
@@ -337,8 +402,8 @@
                     src="../assets/images/US.svg"
                     alt=""
                     style="
-                      width: 30px;
-                      height: 30px;
+                      width: 20px;
+                      height: 20px;
                       border-radius: 10%;
                       margin-right: 10px;
                     "
@@ -399,7 +464,9 @@
                     "
                     v-if="item.currency == 'AED'"
                   />
-                  <span style="font-size: 12px; font-weight: 600">{{ item.name }}</span>
+                  <span style="font-size: 12px; font-weight: 600">{{
+                    item.name
+                  }}</span>
                 </div>
 
                 <div>
@@ -432,7 +499,10 @@
       <div id="myaddwallet" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Add Foreign Wallet</h3>
 
             <span
@@ -448,11 +518,19 @@
           >
             <div
               class="card-body"
-              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
+              style="
+                padding: 5px !important;
+                margin: 0px !important;
+                cursor: pointer;
+              "
             >
               <div
                 class="justify-content-between align-center mt-2"
-                :class="item.status == 0 || item.status == 'good' ? 'd-flex' : 'd-none'"
+                :class="
+                  item.status == 0 || item.status == 'good'
+                    ? 'd-flex'
+                    : 'd-none'
+                "
                 v-for="(item, index) in currency"
                 :key="item"
               >
@@ -600,7 +678,9 @@
                     "
                     v-if="item.currency == 'KES'"
                   />
-                  <span style="font-size: 12px; font-weight: 600">{{ item.name }}</span>
+                  <span style="font-size: 12px; font-weight: 600">{{
+                    item.name
+                  }}</span>
                 </div>
 
                 <input
@@ -615,7 +695,11 @@
 
               <button
                 :disabled="mywallet != '' ? false : true"
-                :style="mywallet != '' ? '  background: #4705af' : 'background:#6E7173'"
+                :style="
+                  mywallet != ''
+                    ? '  background: #4705af'
+                    : 'background:#6E7173'
+                "
                 class="btn w-100 mt-4"
                 style="
                   color: #fff;
@@ -626,7 +710,9 @@
                 "
                 @click="submitcurrency"
               >
-                <span style="color: #fff" v-if="clickme == false">Add wallet</span>
+                <span style="color: #fff" v-if="clickme == false"
+                  >Add wallet</span
+                >
                 <vue-loaders-ball-clip-rotate
                   color="#fff"
                   scale="1"
@@ -642,7 +728,11 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
+          <img
+            src="@/assets/images/back.svg"
+            alt=""
+            @click="this.$router.go(-1)"
+          />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -803,7 +893,9 @@
                     class="material-icons"
                     @click="clickeye"
                     style="cursor: pointer"
-                    >{{ hidemybalance == true ? "visibility_off" : "visibility" }}</span
+                    >{{
+                      hidemybalance == true ? "visibility_off" : "visibility"
+                    }}</span
                   >
                   <span
                     class="material-icons d-lg-none"
@@ -814,7 +906,10 @@
                 </div>
               </div>
               <div class="mybalance">
-                <h5 style="margin-left: 40px !important" v-if="hidemybalance == false">
+                <h5
+                  style="margin-left: 40px !important"
+                  v-if="hidemybalance == false"
+                >
                   <span v-if="defaultcurrenct == 'USD'">&#36;</span>
                   <span v-if="defaultcurrenct == 'NGN'">&#8358;</span>
                   <span v-if="defaultcurrenct == 'EUR'">&euro;</span>
@@ -828,7 +923,10 @@
                   <span v-if="defaultcurrenct == 'KES'">&#404;</span>
                   {{ new Intl.NumberFormat().format(defaultbalance) }}
                 </h5>
-                <h5 style="margin-left: 40px !important" v-if="hidemybalance == true">
+                <h5
+                  style="margin-left: 40px !important;padding:0px; margin-top:0px;margin-bottom:0px"
+                  v-if="hidemybalance == true"
+                >
                   ********
                 </h5>
 
@@ -861,14 +959,22 @@
             </div>
           </div>
           <div class="drop d-lg-flex" style="cursor: pointer">
-            <img src="@/assets/images/drop.svg" alt="" @click="toadddedwallet" />
+            <img
+              src="@/assets/images/drop.svg"
+              alt=""
+              @click="toadddedwallet"
+            />
           </div>
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-6">
             <div class="row">
               <div class="col-lg-6 col-md-6">
-                <div class="myaddcurrency" @click="adddedwallet" style="cursor: pointer">
+                <div
+                  class="myaddcurrency"
+                  @click="adddedwallet"
+                  style="cursor: pointer"
+                >
                   <div class="d-flex addcurrency">
                     <img src="@/assets/images/fund.svg" alt="" />
                     <span> Add Foreign Currency Wallet </span>
@@ -884,20 +990,29 @@
             <div class="col-lg-3 col-md-3">
               <h6>Transaction History</h6>
             </div>
+            <!--
             <div class="col-lg-9 col-md-9 py-2">
               <div class="row">
                 <div class="col-6 d-flex justify-content-center">
-                  <label for="" style="position: relative">
-                    <span class="material-icons mysearchicon" style="margin-right: 20px"
-                      >search</span
-                    >
-                    <input
-                      type="search"
-                      style="border: none; border-radius: 5px; font-size: 14px"
-                      placeholder="Search Transaction"
-                      v-model="search"
-                    />
-                  </label>
+                  <div class="form-group">
+                    <label for="" style="position: relative">
+                      <span
+                        class="material-icons mysearchicon"
+                        style="margin-right: 20px"
+                        >search</span
+                      >
+                      <input
+                        type="search"
+                        style="
+                          border: none;
+                          border-radius: 5px;
+                          font-size: 14px;
+                        "
+                        placeholder="Search Transaction"
+                        v-model="search"
+                      />
+                    </label>
+                  </div>
                 </div>
                 <div class="col-6">
                   <div class="row">
@@ -922,11 +1037,19 @@
                         >
                           <div class="form-group">
                             <label for="exampleFormControlInput1">From</label>
-                            <input type="date" class="form-control" v-model="from" />
+                            <input
+                              type="date"
+                              class="form-control"
+                              v-model="from"
+                            />
                           </div>
                           <div class="form-group">
                             <label for="exampleFormControlInput1">To</label>
-                            <input type="date" class="form-control" v-model="to" />
+                            <input
+                              type="date"
+                              class="form-control"
+                              v-model="to"
+                            />
                           </div>
                         </div>
                       </div>
@@ -972,6 +1095,7 @@
                 </div>
               </div>
             </div>
+            -->
           </div>
           <div class="table_section" id="content">
             <table>
@@ -998,9 +1122,13 @@
                     &#8358;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
-                  <td v-if="item.type == 17 || item.type == 20">
+                  <td v-if="item.type == 20">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount) }}
+                  </td>
+                  <td v-if="item.type == 17">
+                    &#36;
+                    {{ Intl.NumberFormat().format(item.amount / 100) }}
                   </td>
 
                   <td v-if="item.type == 16">{{ item.user }}</td>
@@ -1057,8 +1185,12 @@
                   <td v-if="item.type == 10">Upgrade Account</td>
                   <td v-if="item.type == 17">Card Funding</td>
                   <td v-if="item.type == 15">Currency Swap</td>
+                  <td v-if="item.type == 19">Stamp Duty</td>
+
 
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
+                  <td v-if="item.type == 30">API Transfer</td>
+
                   <td>
                     <span
                       style="
@@ -1085,7 +1217,9 @@
                       }}</span
                     >
                   </td>
-                  <td>{{ moment(item.created_at).format("DD-MM-YYYY h:ma") }}</td>
+                  <td>
+                    {{ moment(item.created_at).format("DD-MM-YYYY h:ma") }}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1288,7 +1422,6 @@ export default {
       modal.style.display = "none";
     },
     getmyindex(e, index) {
-      console.log(e.target.checked);
       if (e.target.checked) {
         this.currency[index].status = "good";
       } else {
@@ -1394,7 +1527,12 @@ export default {
   async mounted() {
     const myindex = parseInt(localStorage.getItem("index"));
 
-    if (myindex == undefined || myindex == null || myindex == "" || isNaN(myindex)) {
+    if (
+      myindex == undefined ||
+      myindex == null ||
+      myindex == "" ||
+      isNaN(myindex)
+    ) {
       this.selectedindex = 0;
     } else {
       this.selectedindex = myindex;
@@ -1410,7 +1548,6 @@ export default {
         this.currency[0].balance = response.data.data.ngn_b;
         this.currency[0].ledger = response.data.data.ngn_ld;
 
-        console.log(this.defaultbalance);
         this.currency[1].balance = response.data.data.commission;
         this.currency[1].ledger = 0;
 
@@ -1571,11 +1708,12 @@ export default {
       .mybalance h5 {
         font-size: 1.7rem;
         font-weight: 700;
-        margin-top: 5px;
-        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-bottom: 0px;
         color: #fff;
         @media (max-width: 750px) {
           font-size: 1.3rem !important;
+          margin-top:5px
         }
       }
       .mybalance {
@@ -1954,5 +2092,8 @@ table:-webkit-scrollbar {
   @media (max-width: 750px) {
     display: none;
   }
+} 
+td, th{
+  text-align: left !important;
 }
 </style>

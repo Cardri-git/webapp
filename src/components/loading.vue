@@ -1,9 +1,9 @@
 <template>
-  <div class="container-xxl">
-    <vue-loaders-line-scale-party
-      color="#4705af"
-      scale="1"
-    ></vue-loaders-line-scale-party>
+  <div
+    class="container-xxl"
+    style="color: rgb(71, 5, 175); font-weight: 500; font-size: 1rem"
+  >
+    Loading...
   </div>
 </template>
 <script>

@@ -239,4 +239,23 @@ select:focus,
     font-size: 14px;
   }
 }
+.container-xxl{
+  max-width: 2000px !important;
+  width: 100% !important;
+  margin: 0px auto !important;
+
+}
+button{
+  padding: 16px 24px 16px 24px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+input, select{
+  height: 46px;
+  font-size: 1rem;
+  line-height: 24px;
+  font-weight: 500px;
+  border-radius: 8px;
+
+}
 </style>

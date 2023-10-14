@@ -919,6 +919,25 @@
                   >
                     Transaction {{ nooftrade[index].numoftrade }}
                   </button>
+                  <button
+                    v-if="username == it.name"
+                    @click="cancel(it)"
+                    class="btn btn-primary"
+                    style="
+                      border-radius: 40px;
+                      background: red;
+                      padding-right: 25px;
+                      padding-left: 25px;
+                      font-size: 14px;
+
+                      outline: none;
+                      color: #fff;
+                      border: none;
+                      margin-left: 5px;
+                    "
+                  >
+                    Cancel
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -1159,6 +1178,52 @@ export default {
     };
   },
   methods: {
+    async cancel(it) {
+      const data = {
+        id: it.id,
+      };
+      await axios
+        .post("api/deleteads", data)
+        .then(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Success</h4>`,
+            text: `Your currency is listed successfully`,
+            type: "success",
+
+            width: 300,
+          }).then((res) => {
+            if (res.isConfirmed) {
+              location.reload();
+            }
+          });
+        })
+        .catch((e) => {
+          this.clickme = false;
+          this.filledsetamount = true;
+          this.filledsetrate = true;
+          if (e.response.status == 422) {
+            this.$swal({
+              title: `<h4 style='font-size:14x;color:red'>Failed!!!</h4>`,
+              text: `${e.response.data.message}`,
+              type: "error",
+              icon: "error",
+
+              width: 300,
+            });
+          } else {
+            this.$swal({
+              title: `<h4 style='font-size:14x;color:red'>Failed!!!</h4>`,
+              text: `Failed to cancel ads`,
+              type: "error",
+              icon: "error",
+
+              width: 300,
+            }).then(() => {
+              location.reload();
+            });
+          }
+        });
+    },
     checkmypost() {
       this.amtnaira = parseFloat(this.amtusd) / parseFloat(this.selectedmarket.amount);
       if (parseFloat(this.amtusd) < parseFloat(this.selectedmarket.lfrom)) {

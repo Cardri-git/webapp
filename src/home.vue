@@ -186,32 +186,44 @@
                   <div class="col">
                     <ul style="list-style: none">
                       <li class="">
-                        <router-link to="/legal/term" style="text-decoration: none">
+                        <a
+                          href="https://cardri.ng/home/terms.html"
+                          style="text-decoration: none"
+                        >
                           <div style="overflow: hidden" class="mytextlg">
                             <h4 style="font-size: 1rem">Terms of Use</h4>
                           </div>
-                        </router-link>
+                        </a>
                       </li>
                       <li class="">
-                        <router-link to="/legal/privacy" style="text-decoration: none">
+                        <a
+                          href="https://cardri.ng/home/privacy.html"
+                          style="text-decoration: none"
+                        >
                           <div style="overflow: hidden" class="mytextlg">
                             <h4 style="font-size: 1rem">Privacy Policy</h4>
                           </div>
-                        </router-link>
+                        </a>
                       </li>
                       <li class="">
-                        <router-link to="/legal/cookies" style="text-decoration: none">
+                        <a
+                          href="https://cardri.ng/home/cookies.html"
+                          style="text-decoration: none"
+                        >
                           <div style="overflow: hidden" class="mytextlg">
                             <h4 style="font-size: 1rem">Cookies</h4>
                           </div>
-                        </router-link>
+                        </a>
                       </li>
                       <li class="">
-                        <router-link to="/legal/aml-policy" style="text-decoration: none">
+                        <a
+                          href="https://cardri.ng/home/aml.html"
+                          style="text-decoration: none"
+                        >
                           <div style="overflow: hidden" class="mytextlg">
                             <h4 style="font-size: 1rem">AML policy</h4>
                           </div>
-                        </router-link>
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -342,9 +354,9 @@
             Digital wallet for seamless cross-border payments.
           </h3>
           <p>
-            A cross-border digital wallet to send and receive payment worldwide, swap and
-            hold foreign currencies, buy and sell currencies using P2P and creation of
-            virtual dollar cards.
+            A cross-border digital wallet to send and receive payment worldwide,
+            swap and hold foreign currencies, buy and sell currencies using P2P
+            and creation of virtual dollar cards.
           </p>
           <div class="d-flex justify-content-start linkapp">
             <a href="" class="nav-link" style="margin-right: 10px">
@@ -354,7 +366,7 @@
                 class="img-fluid"
               />
             </a>
-            <a href="" class="nav-link">
+            <a href="https://play.google.com/store/apps/details?id=com.cardri.com" class="nav-link">
               <img
                 src="@/assets/images/download_playstore_grey.svg"
                 alt=""
@@ -391,14 +403,27 @@
               />
             </div>
             -->
-          <div style="position: absolute; top: 0; margin-top: -380px" class="myimgcon">
-            <img src="@/assets/images/bighome.svg" alt="" width="100%" />
+          <div
+            style="
+              position: absolute;
+              top: 0;
+              margin-top: -400px;
+              display: flex;
+              justify-content: right;
+            "
+            class="myimgcon"
+          >
+            <img src="@/assets/images/bighome.jpg" alt="" class="img-fluid" />
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section id="transact" style="background: #f5f5ff; padding-top: 20px">
+  <section
+    id="transact"
+    style="background: #f5f5ff; padding-top: 20px; margin-top: 400px"
+    class="mlnb"
+  >
     <div class="container py-2 mt-5" style="padding-bottom: 0px !important">
       <div class="row">
         <div
@@ -408,11 +433,13 @@
           data-aos-duration="600"
           data-aos-anchor-placement="top-center"
         >
-          <h3 class="text-md-left text-left">Transact in global currency pair</h3>
+          <h3 class="text-md-left text-left">
+            Transact in global currency pair
+          </h3>
           <p>
-            Seamlessly exchange and hold global currencies right from your Cardri wallet
-            at the most cheapest rate ever. Buy and sell foreign currencies using Cardri
-            peer to peer.
+            Seamlessly exchange and hold global currencies right from your
+            Cardri wallet at the most cheapest rate ever. Buy and sell foreign
+            currencies using Cardri peer to peer.
           </p>
           <router-link
             class="linkrouter"
@@ -527,11 +554,13 @@
           data-aos="flip-right"
           data-aos-delay="100"
         >
-          <h3 class="text-md-left text-left">Free Transfer & Low Cross-border Rates</h3>
+          <h3 class="text-md-left text-left">
+            Free Transfer & Low Cross-border Rates
+          </h3>
           <p>
-            Enjoy free local transfers and low exchange rate for cross-border payments.
-            Pay directly to bank accounts of suppliers, vendors and business partners in
-            more than 90 countries.
+            Enjoy free local transfers and low exchange rate for cross-border
+            payments. Pay directly to bank accounts of suppliers, vendors and
+            business partners in more than 90 countries.
           </p>
           <router-link
             class="linkrouter"
@@ -564,8 +593,8 @@
             Get your dollar virtual card for global payment
           </h3>
           <p>
-            Create a 3D secured virtual dollar card to shop worldwide, works on almost all
-            payments platforms, including crypto platforms.
+            Create a 3D secured virtual dollar card to shop worldwide, works on
+            almost all payments platforms, including crypto platforms.
           </p>
           <router-link
             class="linkrouter"
@@ -614,22 +643,39 @@
     </div>
   </section>
   <section id="more" style="background: #ffffff" class="p-2 moresection">
-    <div class="container py-2 mt-5 mymore" data-aos="fade-in" data-aos-delay="100">
+    <div
+      class="container py-2 mt-5 mymore"
+      data-aos="fade-in"
+      data-aos-delay="100"
+    >
       <h3>And So Much More...</h3>
       <div class="row justify-content-between" style="margin-top: 30px">
-        <div class="col-md-4 col-lg-4 mm" data-aos="fade-in" data-aos-delay="200">
+        <div
+          class="col-md-4 col-lg-4 mm"
+          data-aos="fade-in"
+          data-aos-delay="200"
+        >
           <div class="card" style="background: #f5f5ff; border: none">
             <div class="card-body">
               <img src="@/assets/images/0.svg" alt="" />
               <div class="mydomeedetails">
                 <h4>Link</h4>
-                <p>Set a product or subscription by sharing a link for customers.</p>
+                <p>
+                  Set a product or subscription by sharing a link for customers.
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 mm" data-aos="fade-in" data-aos-delay="200">
-          <div class="card" style="background: rgba(18, 189, 137, 0.1); border: none">
+        <div
+          class="col-md-4 col-lg-4 mm"
+          data-aos="fade-in"
+          data-aos-delay="200"
+        >
+          <div
+            class="card"
+            style="background: rgba(18, 189, 137, 0.1); border: none"
+          >
             <div class="card-body">
               <img src="@/assets/images/1.svg" alt="" />
               <div class="mydomeedetails">
@@ -639,8 +685,15 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 mm" data-aos="fade-in" data-aos-delay="200">
-          <div class="card" style="background: rgba(0, 124, 238, 0.1); border: none">
+        <div
+          class="col-md-4 col-lg-4 mm"
+          data-aos="fade-in"
+          data-aos-delay="200"
+        >
+          <div
+            class="card"
+            style="background: rgba(0, 124, 238, 0.1); border: none"
+          >
             <div class="card-body">
               <img src="@/assets/images/2.svg" alt="" />
               <div class="mydomeedetails">
@@ -650,7 +703,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 mm" data-aos="fade-in" data-aos-delay="200">
+        <div
+          class="col-md-4 col-lg-4 mm"
+          data-aos="fade-in"
+          data-aos-delay="200"
+        >
           <div class="card" style="background: #f2eeff; border: none">
             <div class="card-body">
               <img src="@/assets/images/3.svg" alt="" />
@@ -661,7 +718,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 mm" data-aos="fade-in" data-aos-delay="100">
+        <div
+          class="col-md-4 col-lg-4 mm"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
           <div class="card" style="background: #f5f5ff; border: none">
             <div class="card-body">
               <img src="@/assets/images/4.svg" alt="" />
@@ -672,8 +733,15 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 mm" data-aos="fade-in" data-aos-delay="100">
-          <div class="card" style="background: rgba(249, 115, 22, 0.1); border: none">
+        <div
+          class="col-md-4 col-lg-4 mm"
+          data-aos="fade-in"
+          data-aos-delay="100"
+        >
+          <div
+            class="card"
+            style="background: rgba(249, 115, 22, 0.1); border: none"
+          >
             <div class="card-body">
               <img src="@/assets/images/5.svg" alt="" />
               <div class="mydomeedetails">
@@ -688,57 +756,90 @@
   </section>
   <section id="more" style="background: #ffffff" class="p-2 moresection">
     <div class="container py-2 mt-5 mymore">
-      <h3 data-aos="fade-in" data-aos-delay="100">Ready for cardri experience ?</h3>
+      <h3 data-aos="fade-in" data-aos-delay="100">
+        Ready for cardri experience ?
+      </h3>
       <p style="text-align: center" data-aos="fade-in" data-aos-delay="150">
         There’s so much we have for you, Get started in 3 easy steps
       </p>
       <div class="row justify-content-between" style="margin-top: 30px">
-        <div class="col-md-4 col-lg-4 mystep" data-aos="fade-in" data-aos-delay="200">
+        <div
+          class="col-md-4 col-lg-4 mystep"
+          data-aos="fade-in"
+          data-aos-delay="200"
+        >
           <div
             class="card"
-            style="background: #4705af; color: white; border-radius: 20px !important"
+            style="
+              background: #4705af;
+              color: white;
+              border-radius: 20px !important;
+            "
           >
             <div class="card-body">
               <div class="d-flex justify-content-center" style="margin: 20px">
                 <img src="@/assets/images/1.svg" alt="" />
               </div>
-              <h5 style="text-align: center; font-weight: 600">Create your account</h5>
+              <h5 style="text-align: center; font-weight: 600">
+                Create your account
+              </h5>
               <p style="text-align: center; font-size: 12px">
-                Create a new account or Log In to your existing profile via our mobile or
-                web app.
+                Create a new account or Log In to your existing profile via our
+                mobile or web app.
               </p>
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 mystep" data-aos="fade-in" data-aos-delay="220">
+        <div
+          class="col-md-4 col-lg-4 mystep"
+          data-aos="fade-in"
+          data-aos-delay="220"
+        >
           <div
             class="card"
-            style="background: #4705af; color: white; border-radius: 20px !important"
+            style="
+              background: #4705af;
+              color: white;
+              border-radius: 20px !important;
+            "
           >
             <div class="card-body">
               <div class="d-flex justify-content-center" style="margin: 20px">
                 <img src="@/assets/images/1.svg" alt="" />
               </div>
-              <h5 style="text-align: center; font-weight: 600">Complete your KYC</h5>
+              <h5 style="text-align: center; font-weight: 600">
+                Complete your KYC
+              </h5>
               <p style="text-align: center; font-size: 12px">
-                Verify your account by uploading the necessary information, and make your
-                account more secure.
+                Verify your account by uploading the necessary information, and
+                make your account more secure.
               </p>
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 mystep" data-aos="fade-in" data-aos-delay="250">
+        <div
+          class="col-md-4 col-lg-4 mystep"
+          data-aos="fade-in"
+          data-aos-delay="250"
+        >
           <div
             class="card"
-            style="background: #4705af; color: white; border-radius: 20px !important"
+            style="
+              background: #4705af;
+              color: white;
+              border-radius: 20px !important;
+            "
           >
             <div class="card-body">
               <div class="d-flex justify-content-center" style="margin: 20px">
                 <img src="@/assets/images/1.svg" alt="" />
               </div>
-              <h5 style="text-align: center; font-weight: 600">Pay and Get paid</h5>
+              <h5 style="text-align: center; font-weight: 600">
+                Pay and Get paid
+              </h5>
               <p style="text-align: center; font-size: 12px">
-                Start exploring your gateway to fast and affordable cross-border payments
+                Start exploring your gateway to fast and affordable cross-border
+                payments
               </p>
             </div>
           </div>
@@ -750,12 +851,22 @@
     <div class="container py-2 mt-5 mymore myapp">
       <h3>Download the Mobile App</h3>
       <p style="text-align: center">
-        It takes just a minute to get with Cardri, Download now to embark on a hustle free
-        financial journey
+        It takes just a minute to get with Cardri, Download now to embark on a
+        hustle free financial journey
       </p>
       <div class="downloadapp">
-        <img src="@/assets/images/download_appstore_grey.svg" alt="" class="img-fluid" />
-        <img src="@/assets/images/download_playstore_grey.svg" alt="" class="img-fluid" />
+        <img
+          src="@/assets/images/download_appstore_grey.svg"
+          alt=""
+          class="img-fluid"
+        />
+        <a href="https://play.google.com/store/apps/details?id=com.cardri.com">
+        <img
+          src="@/assets/images/download_playstore_grey.svg"
+          alt=""
+          class="img-fluid"
+        />
+        </a>
       </div>
     </div>
   </section>
@@ -767,9 +878,9 @@
             <img src="@/assets/images/logo2.svg" alt="" />
           </div>
           <p style="text-align: left; color: #fff">
-            A cross-border digital wallet to send and receive payment worldwide, swap and
-            hold foreign currencies, buy and sell currencies using P2P and creation of
-            virtual dollar cards.
+            A cross-border digital wallet to send and receive payment worldwide,
+            swap and hold foreign currencies, buy and sell currencies using P2P
+            and creation of virtual dollar cards.
           </p>
         </div>
 
@@ -802,10 +913,10 @@
           <h5>LEGAL</h5>
           <ul class="mylist">
             <li>
-              <router-link to="/"> Term of Use </router-link>
+              <a href="https://cardri.ng/home/terms.html"> Term of Use </a>
             </li>
             <li>
-              <router-link to="/"> Privacy Policy </router-link>
+              <a href="https://cardri.ng/home/privacy.html"> Privacy Policy </a>
             </li>
           </ul>
         </div>
@@ -1259,6 +1370,17 @@ main {
       position: relative !important;
       margin-right: -11px !important;
     }
+  }
+}
+.mlnb {
+  @media (max-width: 750px) {
+    margin-top: 0px !important;
+  }
+}
+.linkrouter {
+  @media (max-width: 750px) {
+    justify-content: center;
+    line-height: 30px;
   }
 }
 </style>

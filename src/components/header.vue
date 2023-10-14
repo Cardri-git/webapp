@@ -22,19 +22,12 @@
         </div>
       </router-link>
       <div class="d-flex justify-content-around" style="align-items: center">
-        <div class="material-icons mr-3">
-          <img
-            src="@/assets/images/sun.svg"
-            alt=""
-            style="width: 13px; margin-right: 10px"
-          />
-        </div>
-        <div class="material-icons ml-3">
-          <img
-            src="@/assets/images/ri_notification-line.svg"
-            alt=""
-            style="width: 13px; margin-left: 10px"
-          />
+        <div
+          class="material-icons ml-3"
+          style="font-size: 16px; cursor: pointer"
+          @click="logout"
+        >
+          logout
         </div>
 
         <div
@@ -44,20 +37,21 @@
             align-items: center;
             font-size: 6px;
             display: flex;
-            height: 14px;
-            width: 14px;
+            height: 16px;
+            width: 16px;
+            justify-content: center;
 
             background: #7e57ff;
             color: #fff;
-            margin-top: 15%;
 
             padding: 2px;
             margin-left: 20px;
             text-align: center;
           "
         >
-          <span style="text-transform: capitalize"
-            >{{ firstname.substring(0, 1) }} {{ lastname.substring(0, 1) }}</span
+          <span style="text-transform: capitalize; font-size: 7px"
+            >{{ firstname.substring(0, 1) }}
+            {{ lastname.substring(0, 1) }}</span
           >
         </div>
       </div>
@@ -65,13 +59,23 @@
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "myHead",
   props: ["firstname", "lastname"],
   methods: {
+    ...mapActions({
+      signOut: "auth/signOut",
+    }),
     setTab() {
       const myElement = document.getElementById("demo2");
       myElement.click();
+    },
+    logout() {
+      this.signOut().then(() => {
+        this.$router.push("/auth/login");
+      });
     },
   },
 };

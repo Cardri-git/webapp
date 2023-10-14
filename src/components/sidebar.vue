@@ -1,5 +1,4 @@
 <!-- eslint-disable vue/multi-word-component-names -->
-// eslint-disable-next-line vue/multi-word-component-names
 <template>
   <aside
     :class="is_expandable ? 'is-expanded' : ''"
@@ -32,7 +31,10 @@
         <div class="text_tag">Cardri Tag:</div>
         <div class="main_tag">
           <span class="text-tag">{{ username }}</span>
-          <span class="material-icons" @click="copyText(username)" style="cursor: pointer"
+          <span
+            class="material-icons"
+            @click="copyText(username)"
+            style="cursor: pointer"
             >content_copy</span
           >
         </div>
@@ -68,6 +70,10 @@
         <span class="material-icons">receipt_long</span>
         <span class="text">Transaction</span>
       </router-link>
+      <router-link to="/customer/home" class="button">
+        <span class="material-icons">receipt_long</span>
+        <span class="text">Customer</span>
+      </router-link>
       <router-link to="/market/home" class="button">
         <span class="material-icons">manage_accounts</span>
         <span class="text">P2P Market</span>
@@ -78,7 +84,7 @@
       </router-link>
     </div>
     <div class="flex"></div>
-    <div class="menu" style="display: grid">
+    <div class="menu" style="display: grid; overflow: auto">
       <router-link to="/available/soon" class="button">
         <span class="material-icons" title="Dashboard">group</span>
         <span class="text">Referral</span>
@@ -113,6 +119,9 @@ export default {
     };
   },
   props: ["username", "firstname", "lastname"],
+  mounted() {
+    this.showme = false;
+  },
   methods: {
     ...mapActions({
       signOut: "auth/signOut",

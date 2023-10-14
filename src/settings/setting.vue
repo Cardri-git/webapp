@@ -12,10 +12,15 @@
         <!-- Modal content -->
         <form @submit.prevent="confirmCode">
           <div class="modal-content">
-            <div class="d-flex justify-content-between" style="align-item: center">
+            <div
+              class="d-flex justify-content-between"
+              style="align-item: center"
+            >
               <h3>Take a selfie</h3>
 
-              <span class="close material-icons" @click="closeModal">close</span>
+              <span class="close material-icons" @click="closeModal"
+                >close</span
+              >
             </div>
           </div>
         </form>
@@ -29,10 +34,15 @@
         <!-- Modal content -->
         <form @submit.prevent="confirmCode">
           <div class="modal-content">
-            <div class="d-flex justify-content-between" style="align-item: center">
+            <div
+              class="d-flex justify-content-between"
+              style="align-item: center"
+            >
               <h3>Enter Code</h3>
 
-              <span class="close material-icons" @click="closeModal">close</span>
+              <span class="close material-icons" @click="closeModal"
+                >close</span
+              >
             </div>
 
             <div class="form-group" style="margin-top: 30px">
@@ -50,7 +60,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn btn-primary w-100 mt-4"
               style="
                 color: #fff;
@@ -80,10 +94,15 @@
         <!-- Modal content -->
         <form @submit.prevent="confirmBVN">
           <div class="modal-content">
-            <div class="d-flex justify-content-between" style="align-item: center">
+            <div
+              class="d-flex justify-content-between"
+              style="align-item: center"
+            >
               <h3>Verify Your BVN</h3>
 
-              <span class="close material-icons" @click="closeModal">close</span>
+              <span class="close material-icons" @click="closeModal"
+                >close</span
+              >
             </div>
 
             <div class="form-group" style="margin-top: 30px">
@@ -101,7 +120,11 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
               class="btn btn-primary w-100 mt-4"
               style="
                 color: #fff;
@@ -128,7 +151,10 @@
       <div id="myverify" class="modal mynormalads">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Verification</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
@@ -136,7 +162,9 @@
           <p>Follow this simple steps for verification</p>
           <form action="" @submit.prevent="submitcurrecny">
             <div class="card" style="background: #f5f5ff" @click="setamount">
-              <div class="card-body d-flex justify-content-between align-center">
+              <div
+                class="card-body d-flex justify-content-between align-center"
+              >
                 <h4>Bank Verifcation Number (BVN)</h4>
                 <div class="containers">
                   <div class="round">
@@ -151,7 +179,9 @@
               </div>
             </div>
             <div class="card" style="background: #f5f5ff" @click="todata">
-              <div class="card-body d-flex justify-content-between align-center">
+              <div
+                class="card-body d-flex justify-content-between align-center"
+              >
                 <h4>Residential Address and Indentity verification</h4>
                 <div class="containers">
                   <div class="round">
@@ -165,7 +195,7 @@
                 </div>
               </div>
             </div>
-
+            <!--
             <div class="card" style="background: #f5f5ff" @click="selfie">
               <div class="card-body d-flex justify-content-between align-center">
                 <h4>Selfie</h4>
@@ -180,12 +210,18 @@
                   </div>
                 </div>
               </div>
+
+
             </div>
+
+            -->
             <button
               type="submit"
               class="btn btn-primary"
               style="background: #4705af; margin-top: 30px"
-              :disabled="filledsetamount && filledsetrate == true ? false : true"
+              :disabled="
+                filledsetamount && filledsetrate == true ? false : true
+              "
             >
               <span style="color: #fff" v-if="clickme == false">Continue</span>
               <vue-loaders-ball-clip-rotate
@@ -205,16 +241,26 @@
       <div id="mydata" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Residential Address and Indentity Verification</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendAddress">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -230,7 +276,10 @@
                 placeholder="Enter your house number"
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -244,7 +293,10 @@
                 class="form-control"
               ></textarea>
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -272,21 +324,37 @@
               </select>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">City</label>
               </div>
-              <select type="tel" required v-model="city" class="form-control" id="Wallet">
-                <option v-for="item in selectedstates" :key="item" :value="item.name">
+              <select
+                type="tel"
+                required
+                v-model="city"
+                class="form-control"
+                id="Wallet"
+              >
+                <option
+                  v-for="item in selectedstates"
+                  :key="item"
+                  :value="item.name"
+                >
                   {{ item.name }}
                 </option>
               </select>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -301,16 +369,26 @@
                 placeholder="Enter Poster code"
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">ID type</label>
               </div>
-              <select type="tel" required v-model="type" class="form-control" id="Wallet">
-                <option value="NIGERIAN_NIN">NIGERIAN_NIN</option>
-                <option value="NIGERIAN_DRIVER_LICENSE">NIGERIAN_DRIVER_LICENSE</option>
+              <select
+                type="tel"
+                required
+                v-model="type"
+                class="form-control"
+                id="Wallet"
+              >
+                <option value="NIGERIAN_DRIVER_LICENSE">
+                  NIGERIAN_DRIVER_LICENSE
+                </option>
                 <option value="NIGERIAN_INTERNATIONAL_PASSPORT">
                   NIGERIAN_INTERNATIONAL_PASSPORT
                 </option>
@@ -318,7 +396,10 @@
               </select>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -334,7 +415,10 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <label
                 class="label"
                 style="
@@ -356,7 +440,11 @@
                 >
               </label>
             </div>
-            <button type="submit" class="btn" :disabled="filldata ? false : true">
+            <button
+              type="submit"
+              class="btn"
+              :disabled="filldata ? false : true"
+            >
               <span style="color: #fff" v-if="clickme == false">Continue</span>
               <vue-loaders-ball-clip-rotate
                 color="#fff"
@@ -374,16 +462,26 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Account Information</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendBill">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -399,7 +497,10 @@
                 id="Wallet"
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -415,7 +516,10 @@
                 id="Wallet"
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -432,17 +536,29 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">Phone Number</label>
               </div>
-              <input type="tel" required readonly v-model="phone" class="form-control" />
+              <input
+                type="tel"
+                required
+                readonly
+                v-model="phone"
+                class="form-control"
+              />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -468,16 +584,26 @@
       <div id="mycabletv" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Edit Password</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendCableTv">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -493,7 +619,10 @@
                 placeholder="Enter Old Password"
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -509,7 +638,10 @@
                 placeholder="Enter New Password"
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -531,7 +663,11 @@
               type="submit"
               class="btn"
               :disabled="filldata ? false : true"
-              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              :style="
+                filldata == true
+                  ? '  background: #4705af'
+                  : 'background:#6E7173'
+              "
             >
               <span style="color: #fff" v-if="clickme == false">Save</span>
               <vue-loaders-ball-clip-rotate
@@ -551,76 +687,79 @@
       <div id="myairtime" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
-            <h3>Airtime</h3>
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
+            <h3>Update PIN</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
-          <form @submit.prevent="sendAirtime">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+          <form @submit.prevent="updatePin">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
-                <label for="Wallet">Service Provider</label>
-              </div>
-              <select
-                type="tel"
-                required
-                v-model="service"
-                class="form-control"
-                id="Wallet"
-                @change="getvariation"
-              >
-                <option
-                  v-for="item in airtimeprovider"
-                  :key="item"
-                  :value="{ name: item.name, id: item.id }"
-                >
-                  {{ item.name }}
-                </option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
-              <div
-                class="d-flex justify-content-between"
-                style="align-items: center; margin-bottom: 10px"
-              >
-                <label for="Wallet">Phone Number</label>
+                <label for="Wallet">Code</label>
               </div>
               <input
                 type="tel"
                 required
-                v-model="number"
+                v-model="oldpin"
                 class="form-control"
-                maxlength="11"
-                minlength="11"
+                id="Wallet"
+                maxlength="4"
               />
-              <div class="d-flex" style="align-items: center" v-if="loader">
-                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
-                <span
-                  style="font-size: 12px; color: #202020"
-                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
-                >
-                  {{ loadermessage }}
-                  {{ name }} <br />
-                  {{ address }}
-                </span>
-              </div>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
-                <label for="Wallet">Amount </label>
+                <label for="Wallet">New Pin</label>
               </div>
-              <input type="tel" required v-model="amount" class="form-control" />
+              <input
+                type="tel"
+                required
+                v-model="newpin"
+                class="form-control"
+                maxlength="4"
+                minlength="4"
+              />
+            </div>
+
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
+              <div
+                class="d-flex justify-content-between"
+                style="align-items: center; margin-bottom: 10px"
+              >
+                <label for="Wallet">Confirm New pin </label>
+              </div>
+              <input
+                type="tel"
+                required
+                v-model="cnewpin"
+                class="form-control"
+                maxlength="4"
+              />
             </div>
 
             <button type="submit" class="btn">Continue</button>
@@ -633,7 +772,11 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
+          <img
+            src="@/assets/images/back.svg"
+            alt=""
+            @click="this.$router.go(-1)"
+          />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div style="max-width: 320px; width: 100%; margin: 10px">
@@ -655,7 +798,10 @@
                   />
 
                   <div style="overflow: hidden">
-                    <div class="justify-content-between" style="align-items: center">
+                    <div
+                      class="justify-content-between"
+                      style="align-items: center"
+                    >
                       <h3
                         style="
                           color: #202020;
@@ -666,14 +812,23 @@
                       >
                         {{ fname }} {{ lname }}
                       </h3>
-                      <span style="color: #f97316; font-size: 12px; margin-top: -10px"
+                      <span
+                        style="
+                          color: #f97316;
+                          font-size: 12px;
+                          margin-top: -10px;
+                        "
                         >Regular Member</span
                       >
                     </div>
 
                     <div class="d-flex align-center">
                       <span
-                        style="font-weight: 600; font-size: 0.8rem; margin-right: 10px"
+                        style="
+                          font-weight: 600;
+                          font-size: 0.8rem;
+                          margin-right: 10px;
+                        "
                         >Account Number</span
                       >
                       <div
@@ -706,7 +861,11 @@
         <div class="balamcebar">
           <div class="row" style="margin-top: 20px">
             <div class="col-md-6 col-lg-6">
-              <div class="card" style="background: #f5f5ff" @click="toelectricity">
+              <div
+                class="card"
+                style="background: #f5f5ff"
+                @click="toelectricity"
+              >
                 <div class="card-body">
                   <img
                     src="@/assets/images/edit.svg"
@@ -728,8 +887,8 @@
                     </div>
 
                     <p>
-                      View the personal information like phone number and address linked
-                      to this account.
+                      View the personal information like phone number and
+                      address linked to this account.
                     </p>
                   </div>
                 </div>
@@ -796,7 +955,8 @@
                     </div>
 
                     <p style="margin-top: 10px">
-                      Get notified in your email whenever you login with another device.
+                      Get notified in your email whenever you login with another
+                      device.
                     </p>
                   </div>
                 </div>
@@ -828,7 +988,10 @@
                       <h3 style="color: #202020">Edit Transaction Pin</h3>
                     </div>
 
-                    <p>Change the 4 digit pin you use when performing transactions.</p>
+                    <p>
+                      Change the 4 digit pin you use when performing
+                      transactions.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -935,6 +1098,9 @@ export default {
       filldata: false,
       clickme: false,
       number: 0,
+      newpin: "",
+      cnewpin: "",
+      oldpin: "",
       lname: "",
       bvnstatus: false,
       selectedbox: 1,
@@ -1075,6 +1241,48 @@ export default {
     };
   },
   methods: {
+    async updatePin() {
+      if (this.newpin === this.cnewpin) {
+        const data = {
+          code: this.oldpin,
+          pin: this.newpin,
+        };
+        await axios
+          .post("/api/updatepin", data)
+          .then(() => {
+            this.$swal({
+              title: `<h4 style='font-size:14x;color:#202020'>Success!!!</h4>`,
+              text: `Pin Updated successfully`,
+              type: "success",
+              icon: "success",
+
+              width: 300,
+            });
+          })
+          .catch((e) => {
+            this.$swal({
+              title: `<h4 style='font-size:14x;color:#202020'>Success!!!</h4>`,
+              text: e.response.data.message,
+              type: "success",
+              icon: "success",
+
+              width: 300,
+            });
+          });
+      } else {
+        this.$swal({
+          title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+          text: `Pin doesn't match`,
+          type: "error",
+          icon: "error",
+          width: 300,
+        }).then((res) => {
+          if (res.isConfirmed == true) {
+            // location.reload();
+          }
+        });
+      }
+    },
     getlga(name, id) {
       this.myselectedstate.push(name);
 
@@ -1148,7 +1356,6 @@ export default {
       await axios
         .post("api/confrimbvn", data)
         .then((res) => {
-          console.log(res);
           this.$swal({
             title: `<h4 style='font-size:14x;color:#202020'>Success</h4>`,
             text: `${res.data.data.detail}`,
@@ -1360,13 +1567,38 @@ export default {
       var tv = document.getElementById("mycabletv");
       tv.style.display = "block";
     },
-    toairtime() {
+    async toairtime() {
       var modal = document.getElementById("myModal");
       modal.style.display = "none";
       var tv = document.getElementById("mycabletv");
       tv.style.display = "none";
-      var airtime = document.getElementById("myairtime");
-      airtime.style.display = "block";
+      const data = {
+        phone: this.phone,
+      };
+      await axios
+        .post("auth/verifyphone", data)
+        .then(() => {
+          var airtime = document.getElementById("myairtime");
+          airtime.style.display = "block";
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Success!!!</h4>`,
+            text: `Code sent to your phone Number`,
+            type: "success",
+            icon: "success",
+
+            width: 300,
+          });
+        })
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Error initiating pin update,try again`,
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          });
+        });
     },
     tocode() {
       var modal = document.getElementById("setamount");

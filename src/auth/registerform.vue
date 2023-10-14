@@ -109,14 +109,15 @@
                 padding: 11px;
               "
               :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
-              :disabled="filldata ? true : true"
+              :disabled="filldata ? false : true"
             >
               Continue
             </button>
           </form>
 
           <h5>
-            Already have an account ? <router-link to="/auth/login">Login</router-link>
+            Already have an account ?
+            <router-link to="/auth/login">Login</router-link>
           </h5>
         </div>
       </div>
