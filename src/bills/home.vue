@@ -119,7 +119,8 @@
               >
                 <label for="Wallet">Amount </label>
               </div>
-              <input type="tel" required readonly v-model="amount" class="form-control" />
+              <input type="tel" required readonly v-model="amount" class="form-control"  @keydown="$event.key === '-' ? $event.preventDefault() : null"
+ />
             </div>
 
             <button type="submit" class="btn">Continue</button>
@@ -214,7 +215,8 @@
               >
                 <label for="Wallet">Amount </label>
               </div>
-              <input type="tel" required v-model="amount" class="form-control" />
+              <input type="tel" required v-model="amount" class="form-control"    @keydown="$event.key === '-' ? $event.preventDefault() : null"
+/>
             </div>
 
             <button type="submit" class="btn">Continue</button>
@@ -325,7 +327,8 @@
               >
                 <label for="Wallet">Amount </label>
               </div>
-              <input type="tel" required readonly v-model="amount" class="form-control" />
+              <input type="tel" required readonly v-model="amount" class="form-control"                 @keydown="$event.key === '-' ? $event.preventDefault() : null"
+ />
             </div>
 
             <button type="submit" class="btn">Continue</button>
@@ -409,7 +412,8 @@
               >
                 <label for="Wallet">Amount </label>
               </div>
-              <input type="tel" required v-model="amount" class="form-control" />
+              <input type="tel" required v-model="amount" class="form-control"                 @keydown="$event.key === '-' ? $event.preventDefault() : null"
+/>
             </div>
 
             <button type="submit" class="btn">Continue</button>
@@ -1006,7 +1010,7 @@ export default {
     await axios
       .get("/api/getmtnplans")
       .then((res) => {
-       console.log(res)
+     //  console.log(res)
         this.plansdata = res.data.data;
       })
       .catch((e) => {
@@ -1015,7 +1019,7 @@ export default {
       await axios
       .get("/api/getclubconnectdata")
       .then((res) => {
-        console.log(res)
+       // console.log(res)
        this.clubkonnectdata =   res.data.data;
       })
       .catch((e) => {
@@ -1126,7 +1130,7 @@ export default {
   border: 1px solid #888;
   width: 100%;
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 500px;
   .close {
     color: #aaa;
     float: right;

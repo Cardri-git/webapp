@@ -109,7 +109,7 @@
                 padding: 11px;
               "
               :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
-              :disabled="filldata ? false : true"
+              :disabled="filldata ? true : true"
             >
               Continue
             </button>

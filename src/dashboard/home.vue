@@ -1503,7 +1503,6 @@ export default {
     await axios
       .get("api/gettransaction")
       .then((res) => {
-        console.log(res)
         this.transaction = res.data.data.reverse();
         this.loading = false;
       })
@@ -1973,7 +1972,7 @@ label {
   border: 1px solid #888;
   width: 100%;
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 500px;
   .close {
     color: #aaa;
     float: right;

@@ -51,6 +51,8 @@
                 id="Wallet"
                 :placeholder="benbank == 'cardri' ? 'Cardri' : 'Select beneficiary bank'"
                 v-if="benbank == 'bank'"
+                @change="verifybank"
+
               >
                 <option
                   :value="{ name: item.bankName, code: item.bankCode }"
@@ -105,12 +107,15 @@
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
-                <label for="Wallet">Ammount(In Naira)</label>
+                <label for="Wallet">Amount(In Naira)</label>
               </div>
               <input
-                type="tel"
+                type="number"
                 required
                 v-model="amount"
+                min="0"
+                step="0.1"
+                @keydown="$event.key === '-' ? $event.preventDefault() : null"
                 class="form-control"
                 id="Wallet"
                 placeholder="Enter Amount"
@@ -839,6 +844,7 @@ export default {
       showdrop: false,
       selecteds: "",
       loading: true,
+      amount:0,
       ledger: 0,
       mainbalance: 0,
       benfirstname: "",
@@ -991,16 +997,23 @@ export default {
     };
   },
   methods: {
+    valididty(event){
+      console.log(event)
+if(event.key =='-'){
+  event.preventDefault();
+  return false
+}
+    },
     async deletebene(item) {
-      console.log(item);
+     // console.log(item);
       const data = {
         id: item.id,
       };
 
       await axios
         .delete(`api/deleteben?id=${data.id}`)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+        //  console.log(res);
         })
         .catch((e) => {
           console.log(e);
@@ -1019,18 +1032,19 @@ export default {
         sesid: this.sesid,
         charges: this.charges,
       };
-      console.log(data);
+      //console.log(data);
       localStorage.setItem("form", JSON.stringify(data));
       this.$router.push("../transaction/payment/TYYSbqjdnfiw273&");
     },
     async verifybank() {
-      this.loader = true;
+     
+      if (this.accountNumber.length ===  10 && this.bankCode.length!==0) {
+        this.loader = true;
       this.mainloader = true;
-      if (this.accountNumber.length == 10) {
         await axios
           .get(`api/getname?bank=${this.accountNumber}&code=${this.bankCode.code}`)
           .then((res) => {
-            console.log(res);
+          //  console.log(res);
 
             this.sesid = res.data.Data.SessionID;
             this.charges = res.data.Data.TransferCharge;
@@ -1096,7 +1110,7 @@ export default {
         accountNumber: this.accountNumber,
         code: this.bankCode,
       };
-      console.log(data);
+     console.log(data);
       await axios.post("");
     },
     getselectcountry() {
@@ -1122,7 +1136,7 @@ export default {
           this.selectedcurrency.currency.length - 1
         ),
       };
-      console.log(data);
+     // console.log(data);
       await axios
         .post("api/createbeneficiary", data)
         .then(() => {
@@ -1182,7 +1196,7 @@ export default {
         lname: this.myben.lname,
         c_name: this.myben.c_name,
       };
-      console.log(data);
+     // console.log(data);
       localStorage.setItem("form", JSON.stringify(data));
       this.$router.push("../transaction/payment/kjGstevshaidTTY&");
     },
@@ -1249,8 +1263,8 @@ export default {
           axios
             .get("api/createbank")
             .then(() => {})
-            .catch((err) => {
-              console.log(err);
+            .catch(() => {
+            //  console.log(err);
             });
         }
         if (response.data.data.p_status == "false") {
@@ -1292,7 +1306,7 @@ export default {
     await axios
       .get("api/getpurpose")
       .then((res) => {
-        console.log(res);
+       // console.log(res);
         this.purposes = res.data.documentTypes;
         this.loading = false;
       })
@@ -1393,7 +1407,7 @@ export default {
   border: 1px solid #888;
   width: 100%;
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 500px;
   .close {
     color: #aaa;
     float: right;

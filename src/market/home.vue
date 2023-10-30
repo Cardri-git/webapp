@@ -174,13 +174,15 @@
                 >Amount
               </label>
               <input
-                type="tel"
+                type="number"
                 class="form-control"
                 placeholder="Enter Amount"
                 style="padding: 11px"
                 v-model="amtusd"
                 required
                 @keyup="checkmypost"
+                @keydown="$event.key === '-' ? $event.preventDefault() : null"
+
               />
               <!--
               <div style="color: red; font-weight: 600; font-size: 12px">
@@ -385,11 +387,13 @@
             >
 
             <input
-              type="tel"
+              type="number"
               class="form-control"
               placeholder="Set  Rate"
               v-model="myrate1"
               required
+              @keydown="$event.key === '-' ? $event.preventDefault() : null"
+
               style="padding: 12px"
               @keyup="setrate"
             />
@@ -398,10 +402,12 @@
             <div class="form-group col-6">
               <label for="inputEmail4">Min Limit(in NGN)</label>
               <input
-                type="tel"
+                type="number"
                 class="form-control"
                 placeholder="Set Min Limit"
                 v-model="myrate"
+                @keydown="$event.key === '-' ? $event.preventDefault() : null"
+
                 required
                 style="padding: 12px"
                 @keyup="setrate"
@@ -410,13 +416,15 @@
             <div class="form-group col-6">
               <label for="inputPassword4">Max Limit(in NGN)</label>
               <input
-                type="tel"
+                type="number"
                 class="form-control"
                 placeholder="Set Max Limit"
                 v-model="myrate2"
                 required
                 style="padding: 12px"
                 @keyup="setrate"
+                @keydown="$event.key === '-' ? $event.preventDefault() : null"
+
               />
             </div>
           </div>
@@ -462,13 +470,15 @@
               >Total Amount(in {{ mycurrency.currency }}) for sale</label
             >
             <input
-              type="tel"
+              type="number"
               v-model="myamount"
               required
               class="form-control"
               placeholder="Enter Total Amount"
               style="padding: 12px"
               @keyup="checkamoutnt"
+              @keydown="$event.key === '-' ? $event.preventDefault() : null"
+
             />
             <span style="font-size: 12px; margin-right: 5px"> Available Amount</span>
             <span style="text-transform: uppercase; font-size: 12px"
@@ -1391,7 +1401,6 @@ export default {
       await axios
         .get(`api/gettrasactiondetails?id=${item.id}`)
         .then((res) => {
-          console.log(res);
           this.myeachtransaction = res.data.data.reverse();
         })
         .catch((e) => {
@@ -1549,14 +1558,12 @@ export default {
     await axios
       .get("api/getalllisted?all=true")
       .then((res) => {
-        console.log(res);
         this.markets = res.data.data.reverse();
 
         for (var i = 0; i < this.markets.length; i++) {
           this.mymarket.push(this.markets[i].data);
 
           this.nooftrade.push(this.markets[i]);
-          console.log(this.nooftrade);
         }
         this.loading = false;
       })
@@ -1645,7 +1652,7 @@ export default {
   border: 1px solid #888;
   width: 100%;
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 430px;
   .close {
     color: #aaa;
     float: right;

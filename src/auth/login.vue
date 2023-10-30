@@ -156,16 +156,16 @@ export default {
       this.error = false;
       this.recapchatoken = response;
     },
-    submit(token) {
+    submit() {
       document.getElementById("demo-form").submit();
-      console.log(token);
+     // console.log(token);
     },
 
     onloadCallback() {
       alert("grecaptcha is ready!");
     },
     getselectedbox(id) {
-      console.log(id);
+     // console.log(id);
       this.selectedbox = id;
     },
     getvalidated() {
@@ -181,8 +181,8 @@ export default {
         this.filldata = false;
         const data = {
           id: this.id,
-
           password: this.password,
+          medium: 'web'
         };
         this.signIn(data)
           .then((res) => {

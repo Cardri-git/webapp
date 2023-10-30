@@ -770,7 +770,7 @@
       <!--End To  Airtime -->
       <headers :firstname="fname" :lastname="lname" />
 
-      <div class="bgbig">
+      <div class="bgbig" >
         <div class="backtag">
           <img
             src="@/assets/images/back.svg"
@@ -779,6 +779,37 @@
           />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
+        <div style="display:flex;max-width:320px;width:100%;padding:8px;align-items:center;gap:16px;margin-top:16px;margin-bottom:8px">
+          <span :style="tab==='Settings' ? 'border-bottom:2px solid #4705af' : ''" @click="tab='Settings'" class="tabsetting">Instruments</span>
+          <span :style="tab==='webhook' ? 'border-bottom:2px solid #4705af' : ''"  @click="tab='webhook'" class="tabsetting">Webhook</span>
+        </div>
+
+        <div class="webhook_tab" v-show="tab === 'webhook'">
+          <form style="display:flex;flex-direction:column;gap:10px;" @submit.prevent="UpdateWebhook">
+            <label for="webhook">Webhook</label>
+            <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:center;gap:8px;max-width:500px;width:100%"> 
+              <input type="text" style="width:100%" readonly v-model="webhook">
+              <span class="material-icons" style="color:#4705af;cursor:pointer" @click="copyURL(webhook)">content_copy</span>
+
+            </div>
+            <button type="submit" class="btn btn-primary" style="max-width:186px" :disabled="loader">
+             <span v-if="loader === false">Update Webhook</span>
+
+               <vue-loaders-ball-clip-rotate
+                color="#fff"
+                scale="1"
+                v-if="loader ===  true"
+              ></vue-loaders-ball-clip-rotate> 
+            </button>
+
+          </div>
+
+          </form>
+          
+        </div>
+        <div style="display:flex;flex-direction:column;gap:32px" v-show="tab === 'Settings'">
+
         <div style="max-width: 320px; width: 100%; margin: 10px">
           <div class="row" style="margin-top: 20px">
             <div class="col">
@@ -800,14 +831,14 @@
                   <div style="overflow: hidden">
                     <div
                       class="justify-content-between"
-                      style="align-items: center"
+                      style="align-items: center;"
                     >
                       <h3
                         style="
                           color: #202020;
                           font-weight: 600;
-                          font-size: 1.2rem;
-                          margin-bottom: -8px;
+                          font-size: 1rem;
+                          margin-bottom: 0px;
                         "
                       >
                         {{ fname }} {{ lname }}
@@ -822,11 +853,11 @@
                       >
                     </div>
 
-                    <div class="d-flex align-center">
+                    <div class="d-flex align-center" style="align-items:center">
                       <span
                         style="
-                          font-weight: 600;
-                          font-size: 0.8rem;
+                          font-weight: 500;
+                          font-size: 0.7rem;
                           margin-right: 10px;
                         "
                         >Account Number</span
@@ -834,11 +865,11 @@
                       <div
                         style="
                           display: flex;
-                          border-radius: 10px;
+                          border-radius: 8px;
                           background: #f5f5ff;
                           color: #12bd89;
-                          font-size: 12px;
-                          padding: 1px;
+                          font-size: 11px;
+                          padding: 4px;
                           align-items: center;
                         "
                       >
@@ -858,7 +889,7 @@
           </div>
         </div>
 
-        <div class="balamcebar">
+        <div class="balamcebar" >
           <div class="row" style="margin-top: 20px">
             <div class="col-md-6 col-lg-6">
               <div
@@ -1064,6 +1095,8 @@
           </div>
         </div>
       </div>
+
+      </div>
     </div>
   </div>
 
@@ -1112,6 +1145,7 @@ export default {
       meterNumber: "",
       filledsetamount: false,
       amount: 0,
+      tab:'Settings',
 
       plans: [],
       accountName: "",
@@ -1142,6 +1176,7 @@ export default {
       charges: 0,
       message: "",
       service: [],
+      webhook:'null',
       addressstatus: false,
       provider: [
         {
@@ -1241,6 +1276,39 @@ export default {
     };
   },
   methods: {
+    async  UpdateWebhook(){
+      this.loader = true;
+      axios.post('/api/updatewebhook').then(()=>{
+        //console.log(res)
+
+        axios
+      .get("api/getdatils")
+      .then((response) => {
+        this.loader = false
+        this.webhook = response.data.data.webhook
+
+      })
+        this.$swal({
+              title: `<h4 style='font-size:14x;color:#202020'>Updated</h4>`,
+              text: `Webhook Updated successfully`,
+              type: "success",
+              icon: "success",
+
+              width: 300,
+            });
+      }).catch((e)=>{
+        this.loader =false
+        this.$swal({
+              title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+              text: e.response?.data ?  e.response?.data.message : 'An error occur',
+              type: "success",
+              icon: "success",
+
+              width: 300,
+            });
+      })
+
+    },
     async updatePin() {
       if (this.newpin === this.cnewpin) {
         const data = {
@@ -1501,9 +1569,9 @@ export default {
           this.clickme = true;
 
           axios
-            .post("api/auth/delete")
+            .post("api/delete")
             .then((res) => {
-              console.log(res);
+             // console.log(res);
               if (res.data.data.status == "true") {
                 this.clickme = false;
                 this.$swal({
@@ -1521,8 +1589,8 @@ export default {
                 });
               }
             })
-            .catch((e) => {
-              console.log(e);
+            .catch(() => {
+             // console.log(e);
               this.clickme = false;
 
               this.$swal({
@@ -1720,7 +1788,7 @@ export default {
         address: this.address,
         charges: this.charges,
       };
-      console.log(data);
+      //console.log(data);
       localStorage.setItem("form", JSON.stringify(data));
       this.$router.push("../transaction/payment/75dgagTvdjRESvd&");
     },
@@ -1767,57 +1835,18 @@ export default {
         this.lname = response.data.data.lname;
         this.email = response.data.data.email;
         this.accountNumber = response.data.data.bank;
+        this.webhook = response.data.data.webhook
         this.phone = response.data.data.phone;
         this.accountName = response.data.data.accountName;
         this.bankName = response.data.data.bankname;
         this.bvnstatus = response.data.data.bvnstatus == "true" ? true : false;
         this.addressstatus = response.data.data.address == "2" ? true : false;
-        if (response.data.data.bank == null) {
-          axios
-            .get("api/createbank")
-            .then(() => {})
-            .catch((err) => {
-              console.log(err);
-            });
-        }
-        if (response.data.data.p_status == "false") {
-          this.$router.push("../auth/type");
-        }
+        this.loading = false
       })
       .catch((e) => {
         console.log(e);
       });
-    await axios
-      .get("api/getmanagement")
-      .then((res) => {
-        console.log(res);
-        this.charges = res.data.data.cbill;
-        this.airtimecharges = res.data.data.caitime;
-        this.mtnapi = res.data.data.mtnapi;
-        this.airtelapi = res.data.data.airtelapi;
-        this.gloapi = res.data.data.gloapi;
-
-        this.loading = false;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    await axios
-      .get("api/smeplans?type=data")
-      .then((res) => {
-        this.plansdata2 = res.data.data.data;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    await axios
-      .get("/api/getmtnplans")
-      .then((res) => {
-        this.plansdata = res.data.data;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  
   },
 };
 </script>
@@ -2096,6 +2125,14 @@ input:checked + .slider:before {
 .slider.round {
   border-radius: 34px;
 }
+.tabsetting{
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 2%;
+  line-height: 19.6px;
+
+}
 
 .slider.round:before {
   border-radius: 50%;
@@ -2179,5 +2216,11 @@ label.label input[type="file"] {
 
 .round input[type="checkbox"]:checked + label:after {
   opacity: 1;
+}
+.webhook_tab{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding:8px;
 }
 </style>

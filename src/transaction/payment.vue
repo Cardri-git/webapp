@@ -1621,8 +1621,8 @@ export default {
         .then(() => {
           axios
             .post(`api/createforexmain`, this.forms)
-            .then((res) => {
-              console.log(res);
+            .then(() => {
+             // console.log(res);
 
               setTimeout(() => {
                 localStorage.removeItem("form");
@@ -1731,7 +1731,7 @@ export default {
           axios
             .post(`api/makepayment`, this.forms)
             .then((res) => {
-              console.log(res);
+            //  console.log(res);
               if (res.data.code != 400) {
                 setTimeout(() => {
                   localStorage.removeItem("form");
@@ -1804,7 +1804,7 @@ export default {
           axios
             .post(`api/buycurrency`, this.forms)
             .then((res) => {
-              console.log(res);
+            //  console.log(res);
               if (res.data.code != 400) {
                 setTimeout(() => {
                   localStorage.removeItem("form");

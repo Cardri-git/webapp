@@ -27,8 +27,9 @@ export default {
     this.bindEvents();
 
     if (navigator.onLine) {
-      console.log("true");
+     // console.log("true");
     } else {
+      if(this.$route.path !== '/')
       this.$swal({
         title: `<h4 style='font-size:14x;color:#202020'>Network Error</h4>`,
         text: "Please, check your connection",
@@ -122,6 +123,7 @@ export default {
     logout() {
       // perform logout logic here
       this.signOut().then(() => {
+       if(this.$route.path !== '/auth/login' && this.$route.path !== '/auth/register' ) 
         this.$router.push("../auth/login");
         location.reload();
       });
@@ -169,6 +171,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+
 .frm_form_field .grecaptcha-badge {
   display: none;
 }
@@ -217,6 +221,7 @@ select:focus,
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding: 10px;
 }
 
 /* Modal Content/Box */
@@ -246,7 +251,7 @@ select:focus,
 
 }
 button{
-  padding: 16px 24px 16px 24px !important;
+  padding: 10px 20px 10px 20px !important;
   font-size: 16px !important;
   font-weight: 600 !important;
 }

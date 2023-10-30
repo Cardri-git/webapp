@@ -115,11 +115,13 @@
                 >Amount in USD</label
               >
               <input
-                type="tel"
+                type="amount"
                 class="form-control"
                 placeholder="Enter Amount"
                 style="padding: 11px"
                 v-model="amtusd"
+                @keydown="$event.key === '-' ? $event.preventDefault() : null"
+
                 required
                 @keyup="
                   this.amtnaira =
@@ -145,7 +147,9 @@
                 >Amount to deduct(Naira)</label
               >
               <input
-                type="text"
+                type="number"
+                @keydown="$event.key === '-' ? $event.preventDefault() : null"
+
                 class="form-control"
                 placeholder="Amount to receive"
                 style="padding: 11px"
@@ -1826,7 +1830,7 @@ export default {
   border: 1px solid #888;
   width: 100%;
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 430px;
   .close {
     color: #aaa;
     float: right;

@@ -111,12 +111,12 @@ export default {
     },
 
     async setPin() {
-      console.log("clicked");
+     // console.log("clicked");
       this.filldata = false;
       const data = {
         pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
       };
-      console.log(data);
+    //  console.log(data);
       await axios
         .post("/api/setpin", data)
         .then(() => {
