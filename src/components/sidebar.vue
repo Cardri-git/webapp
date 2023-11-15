@@ -74,6 +74,10 @@
         <span class="material-icons">receipt_long</span>
         <span class="text">Customer</span>
       </router-link>
+      <router-link to="/china/pay" class="button">
+        <span class="material-icons">receipt_long</span>
+        <span class="text">China Pay</span>
+      </router-link>
       <router-link to="/market/home" class="button">
         <span class="material-icons">manage_accounts</span>
         <span class="text">P2P Market</span>

@@ -39,6 +39,7 @@ import store from '@/store'
 import verifyemailVue from '@/auth/verifyemail.vue';
 import confirmcodeVue from '../auth/confirmcodebyemail.vue';
 import Setpin from '../auth/setpin.vue'
+import ChinaPay from '../china/home.vue'
 
 axios.defaults.baseURL = 'https://api.cardri.ng/'
 const routes = [
@@ -110,7 +111,22 @@ const routes = [
         }
 
 
-    }, {
+    },
+    {
+        path: '/china/pay',
+        name: 'China pay',
+        component: ChinaPay,
+        beforeEnter: (to, from, next) => {
+            if (!store.getters['auth/authenticated']) {
+                return next({name: 'Login'})
+
+            }
+            next()
+        }
+
+
+    },
+     {
         path: '/transaction/home',
         name: 'Transaction',
         component: Transaction,

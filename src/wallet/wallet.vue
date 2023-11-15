@@ -10,10 +10,7 @@
       <div id="myModals" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Transaction Details</h3>
 
             <span
@@ -29,11 +26,7 @@
           >
             <div
               class="card-body"
-              style="
-                padding: 5px !important;
-                margin: 0px !important;
-                cursor: pointer;
-              "
+              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
             >
               <div
                 class="d-flex justify-content-between align-center mt-2"
@@ -52,9 +45,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever != username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever != username"
               >
                 <span>Bought from</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -63,9 +54,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever == username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever == username"
               >
                 <span>Buyer</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -95,11 +84,7 @@
                 <span>Service</span>
                 <span
                   v-if="selectedItem.type == 1"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -116,11 +101,7 @@
                 </span>
                 <span
                   v-if="selectedItem.type == 2"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -172,6 +153,16 @@
                   >Account Funding</span
                 >
                 <span
+                  v-if="selectedItem.type == 35"
+                  style="font-weight: 600; font-size: 14px"
+                  >Alipay Payment</span
+                >
+                <span
+                  v-if="selectedItem.type == 36"
+                  style="font-weight: 600; font-size: 14px"
+                  >Wechat Payment</span
+                >
+                <span
                   v-if="selectedItem.type == 10"
                   style="font-weight: 600; font-size: 14px"
                   >Upgrade Account</span
@@ -212,11 +203,7 @@
               >
                 <span>Receiver Name</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.network }}</span
                 >
               </div>
@@ -226,11 +213,7 @@
               >
                 <span>Plan</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.plan }}</span
                 >
               </div>
@@ -288,10 +271,7 @@
       <div id="mywallet" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Wallet</h3>
 
             <span
@@ -307,11 +287,7 @@
           >
             <div
               class="card-body"
-              style="
-                padding: 5px !important;
-                margin: 0px !important;
-                cursor: pointer;
-              "
+              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
             >
               <div
                 class="justify-content-between align-center mt-2"
@@ -464,9 +440,7 @@
                     "
                     v-if="item.currency == 'AED'"
                   />
-                  <span style="font-size: 12px; font-weight: 600">{{
-                    item.name
-                  }}</span>
+                  <span style="font-size: 12px; font-weight: 600">{{ item.name }}</span>
                 </div>
 
                 <div>
@@ -499,10 +473,7 @@
       <div id="myaddwallet" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Add Foreign Wallet</h3>
 
             <span
@@ -518,19 +489,11 @@
           >
             <div
               class="card-body"
-              style="
-                padding: 5px !important;
-                margin: 0px !important;
-                cursor: pointer;
-              "
+              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
             >
               <div
                 class="justify-content-between align-center mt-2"
-                :class="
-                  item.status == 0 || item.status == 'good'
-                    ? 'd-flex'
-                    : 'd-none'
-                "
+                :class="item.status == 0 || item.status == 'good' ? 'd-flex' : 'd-none'"
                 v-for="(item, index) in currency"
                 :key="item"
               >
@@ -678,9 +641,7 @@
                     "
                     v-if="item.currency == 'KES'"
                   />
-                  <span style="font-size: 12px; font-weight: 600">{{
-                    item.name
-                  }}</span>
+                  <span style="font-size: 12px; font-weight: 600">{{ item.name }}</span>
                 </div>
 
                 <input
@@ -695,11 +656,7 @@
 
               <button
                 :disabled="mywallet != '' ? false : true"
-                :style="
-                  mywallet != ''
-                    ? '  background: #4705af'
-                    : 'background:#6E7173'
-                "
+                :style="mywallet != '' ? '  background: #4705af' : 'background:#6E7173'"
                 class="btn w-100 mt-4"
                 style="
                   color: #fff;
@@ -710,9 +667,7 @@
                 "
                 @click="submitcurrency"
               >
-                <span style="color: #fff" v-if="clickme == false"
-                  >Add wallet</span
-                >
+                <span style="color: #fff" v-if="clickme == false">Add wallet</span>
                 <vue-loaders-ball-clip-rotate
                   color="#fff"
                   scale="1"
@@ -728,11 +683,7 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img
-            src="@/assets/images/back.svg"
-            alt=""
-            @click="this.$router.go(-1)"
-          />
+          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -893,9 +844,7 @@
                     class="material-icons"
                     @click="clickeye"
                     style="cursor: pointer"
-                    >{{
-                      hidemybalance == true ? "visibility_off" : "visibility"
-                    }}</span
+                    >{{ hidemybalance == true ? "visibility_off" : "visibility" }}</span
                   >
                   <span
                     class="material-icons d-lg-none"
@@ -906,10 +855,7 @@
                 </div>
               </div>
               <div class="mybalance">
-                <h5
-                  style="margin-left: 40px !important"
-                  v-if="hidemybalance == false"
-                >
+                <h5 style="margin-left: 40px !important" v-if="hidemybalance == false">
                   <span v-if="defaultcurrenct == 'USD'">&#36;</span>
                   <span v-if="defaultcurrenct == 'NGN'">&#8358;</span>
                   <span v-if="defaultcurrenct == 'EUR'">&euro;</span>
@@ -924,7 +870,12 @@
                   {{ new Intl.NumberFormat().format(defaultbalance) }}
                 </h5>
                 <h5
-                  style="margin-left: 40px !important;padding:0px; margin-top:0px;margin-bottom:0px"
+                  style="
+                    margin-left: 40px !important;
+                    padding: 0px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                  "
                   v-if="hidemybalance == true"
                 >
                   ********
@@ -959,22 +910,14 @@
             </div>
           </div>
           <div class="drop d-lg-flex" style="cursor: pointer">
-            <img
-              src="@/assets/images/drop.svg"
-              alt=""
-              @click="toadddedwallet"
-            />
+            <img src="@/assets/images/drop.svg" alt="" @click="toadddedwallet" />
           </div>
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-6">
             <div class="row">
               <div class="col-lg-6 col-md-6">
-                <div
-                  class="myaddcurrency"
-                  @click="adddedwallet"
-                  style="cursor: pointer"
-                >
+                <div class="myaddcurrency" @click="adddedwallet" style="cursor: pointer">
                   <div class="d-flex addcurrency">
                     <img src="@/assets/images/fund.svg" alt="" />
                     <span> Add Foreign Currency Wallet </span>
@@ -1187,9 +1130,10 @@
                   <td v-if="item.type == 15">Currency Swap</td>
                   <td v-if="item.type == 19">Stamp Duty</td>
 
-
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
                   <td v-if="item.type == 30">API Transfer</td>
+                  <td v-if="item.type == 35">Alipay Payment</td>
+                  <td v-if="item.type == 36">Wechat Payment</td>
 
                   <td>
                     <span
@@ -1204,13 +1148,25 @@
                       :style="
                         item.status == 1
                           ? 'background: #12BD89;padding-left:12px;padding-right:12px'
+                          : item.status == 2 && item.type != 36 && item.type != 35
+                          ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
                           : item.status == 5
                           ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
+                          : item.status == 2 && item.type == 35
+                          ? 'background:gray;padding-left:15px;padding-right:16px'
+                          : item.status == 2 && item.type == 36
+                          ? 'background:gray;padding-left:15px;padding-right:16px'
                           : 'background:#F82738;padding-left:15px;padding-right:16px'
                       "
                       >{{
                         item.status == 1
                           ? "Success"
+                          : item.status == 2 && item.type != 35 && item.type != 36
+                          ? "Success"
+                          : item.status == "2" && item.type == 35
+                          ? "Processing"
+                          : item.status == "2" && item.type == 36
+                          ? "Processing"
                           : item.status == 5
                           ? "Processing"
                           : "Failed"
@@ -1527,12 +1483,7 @@ export default {
   async mounted() {
     const myindex = parseInt(localStorage.getItem("index"));
 
-    if (
-      myindex == undefined ||
-      myindex == null ||
-      myindex == "" ||
-      isNaN(myindex)
-    ) {
+    if (myindex == undefined || myindex == null || myindex == "" || isNaN(myindex)) {
       this.selectedindex = 0;
     } else {
       this.selectedindex = myindex;
@@ -1713,7 +1664,7 @@ export default {
         color: #fff;
         @media (max-width: 750px) {
           font-size: 1.3rem !important;
-          margin-top:5px
+          margin-top: 5px;
         }
       }
       .mybalance {
@@ -2092,8 +2043,9 @@ table:-webkit-scrollbar {
   @media (max-width: 750px) {
     display: none;
   }
-} 
-td, th{
+}
+td,
+th {
   text-align: left !important;
 }
 </style>

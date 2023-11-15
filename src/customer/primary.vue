@@ -448,6 +448,7 @@ export default {
           `api/getkudatransactions?trackingReference=${this.mref}&pageSize=20&pageNumber=${page}`
         )
         .then((res) => {
+        //  console.log(res)
           this.transaction = res.data.Data.PostingsHistory;
         })
         .catch((err) => {
@@ -519,6 +520,7 @@ export default {
         `api/getkudatransactions?trackingReference=${this.mref}&pageSize=20&pageNumber=1`
       )
       .then((res) => {
+       // console.log(res)
         this.transaction = res.data.Data.PostingsHistory;
         this.records = res.data.Data.TotalRecordInStore;
         this.loading = false;
@@ -873,7 +875,7 @@ tr td {
   }
 }
 .table_section {
-  height: 600px;
+ // min-height: 600px;
   overflow: auto;
   -webkit-scrollbar: 1px;
 

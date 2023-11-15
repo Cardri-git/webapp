@@ -1,5 +1,5 @@
 <template>
-  <div style="max-width:2000px;width:100%;margin:0px auto">
+  <div style="max-width: 2000px; width: 100%; margin: 0px auto">
     <div
       class="w-100"
       style="background: rgba(245, 245, 255, 1); margin-top: 0px !important"
@@ -105,9 +105,7 @@
                       padding: 0px !important;
                     "
                   >
-                    &#8358;{{
-                      parseFloat(forms.charges) + parseFloat(forms.amount)
-                    }}
+                    &#8358;{{ parseFloat(forms.charges) + parseFloat(forms.amount) }}
                   </h6>
                 </div>
                 <div
@@ -172,11 +170,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -227,9 +221,7 @@
           <p>Please enter your PIN to confirm the transaction.</p>
           <form action="" @submit.prevent="SwapCurrency">
             <div class="py-2 bg-white">
-              <p style="text-align: center; font-size: 12px">
-                You are swapping
-              </p>
+              <p style="text-align: center; font-size: 12px">You are swapping</p>
               <div class="d-flex justify-content-center">
                 <span
                   style="
@@ -387,11 +379,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -442,9 +430,7 @@
           <p>Please enter your PIN to confirm the transaction.</p>
           <form action="" @submit.prevent="sendForeign">
             <div class="py-2 bg-white">
-              <p style="text-align: center; font-size: 12px">
-                You are transferring
-              </p>
+              <p style="text-align: center; font-size: 12px">You are transferring</p>
               <div class="d-flex justify-content-center">
                 <span
                   style="
@@ -552,10 +538,7 @@
                       padding: 0px !important;
                     "
                   >
-                    {{
-                      parseFloat(forms.rate).toFixed(4) *
-                      parseFloat(forms.amount)
-                    }}
+                    {{ parseFloat(forms.rate).toFixed(4) * parseFloat(forms.amount) }}
                     {{ forms.bencurrency }}
                   </h6>
                 </div>
@@ -638,11 +621,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -860,11 +839,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1076,11 +1051,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1293,11 +1264,203 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              class="btn w-100 mt-4"
+              style="
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                margin: 30px 0px;
               "
+            >
+              <span style="color: #fff" v-if="clickme == false">Continue</span>
+              <vue-loaders-ball-clip-rotate
+                color="#fff"
+                scale="1"
+                v-if="clickme == true"
+              ></vue-loaders-ball-clip-rotate>
+            </button>
+
+            <h5
+              style="
+                font-size: 12px;
+                text-align: center;
+                dispay: flex;
+                align-items: center;
+                cursor: pointer;
+              "
+              @click="getBack"
+            >
+              <span class="material-icons" style="font-size: 12px; margin: 5px"
+                >arrow_back</span
+              ><span>Go back</span>
+            </h5>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container-xxl"
+      style="background: rgba(245, 245, 255, 1); margin-top: 0px !important"
+      v-if="this.$route.params.form == 'TYYSbqjdh89fiw273&'"
+    >
+      <Alert :alertstatus="alertstatus" :status="status" :message="message" />
+      <div class="container">
+        <img src="@/assets/images/logo.svg" alt="" />
+
+        <div class="mybodytag">
+          <h3>Enter Your PIN</h3>
+          <p>Please enter your PIN to confirm the transaction.</p>
+          <form action="" @submit.prevent="buyairtime">
+            <div class="py-2 bg-white">
+              <p style="text-align: center; font-size: 12px">You are paying</p>
+              <div class="d-flex justify-content-center">
+                <span
+                  style="
+                    margin: 0px auto;
+                    padding: 5px;
+                    background: rgba(5, 203, 111, 0.1);
+                    color: #202020;
+                    border-radius: 5px;
+                    text-align: center;
+                    font-weight: 600;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                    text-transform: uppercase;
+                  "
+                >
+                  &#8358;{{ parseFloat(forms.amount).toLocaleString() }}
+                </span>
+              </div>
+              <div style="margin-top: 20px">
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">Transaction Type </span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                      text-transform: uppercase;
+                    "
+                  >
+                    {{ forms.type == "35" ? "Alipay" : "Wechat Pay" }}
+                  </h6>
+                </div>
+
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">User ID </span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                      text-transform: uppercase;
+                    "
+                  >
+                    {{ forms.userid }}
+                  </h6>
+                </div>
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">Account Name </span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                      text-transform: uppercase;
+                    "
+                  >
+                    {{ forms.accountname }}
+                  </h6>
+                </div>
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">Amount</span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                    "
+                  >
+                    &#8358;{{ forms.convertedAmount }}
+                  </h6>
+                </div>
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px"> Fee</span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                    "
+                  >
+                    &#8358;{{ forms.fee }}
+                  </h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin1"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin2"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin3"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin4"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+            </div>
+            <button
+              :disabled="filldata ? false : true"
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1368,12 +1531,7 @@ export default {
       sendOtp: "auth/sendOtp",
     }),
     getvalidated() {
-      if (
-        this.pin1 != "" &&
-        this.pin2 != "" &&
-        this.pin3 != "" &&
-        this.pin4 != ""
-      ) {
+      if (this.pin1 != "" && this.pin2 != "" && this.pin3 != "" && this.pin4 != "") {
         this.filldata = true;
       } else {
         this.filldata = false;
@@ -1483,7 +1641,7 @@ export default {
           axios
             .post(`api/transaction`, this.forms)
             .then((res) => {
-              if (res.data.success == "true") {
+              if (res.data.success == "true" || res.data.success == true) {
                 setTimeout(() => {
                   localStorage.removeItem("form");
                   this.$router.push("../../success/1");
@@ -1509,19 +1667,21 @@ export default {
                 }, 3000);
               }
             })
-            .catch(() => {
+            .catch((e) => {
+              this.filldata = true;
+              this.clickme = false;
               this.$swal({
                 title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
-                text: `Failed Transaction`,
+                text: `${
+                  e.response?.data?.message
+                    ? e.response?.data.message
+                    : e.response.data.Message
+                }`,
                 type: "error",
                 icon: "error",
 
                 width: 300,
-              }).then((result) => {
-                if (result.value) {
-                  location.reload();
-                }
-              });
+              }).then(() => {});
             });
         })
         .catch(() => {
@@ -1622,7 +1782,7 @@ export default {
           axios
             .post(`api/createforexmain`, this.forms)
             .then(() => {
-             // console.log(res);
+              // console.log(res);
 
               setTimeout(() => {
                 localStorage.removeItem("form");
@@ -1731,7 +1891,7 @@ export default {
           axios
             .post(`api/makepayment`, this.forms)
             .then((res) => {
-            //  console.log(res);
+              //  console.log(res);
               if (res.data.code != 400) {
                 setTimeout(() => {
                   localStorage.removeItem("form");
@@ -1804,7 +1964,7 @@ export default {
           axios
             .post(`api/buycurrency`, this.forms)
             .then((res) => {
-            //  console.log(res);
+              //  console.log(res);
               if (res.data.code != 400) {
                 setTimeout(() => {
                   localStorage.removeItem("form");
@@ -1885,9 +2045,9 @@ export default {
 .container {
   margin: 0rem auto;
   padding: 1rem;
-  max-width:2000px !important;
-  width:100%;
-  margin:0px auto;
+  max-width: 2000px !important;
+  width: 100%;
+  margin: 0px auto;
 
   .mybodytag {
     max-width: 300px;
@@ -1915,7 +2075,6 @@ export default {
       border-radius: 5px;
     }
     img {
-      
       @media (max-width: 750px) {
         width: 100px;
         margin-top: 30px;

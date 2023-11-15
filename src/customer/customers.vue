@@ -319,8 +319,8 @@
           </div>
         </div>
         <div class="p-2">
-          <div class="row d-flex h-100">
-            <div class="col-lg-4 col-md-4 p-0">
+          <div class="row " >
+            <div class="p-0" style="max-width:500px;width:100%;">
               <div class="card p-0 border-0">
                 <div class="card-body">
                   <div class="w-100 d-flex justify-content-center">
@@ -347,7 +347,7 @@
                     class="w-100 text-center"
                     style="text-transform: uppercase; line-height: 30px"
                   >
-                    <h2 class="my-3" style="font-size:1.5rem">{{ customer.name }}</h2>
+                    <h2 class="my-3" style="font-size:1.3rem">{{ customer.name }}</h2>
                   </div>
                   <div
                     class="w-100"
@@ -388,10 +388,19 @@
                     <span class="material-icons"> person </span>
                     <span> {{ customer.accountName }} </span>
                   </div>
+                  <button class="withdrawfund" @click="withdrawFundTocardri">
+                    <span style="color: #fff" v-if="clickme == false">Withdraw</span>
+
+                      <vue-loaders-ball-clip-rotate
+                color="#fff"
+                scale="1"
+                v-if="clickme == true"
+              ></vue-loaders-ball-clip-rotate>
+                    </button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-body">
                   <div
@@ -402,7 +411,7 @@
                     "
                   >
                     <div class="display:flex;flex-direction:column">
-                      <h5 style="font-size: 2rem">Balance</h5>
+                      <h5 style="font-size: 1.3rem">Balance</h5>
                       <div v-if="loading === false">
                         <div style="letter-spacing: 2%">
                           &#8358;{{ main_balance / 100 }}
@@ -412,6 +421,7 @@
                         <span>fetching balance...</span>
                       </div>
                     </div>
+                   
                   </div>
                 </div>
               </div>
@@ -548,6 +558,7 @@ export default {
       split: "",
       lname: "",
       page: 1,
+      clickme:false,
       fname: "",
       username: "",
       moment: moment,
@@ -591,6 +602,58 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    async withdrawFundTocardri (){
+      if(this.main_balance !== 0){
+
+      
+      this.clickme =  true
+      const data ={ 
+        amount:this.main_balance,
+        trackingReference: this.$route.params.id
+      }
+      await axios.post('api/removeandaddmoneyoncardri',data).then(()=>{
+       // console.log(res)
+       
+        this.clickme =  false
+        this.main_balance = 0
+        this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Success</h4>`,
+            text: `Funds withdraw succesfully`,
+            type: "success",
+            icon: "success",
+
+            width: 300,
+          }).then(() => {
+           
+          });
+
+      }).catch((e)=>{
+        console.log(e)
+        this.clickme =  false
+        this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Error!!!</h4>`,
+            text: `An error occur`,
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          }).then(() => {
+           
+          });
+      })
+    }else{
+      this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Error!!!</h4>`,
+            text: `Account Balance is low`,
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          }).then(() => {
+           
+          });
+    }
     },
     todetails(item) {
       var modals = document.getElementById("myModal");
@@ -1048,7 +1111,7 @@ tr td {
   }
 }
 .table_section {
-  height: 500px;
+ // height: 500px;
   overflow: auto;
   -webkit-scrollbar: 1px;
 
@@ -1131,6 +1194,17 @@ table:-webkit-scrollbar {
   @media (max-width: 750px) {
     display: none;
   }
+}
+.withdrawfund{
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #4705af;
+  color:#ffffff;
+  margin-top:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
     

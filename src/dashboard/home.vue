@@ -18,17 +18,10 @@
             >close</span
           >
         </div>
-        <div
-          class="card"
-          style="border: none; margin-top: 30px; padding: 0px !important"
-        >
+        <div class="card" style="border: none; margin-top: 30px; padding: 0px !important">
           <div
             class="card-body"
-            style="
-              padding: 5px !important;
-              margin: 0px !important;
-              cursor: pointer;
-            "
+            style="padding: 5px !important; margin: 0px !important; cursor: pointer"
           >
             <div
               class="d-flex justify-content-between align-center mt-2"
@@ -47,9 +40,7 @@
             </div>
             <div
               class="d-flex justify-content-between align-center mt-2"
-              v-if="
-                selectedItem.type == 16 && selectedItem.reciever != username
-              "
+              v-if="selectedItem.type == 16 && selectedItem.reciever != username"
             >
               <span>Bought from</span>
               <span style="font-weight: 600; font-size: 14px">{{
@@ -58,9 +49,7 @@
             </div>
             <div
               class="d-flex justify-content-between align-center mt-2"
-              v-if="
-                selectedItem.type == 16 && selectedItem.reciever == username
-              "
+              v-if="selectedItem.type == 16 && selectedItem.reciever == username"
             >
               <span>Buyer</span>
               <span style="font-weight: 600; font-size: 14px">{{
@@ -90,11 +79,7 @@
               <span>Service</span>
               <span
                 v-if="selectedItem.type == 1"
-                style="
-                  font-weight: 600;
-                  font-size: 14px;
-                  text-transform: uppercase;
-                "
+                style="font-weight: 600; font-size: 14px; text-transform: uppercase"
               >
                 {{
                   selectedItem.name == 1
@@ -111,11 +96,7 @@
               </span>
               <span
                 v-if="selectedItem.type == 2"
-                style="
-                  font-weight: 600;
-                  font-size: 14px;
-                  text-transform: uppercase;
-                "
+                style="font-weight: 600; font-size: 14px; text-transform: uppercase"
               >
                 {{
                   selectedItem.name == 1
@@ -149,6 +130,16 @@
                 v-if="selectedItem.type == 3"
                 style="font-weight: 600; font-size: 14px"
                 >Cable Tv</span
+              >
+              <span
+                v-if="selectedItem.type == 35"
+                style="font-weight: 600; font-size: 14px"
+                >Alipay Payment</span
+              >
+              <span
+                v-if="selectedItem.type == 36"
+                style="font-weight: 600; font-size: 14px"
+                >Wechat Payment</span
               >
               <span
                 v-if="selectedItem.type == 4"
@@ -217,11 +208,7 @@
             >
               <span>Receiver Name</span>
               <span
-                style="
-                  font-weight: 600;
-                  font-size: 14px;
-                  text-transform: lowercase;
-                "
+                style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                 >{{ selectedItem.network }}</span
               >
             </div>
@@ -289,17 +276,10 @@
             >close</span
           >
         </div>
-        <div
-          class="card"
-          style="border: none; margin-top: 30px; padding: 0px !important"
-        >
+        <div class="card" style="border: none; margin-top: 30px; padding: 0px !important">
           <div
             class="card-body"
-            style="
-              padding: 5px !important;
-              margin: 0px !important;
-              cursor: pointer;
-            "
+            style="padding: 5px !important; margin: 0px !important; cursor: pointer"
           >
             <div
               class="justify-content-between align-center mt-2"
@@ -454,9 +434,7 @@
                   "
                   v-if="item.currency == 'KES'"
                 />
-                <span style="font-size: 12px; font-weight: 600">{{
-                  item.name
-                }}</span>
+                <span style="font-size: 12px; font-weight: 600">{{ item.name }}</span>
               </div>
 
               <div>
@@ -491,10 +469,7 @@
           <h3>Receive Money</h3>
           {{ user }}
 
-          <span
-            class="close material-icons"
-            @click="closeModal"
-            style="cursor: pointer"
+          <span class="close material-icons" @click="closeModal" style="cursor: pointer"
             >close</span
           >
         </div>
@@ -550,11 +525,7 @@
 
           <button
             class="btn btn-primary w-100"
-            style="
-              background: #4705af !important;
-              font-size: 12px;
-              border: none;
-            "
+            style="background: #4705af !important; font-size: 12px; border: none"
             type="button"
             @click="copyURL(accountNumber)"
           >
@@ -569,11 +540,7 @@
       <headers :firstname="fname" :lastname="lname" />
       <div class="bgbig">
         <div class="backtag">
-          <img
-            src="@/assets/images/back.svg"
-            alt=""
-            @click="this.$router.go(-1)"
-          />
+          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -734,9 +701,7 @@
                     class="material-icons"
                     @click="clickeye"
                     style="cursor: pointer"
-                    >{{
-                      hidemybalance == true ? "visibility_off" : "visibility"
-                    }}</span
+                    >{{ hidemybalance == true ? "visibility_off" : "visibility" }}</span
                   >
                   <span
                     class="material-icons d-lg-none"
@@ -747,10 +712,7 @@
                 </div>
               </div>
               <div class="mybalance">
-                <h5
-                  style="margin-left: 40px !important"
-                  v-if="hidemybalance == false"
-                >
+                <h5 style="margin-left: 40px !important" v-if="hidemybalance == false">
                   <span v-if="defaultcurrenct == 'USD'">&#36;</span>
                   <span v-if="defaultcurrenct == 'NGN'">&#8358;</span>
                   <span v-if="defaultcurrenct == 'EUR'">&euro;</span>
@@ -762,12 +724,9 @@
                   <span v-if="defaultcurrenct == 'GBP'">&#163;</span>
                   <span v-if="defaultcurrenct == 'ZAR'">&#8373;</span>
                   <span v-if="defaultcurrenct == 'KES'">&#404;</span>
-                  {{ new Intl.NumberFormat().format(defaultbalance) }}
+                  {{ new Intl.NumberFormat().format(defaultavailable) }}
                 </h5>
-                <h5
-                  style="margin-left: 40px !important"
-                  v-if="hidemybalance == true"
-                >
+                <h5 style="margin-left: 40px !important" v-if="hidemybalance == true">
                   ********
                 </h5>
 
@@ -787,7 +746,7 @@
                   <span v-if="defaultcurrenct == 'GBP'">&#163;</span>
                   <span v-if="defaultcurrenct == 'ZAR'">&#8373;</span>
                   <span v-if="defaultcurrenct == 'KES'">&#404;</span
-                  >{{ Intl.NumberFormat().format(defaultavailable) }}
+                  >{{ Intl.NumberFormat().format(defaultbalance) }}
                 </div>
                 <div
                   class="myledger"
@@ -800,11 +759,7 @@
             </div>
           </div>
           <div class="drop d-lg-flex cursor-pointer">
-            <img
-              src="@/assets/images/drop.svg"
-              alt=""
-              @click="toadddedwallet"
-            />
+            <img src="@/assets/images/drop.svg" alt="" @click="toadddedwallet" />
           </div>
         </div>
         <div class="row" style="margin: 5px">
@@ -861,8 +816,7 @@
               <div class="kyc-title">
                 <h5>Complete your KYC</h5>
                 <span
-                  >You're almost there, activate your account to increase your
-                  limit</span
+                  >You're almost there, activate your account to increase your limit</span
                 >
                 <div class="complete_kyc">
                   <div class="form-group">
@@ -878,9 +832,7 @@
                         :style="`width:${(confirmindex / 4) * 100}%`"
                         class="mycomrange"
                       ></div>
-                      <span class="myrangenum"
-                        >{{ (confirmindex / 4) * 100 }}%</span
-                      >
+                      <span class="myrangenum">{{ (confirmindex / 4) * 100 }}%</span>
                     </div>
                   </div>
                 </div>
@@ -908,17 +860,15 @@
                 <div class="text-service">
                   <h5 class="card-title">Send Money Globally</h5>
                   <p class="card-text">
-                    Send money directly to suppliers and merchant across borders
-                    in over 80 countries
+                    Send money directly to suppliers and merchant across borders in over
+                    80 countries
                   </p>
                   <router-link
                     to="../../cardri/pay"
                     type="button"
                     style="color: #12bd89 !important"
                     >Get Started
-                    <span
-                      class="material-icons"
-                      style="color: #12bd89 !important"
+                    <span class="material-icons" style="color: #12bd89 !important"
                       >arrow_forward</span
                     ></router-link
                   >
@@ -933,17 +883,15 @@
                 <div class="text-service">
                   <h5 class="card-title">Create Virtual Card</h5>
                   <p class="card-text">
-                    Pay with dollar virtual card invoices easily via email,
-                    chats or social media to customers.
+                    Pay with dollar virtual card invoices easily via email, chats or
+                    social media to customers.
                   </p>
                   <router-link
                     to="../../card/home"
                     type="button"
                     style="color: #f97316 !important"
                     >Get Started
-                    <span
-                      class="material-icons"
-                      style="color: #f97316 !important"
+                    <span class="material-icons" style="color: #f97316 !important"
                       >arrow_forward</span
                     ></router-link
                   >
@@ -965,9 +913,7 @@
                     type="button"
                     style="color: #7e57ff !important"
                     >Get Started
-                    <span
-                      class="material-icons"
-                      style="color: #7e57ff !important"
+                    <span class="material-icons" style="color: #7e57ff !important"
                       >arrow_forward</span
                     ></router-link
                   >
@@ -976,24 +922,30 @@
             </div>
           </div>
         </div>
-        <div class="d-flex" style="align-items: center; padding:20px 20px 0px 20px; justify-content:space-between; margin-top:10px">
-              <h6 class="transaction_history">Recent</h6>
-              <span class="view-all" @click="gototransaction">View all</span>
-            
+        <div
+          class="d-flex"
+          style="
+            align-items: center;
+            padding: 20px 20px 0px 20px;
+            justify-content: space-between;
+            margin-top: 10px;
+          "
+        >
+          <h6 class="transaction_history">Recent</h6>
+          <span class="view-all" @click="gototransaction">View all</span>
         </div>
-        <div class="table" style="padding:20px">
-         
+        <div class="table" style="padding: 20px">
           <div class="table_section" id="content">
             <table>
               <thead>
                 <tr>
-                  <th style="text-align:left">TRX ID</th>
-                  <th style="text-align:left">Amount</th>
-                  <th style="text-align:left">Beneficiary</th>
+                  <th style="text-align: left">TRX ID</th>
+                  <th style="text-align: left">Amount</th>
+                  <th style="text-align: left">Beneficiary</th>
 
-                  <th style="text-align:left">PYMT Type</th>
-                  <th style="text-align:left">Status</th>
-                  <th style="text-align:left">Date</th>
+                  <th style="text-align: left">PYMT Type</th>
+                  <th style="text-align: left">Status</th>
+                  <th style="text-align: left">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -1002,32 +954,34 @@
                   :key="item.id"
                   @click="todetails(item)"
                 >
-                  <td style="text-align:left">{{ item.ref }}</td>
+                  <td style="text-align: left">{{ item.ref }}</td>
 
                   <td
-                  style="text-align:left"
+                    style="text-align: left"
                     v-if="item.type != 20 && item.type != 17 && item.type != 18"
                   >
                     &#8358;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
-                  <td v-if="item.type == 20" style="text-align:left">
+                  <td v-if="item.type == 20" style="text-align: left">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
-                  <td v-if="item.type == 17" style="text-align:left">
+                  <td v-if="item.type == 17" style="text-align: left">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount / 100) }}
                   </td>
-                  <td v-if="item.type == 18" style="text-align:left">
+                  <td v-if="item.type == 18" style="text-align: left">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount / 100) }}
                   </td>
 
-                  <td v-if="item.type == 16" style="text-align:left">{{ item.user }}</td>
-                  <td v-if="item.type == 18" style="text-align:left">{{ item.plan }}</td>
-                  <td v-if="item.type == 20" style="text-align:left">Dollar Card</td>
-                  <td v-if="item.type == 12" style="text-align:left">{{ item.reciever }}</td>
+                  <td v-if="item.type == 16" style="text-align: left">{{ item.user }}</td>
+                  <td v-if="item.type == 18" style="text-align: left">{{ item.plan }}</td>
+                  <td v-if="item.type == 20" style="text-align: left">Dollar Card</td>
+                  <td v-if="item.type == 12" style="text-align: left">
+                    {{ item.reciever }}
+                  </td>
                   <td
                     v-if="
                       item.type != 20 &&
@@ -1035,12 +989,12 @@
                       item.type != 12 &&
                       item.type != 18
                     "
-                    style="text-align:left"
+                    style="text-align: left"
                   >
                     {{ item.reciever }}
                   </td>
 
-                  <td v-if="item.type == 1" style="text-align:left">
+                  <td v-if="item.type == 1" style="text-align: left">
                     {{
                       item.name == 1
                         ? "MTN"
@@ -1054,7 +1008,7 @@
                     }}
                     Airtime
                   </td>
-                  <td v-if="item.type == 2" style="text-align:left">
+                  <td v-if="item.type == 2" style="text-align: left">
                     {{
                       item.name == 1
                         ? "MTN"
@@ -1083,6 +1037,8 @@
 
                   <td v-if="item.type == 30">API Transfer</td>
 
+                  <td v-if="item.type == 35">Alipay Payment</td>
+                  <td v-if="item.type == 36">Wechat Payment</td>
 
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
                   <td>
@@ -1096,15 +1052,27 @@
                         border-radius: 5px;
                       "
                       :style="
-                        item.status == 1 || item.status == 2
+                        item.status == 1
                           ? 'background: #12BD89;padding-left:12px;padding-right:12px'
+                          : item.status == 2 && item.type != 36 && item.type != 35
+                          ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
                           : item.status == 5
                           ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
+                          : item.status == 2 && item.type == 35
+                          ? 'background:gray;padding-left:15px;padding-right:16px'
+                          : item.status == 2 && item.type == 36
+                          ? 'background:gray;padding-left:15px;padding-right:16px'
                           : 'background:#F82738;padding-left:15px;padding-right:16px'
                       "
                       >{{
-                        item.status == 1 || item.status == 2
+                        item.status == 1
                           ? "Success"
+                          : item.status == 2 && item.type != 35 && item.type != 36
+                          ? "Success"
+                          : item.status == "2" && item.type == 35
+                          ? "Processing"
+                          : item.status == "2" && item.type == 36
+                          ? "Processing"
                           : item.status == 5
                           ? "Processing"
                           : "Failed"
@@ -1296,8 +1264,8 @@ export default {
     clickeye() {
       this.hidemybalance = !this.hidemybalance;
     },
-    gototransaction(){
-      this.$router.push('/transaction/home')
+    gototransaction() {
+      this.$router.push("/transaction/home");
     },
     todetails(item) {
       var modals = document.getElementById("myModals");
@@ -1381,12 +1349,7 @@ export default {
   async mounted() {
     const myindex = parseInt(localStorage.getItem("index"));
 
-    if (
-      myindex == undefined ||
-      myindex == null ||
-      myindex == "" ||
-      isNaN(myindex)
-    ) {
+    if (myindex == undefined || myindex == null || myindex == "" || isNaN(myindex)) {
       this.selectedindex = 0;
     } else {
       this.selectedindex = myindex;
@@ -1501,8 +1464,10 @@ export default {
       });
 
     await axios
-      .get("api/gettransaction")
+      .get("api/gettransaction?page=20")
       .then((res) => {
+        // console.log(res)
+
         this.transaction = res.data.data.reverse();
         this.loading = false;
       })
@@ -1617,7 +1582,7 @@ export default {
         font-size: 1.7rem;
         font-weight: 700;
         color: #fff;
-        margin:0px;
+        margin: 0px;
         @media (max-width: 750px) {
           font-size: 1.3rem !important;
         }
@@ -1626,13 +1591,12 @@ export default {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        margin-top:15px;
+        margin-top: 15px;
         @media (max-width: 750px) {
           gap: 4px;
-          margin-top:0px;
-
+          margin-top: 0px;
         }
-        
+
         .myledger {
           font-weight: 400;
           font-size: 0.9rem;
@@ -1994,24 +1958,24 @@ label {
     display: none;
   }
 }
-.transaction_history{
+.transaction_history {
   font-size: 1rem;
   color: #202020;
   font-weight: 600;
-  padding:0px;
-  margin:0px;
-  line-height:19.6px
+  padding: 0px;
+  margin: 0px;
+  line-height: 19.6px;
 }
-.view-all{
+.view-all {
   font-size: 1rem;
   color: #4705af;
   font-weight: 600;
-  padding:0px;
-  margin:0px;
-  line-height:19.6px;
+  padding: 0px;
+  margin: 0px;
+  line-height: 19.6px;
   cursor: pointer;
 }
-td{
+td {
   text-align: left !important;
 }
 </style>

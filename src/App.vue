@@ -232,7 +232,7 @@ select:focus,
   border: 1px solid #888;
   width: 100%;
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 500px;
   .close {
     color: #aaa;
     float: right;

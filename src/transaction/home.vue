@@ -11,10 +11,7 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Transaction Details</h3>
 
             <span
@@ -30,11 +27,7 @@
           >
             <div
               class="card-body"
-              style="
-                padding: 5px !important;
-                margin: 0px !important;
-                cursor: pointer;
-              "
+              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
             >
               <div
                 class="d-flex justify-content-between align-center mt-2"
@@ -53,9 +46,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever != username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever != username"
               >
                 <span>Bought from</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -64,9 +55,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever == username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever == username"
               >
                 <span>Buyer</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -96,11 +85,7 @@
                 <span>Service</span>
                 <span
                   v-if="selectedItem.type == 1"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -117,11 +102,7 @@
                 </span>
                 <span
                   v-if="selectedItem.type == 2"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -165,6 +146,16 @@
                   v-if="selectedItem.type == 5"
                   style="font-weight: 600; font-size: 14px"
                   >Electricity</span
+                >
+                <span
+                  v-if="selectedItem.type == 35"
+                  style="font-weight: 600; font-size: 14px"
+                  >Alipay Payment</span
+                >
+                <span
+                  v-if="selectedItem.type == 36"
+                  style="font-weight: 600; font-size: 14px"
+                  >Wechat Payment</span
                 >
 
                 <span
@@ -213,11 +204,7 @@
               >
                 <span>Receiver Name</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.network }}</span
                 >
               </div>
@@ -227,11 +214,7 @@
               >
                 <span>Plan</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.plan }}</span
                 >
               </div>
@@ -288,25 +271,16 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img
-            src="@/assets/images/back.svg"
-            alt=""
-            @click="this.$router.go(-1)"
-          />
+          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
-        <div style="display:flex;flex-direction:column;gap:32px; margin-top:30px">
+        <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 30px">
           <h6>Transaction History</h6>
 
-          <div class="d-flex w-100" style="justify-content:space-between">
-            
+          <div class="d-flex w-100" style="justify-content: space-between">
             <div class="d-flex justify-content-between w-100">
-              <div for="" style="position: relative; width:100%" class="seacrh-con-lg">
-                <span
-                  class="material-icons mysearchicon"
-                 
-                  >search</span
-                >
+              <div for="" style="position: relative; width: 100%" class="seacrh-con-lg">
+                <span class="material-icons mysearchicon">search</span>
                 <input
                   type="search"
                   class="input-transact-search"
@@ -316,43 +290,35 @@
                 />
               </div>
             </div>
-         
-                <div class="d-flex  " style="align-items:center; gap:10px">
-                  <div class="dropdown mydropdown">
-                    <button
-                      class="btn dropdown-toggle  material-icons"
-                      type="button"
-                      id="dropdownMenuButton"
-                      style="background: #fff; outline: none; border:none"
-                      @click="dropmenu"
-                    >
-                     <span class="material-icons" style="color:rgb(71, 5, 175)">calendar_month</span> 
-                    </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                      id="dropmenu"
-                      style="width:100%;right:0"
-                    >
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">From</label>
-                        <input
-                          type="date"
-                          class="form-control"
-                          v-model="from"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">To</label>
-                        <input
-                          type="date"
-                          class="form-control"
-                          v-model="to"
-                        />
-                   
-                 
-                </div>
-                <!--
+
+            <div class="d-flex" style="align-items: center; gap: 10px">
+              <div class="dropdown mydropdown">
+                <button
+                  class="btn dropdown-toggle material-icons"
+                  type="button"
+                  id="dropdownMenuButton"
+                  style="background: #fff; outline: none; border: none"
+                  @click="dropmenu"
+                >
+                  <span class="material-icons" style="color: rgb(71, 5, 175)"
+                    >calendar_month</span
+                  >
+                </button>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                  id="dropmenu"
+                  style="width: 100%; right: 0"
+                >
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">From</label>
+                    <input type="date" class="form-control" v-model="from" />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">To</label>
+                    <input type="date" class="form-control" v-model="to" />
+                  </div>
+                  <!--
                 <div class="col-6 d-flex justify-content-end">
                   <button
                     style="
@@ -390,17 +356,13 @@
                     >
                   </button>
                 </div>
-                -->
+                --></div>
               </div>
             </div>
           </div>
         </div>
-          
-        </div>
-       
 
         <div class="table">
-          
           <div class="table_section" id="content">
             <table>
               <thead>
@@ -423,16 +385,15 @@
                 >
                   <td>{{ item.ref }}</td>
 
-                  <td
-                    v-if="item.type != 20 && item.type != 17 && item.type != 18"
-                  >
+                  <td v-if="item.type != 20 && item.type != 17 && item.type != 18">
                     &#8358;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
                   <td v-if="item.type == 20">
-                    &#36;
+                    &#8358;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
+
                   <td v-if="item.type == 17">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount / 100) }}
@@ -501,6 +462,9 @@
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
                   <td v-if="item.type == 30">API Transfer</td>
 
+                  <td v-if="item.type == 35">Alipay Payment</td>
+                  <td v-if="item.type == 36">Wechat Payment</td>
+
                   <td>
                     <span
                       style="
@@ -512,15 +476,27 @@
                         border-radius: 5px;
                       "
                       :style="
-                        item.status == 1 || item.status == 2
+                        item.status == 1
                           ? 'background: #12BD89;padding-left:12px;padding-right:12px'
+                          : item.status == 2 && item.type != 36 && item.type != 35
+                          ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
                           : item.status == 5
                           ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
+                          : item.status == 2 && item.type == 35
+                          ? 'background:gray;padding-left:15px;padding-right:16px'
+                          : item.status == 2 && item.type == 36
+                          ? 'background:gray;padding-left:15px;padding-right:16px'
                           : 'background:#F82738;padding-left:15px;padding-right:16px'
                       "
                       >{{
-                        item.status == 1 || item.status == 2
+                        item.status == 1
                           ? "Success"
+                          : item.status == 2 && item.type != 35 && item.type != 36
+                          ? "Success"
+                          : item.status == "2" && item.type == 35
+                          ? "Processing"
+                          : item.status == "2" && item.type == 36
+                          ? "Processing"
                           : item.status == 5
                           ? "Processing"
                           : "Failed"
@@ -1101,24 +1077,24 @@ table:-webkit-scrollbar {
   border: none;
 }
 
-th , td{
+th,
+td {
   text-align: left !important;
 }
-.input-transact-search{
+.input-transact-search {
   outline: none;
-  border:none;
-  width:100%;
+  border: none;
+  width: 100%;
   font-weight: 600;
-  color:#202020;
+  color: #202020;
   font-size: 1rem;
-  
-  }
-  .seacrh-con-lg{
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      background: #f5f5f5;
-      border-radius:8px ;
-      padding: 0px 20px 0px 20px;
-  }
+}
+.seacrh-con-lg {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 0px 20px 0px 20px;
+}
 </style>

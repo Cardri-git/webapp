@@ -789,8 +789,10 @@
             <label for="webhook">Webhook</label>
             <div style="display:flex;flex-direction:column;gap:16px">
             <div style="display:flex;align-items:center;gap:8px;max-width:500px;width:100%"> 
-              <input type="text" style="width:100%" readonly v-model="webhook">
-              <span class="material-icons" style="color:#4705af;cursor:pointer" @click="copyURL(webhook)">content_copy</span>
+              <input type="text" style="width:100%;outline:none;border:none"  v-model="webhook" placeholder="Enter a valid webhook">
+              <span class="material-icons" style="color:#4705af;cursor:pointer" @click="copyURL(webhook)" v-show="copied === false">content_copy</span>
+              <span class="material-icons" style="color:green;cursor:pointer" @click="copyURL(webhook)" v-show="copied === true">done</span>
+
 
             </div>
             <button type="submit" class="btn btn-primary" style="max-width:186px" :disabled="loader">
@@ -801,6 +803,7 @@
                 scale="1"
                 v-if="loader ===  true"
               ></vue-loaders-ball-clip-rotate> 
+              
             </button>
 
           </div>
@@ -1155,6 +1158,7 @@ export default {
       mainloader: false,
       oldpassword: "",
       newpassword: "",
+      copied:false,
       lga: [],
       states: [],
       cpassword: "",
@@ -1277,8 +1281,22 @@ export default {
   },
   methods: {
     async  UpdateWebhook(){
-      this.loader = true;
-      axios.post('/api/updatewebhook').then(()=>{
+     // var url = document.getElementById("url").value;
+    var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+    if (this.webhook != "") {
+        if (!regexp.test(this.webhook)) {
+          this.$swal({
+              title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+              text: 'Please, enter a valid url',
+              type: "warining",
+              icon: "warning",
+
+              width: 300,
+            });
+        } else {
+          //  window.location.assign(url);
+          this.loader = true;
+      axios.post('/api/updatewebhook',{webhook: this.webhook}).then(()=>{
         //console.log(res)
 
         axios
@@ -1307,7 +1325,8 @@ export default {
               width: 300,
             });
       })
-
+    }
+    }
     },
     async updatePin() {
       if (this.newpin === this.cnewpin) {
@@ -1538,10 +1557,14 @@ export default {
     async copyURL(mytext) {
       try {
         await navigator.clipboard.writeText(mytext);
-        this.alertstatus = true;
-        (this.status = "success"), (this.message = "Copied to clipboard");
+        this.alertstatus = true
+        this.copied = true
+        this.status = "success"
+         this.message = "Copied to clipboard"
         setTimeout(() => {
           this.alertstatus = false;
+          this.copied = false
+
         }, 3000);
       } catch ($e) {
         this.alertstatus = true;

@@ -499,6 +499,7 @@ export default {
     await axios
       .get("api/getkudabankslist")
       .then((res) => {
+        //console.log(res)
         this.transaction = res.data.data.reverse();
         this.loading = false;
       })
@@ -852,7 +853,7 @@ tr td {
   }
 }
 .table_section {
-  height: 1000px;
+ // height: 1000px;
   overflow: auto;
   -webkit-scrollbar: 1px;
 

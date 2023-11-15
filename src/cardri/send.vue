@@ -52,7 +52,6 @@
                 :placeholder="benbank == 'cardri' ? 'Cardri' : 'Select beneficiary bank'"
                 v-if="benbank == 'bank'"
                 @change="verifybank"
-
               >
                 <option
                   :value="{ name: item.bankName, code: item.bankCode }"
@@ -813,7 +812,49 @@
               </div>
             </div>
           </div>
-          <div class="row" style="margin-top: 20px"></div>
+          <div class="row" style="margin-top: 20px">
+            <div class="col-md-6 col-lg-6">
+              <div
+                class="card mycard2"
+                @click="toForeign"
+                style="background: rgb(245, 245, 255)"
+              >
+                <div class="card-body">
+                  <img
+                    src="@/assets/images/ellipse6.svg"
+                    alt=""
+                    style="
+                      float: left;
+                      position: relative;
+                      width: 30px;
+                      margin-right: 20px;
+                    "
+                  />
+                  <img
+                    src="@/assets/images/foreign.svg"
+                    alt=""
+                    style="
+                      width: 17px;
+                      position: absolute;
+                      left: 0;
+                      margin-left: 22px;
+                      margin-top: 5px;
+                    "
+                  />
+                  <div style="overflow: hidden">
+                    <div
+                      class="d-flex justify-content-between"
+                      style="align-items: center"
+                    >
+                      <h3>DOM Acount Funding</h3>
+                    </div>
+
+                    <p>Send money to your DOM Account</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -844,7 +885,7 @@ export default {
       showdrop: false,
       selecteds: "",
       loading: true,
-      amount:0,
+      amount: 0,
       ledger: 0,
       mainbalance: 0,
       benfirstname: "",
@@ -997,15 +1038,15 @@ export default {
     };
   },
   methods: {
-    valididty(event){
-      console.log(event)
-if(event.key =='-'){
-  event.preventDefault();
-  return false
-}
+    valididty(event) {
+      console.log(event);
+      if (event.key == "-") {
+        event.preventDefault();
+        return false;
+      }
     },
     async deletebene(item) {
-     // console.log(item);
+      // console.log(item);
       const data = {
         id: item.id,
       };
@@ -1013,7 +1054,7 @@ if(event.key =='-'){
       await axios
         .delete(`api/deleteben?id=${data.id}`)
         .then(() => {
-        //  console.log(res);
+          //  console.log(res);
         })
         .catch((e) => {
           console.log(e);
@@ -1037,14 +1078,13 @@ if(event.key =='-'){
       this.$router.push("../transaction/payment/TYYSbqjdnfiw273&");
     },
     async verifybank() {
-     
-      if (this.accountNumber.length ===  10 && this.bankCode.length!==0) {
+      if (this.accountNumber.length === 10 && this.bankCode.length !== 0) {
         this.loader = true;
-      this.mainloader = true;
+        this.mainloader = true;
         await axios
           .get(`api/getname?bank=${this.accountNumber}&code=${this.bankCode.code}`)
           .then((res) => {
-          //  console.log(res);
+            //  console.log(res);
 
             this.sesid = res.data.Data.SessionID;
             this.charges = res.data.Data.TransferCharge;
@@ -1110,7 +1150,7 @@ if(event.key =='-'){
         accountNumber: this.accountNumber,
         code: this.bankCode,
       };
-     console.log(data);
+      console.log(data);
       await axios.post("");
     },
     getselectcountry() {
@@ -1136,7 +1176,7 @@ if(event.key =='-'){
           this.selectedcurrency.currency.length - 1
         ),
       };
-     // console.log(data);
+      // console.log(data);
       await axios
         .post("api/createbeneficiary", data)
         .then(() => {
@@ -1196,7 +1236,7 @@ if(event.key =='-'){
         lname: this.myben.lname,
         c_name: this.myben.c_name,
       };
-     // console.log(data);
+      // console.log(data);
       localStorage.setItem("form", JSON.stringify(data));
       this.$router.push("../transaction/payment/kjGstevshaidTTY&");
     },
@@ -1264,7 +1304,7 @@ if(event.key =='-'){
             .get("api/createbank")
             .then(() => {})
             .catch(() => {
-            //  console.log(err);
+              //  console.log(err);
             });
         }
         if (response.data.data.p_status == "false") {
@@ -1306,7 +1346,7 @@ if(event.key =='-'){
     await axios
       .get("api/getpurpose")
       .then((res) => {
-       // console.log(res);
+        // console.log(res);
         this.purposes = res.data.documentTypes;
         this.loading = false;
       })
