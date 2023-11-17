@@ -36,13 +36,23 @@
                   selectedItem.type != 15 &&
                   selectedItem.type != 17 &&
                   selectedItem.type != 18 &&
-                  selectedItem.type != 20
+                  selectedItem.type != 20 &&
+                  selectedItem.type != 31
                 "
               >
                 <span>Receiver</span>
                 <span style="font-weight: 600; font-size: 14px">{{
                   selectedItem.reciever
                 }}</span>
+              </div>
+              <div
+                class="d-flex justify-content-between align-center mt-2"
+                v-if="selectedItem.type == 31"
+              >
+                <span>Receiver</span>
+                <span style="font-weight: 600; font-size: 14px"
+                  >({{ selectedItem.reciever }}){{ selectedItem.plan }}</span
+                >
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
@@ -169,6 +179,11 @@
                   >Upgrade Account</span
                 >
                 <span
+                  v-if="selectedItem.type == 31"
+                  style="font-weight: 600; font-size: 14px"
+                  >DOM Funding</span
+                >
+                <span
                   v-if="selectedItem.type == 17"
                   style="font-weight: 600; font-size: 14px"
                   >Card Funding</span
@@ -226,8 +241,17 @@
                 <span>Amount Paid</span>
                 <span
                   style="font-weight: 600; font-size: 14px"
-                  v-if="selectedItem.type != 17 && selectedItem.type != 18"
+                  v-if="
+                    selectedItem.type != 17 &&
+                    selectedItem.type != 18 &&
+                    selectedItem.type != 31
+                  "
                   >&#8358;{{ selectedItem.amount }}</span
+                >
+                <span
+                  style="font-weight: 600; font-size: 14px"
+                  v-if="selectedItem.type == 31"
+                  >&#36;{{ selectedItem.amount }}</span
                 >
                 <span
                   style="font-weight: 600; font-size: 14px"
@@ -385,7 +409,14 @@
                 >
                   <td>{{ item.ref }}</td>
 
-                  <td v-if="item.type != 20 && item.type != 17 && item.type != 18">
+                  <td
+                    v-if="
+                      item.type != 20 &&
+                      item.type != 17 &&
+                      item.type != 18 &&
+                      item.type != 31
+                    "
+                  >
                     &#8358;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
@@ -402,6 +433,9 @@
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount / 100) }}
                   </td>
+                  <td v-if="item.type == 31" style="text-align: left">
+                    ${{ Intl.NumberFormat().format(item.amount) }}
+                  </td>
 
                   <td v-if="item.type == 16">{{ item.user }}</td>
                   <td v-if="item.type == 18">{{ item.plan }}</td>
@@ -412,10 +446,14 @@
                       item.type != 20 &&
                       item.type != 16 &&
                       item.type != 12 &&
-                      item.type != 18
+                      item.type != 18 &&
+                      item.type != 31
                     "
                   >
                     {{ item.reciever }}
+                  </td>
+                  <td v-if="item.type == 31" style="text-align: left">
+                    {{ item.reciever }}{{ item.plan }}
                   </td>
 
                   <td v-if="item.type == 1">
@@ -464,6 +502,7 @@
 
                   <td v-if="item.type == 35">Alipay Payment</td>
                   <td v-if="item.type == 36">Wechat Payment</td>
+                  <td v-if="item.type == 31">DOM Funding</td>
 
                   <td>
                     <span

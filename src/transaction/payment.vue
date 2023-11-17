@@ -1330,7 +1330,7 @@
                     text-transform: uppercase;
                   "
                 >
-                  &#8358;{{ parseFloat(forms.amount).toLocaleString() }}
+                  &#8358;{{ parseFloat(forms.mainNairaamount).toLocaleString() }}
                 </span>
               </div>
               <div style="margin-top: 20px">
@@ -1387,7 +1387,7 @@
                   class="d-flex justify-content-between"
                   style="align-items: center; line-height: 30px"
                 >
-                  <span style="font-size: 12px">Amount</span>
+                  <span style="font-size: 12px">Amount (RMB/Yuan)</span>
                   <h6
                     style="
                       font-size: 12px;
@@ -1395,7 +1395,7 @@
                       padding: 0px !important;
                     "
                   >
-                    &#8358;{{ forms.convertedAmount }}
+                    &yen;{{ forms.amount }}
                   </h6>
                 </div>
                 <div
@@ -1411,6 +1411,217 @@
                     "
                   >
                     &#8358;{{ forms.fee }}
+                  </h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin1"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin2"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin3"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="password"
+                  maxlength="1"
+                  v-model="pin4"
+                  required
+                  autocomplete="off"
+                  @keyup="getvalidated"
+                />
+              </div>
+            </div>
+            <button
+              :disabled="filldata ? false : true"
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
+              class="btn w-100 mt-4"
+              style="
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                margin: 30px 0px;
+              "
+            >
+              <span style="color: #fff" v-if="clickme == false">Continue</span>
+              <vue-loaders-ball-clip-rotate
+                color="#fff"
+                scale="1"
+                v-if="clickme == true"
+              ></vue-loaders-ball-clip-rotate>
+            </button>
+
+            <h5
+              style="
+                font-size: 12px;
+                text-align: center;
+                dispay: flex;
+                align-items: center;
+                cursor: pointer;
+              "
+              @click="getBack"
+            >
+              <span class="material-icons" style="font-size: 12px; margin: 5px"
+                >arrow_back</span
+              ><span>Go back</span>
+            </h5>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container-xxl"
+      style="background: rgba(245, 245, 255, 1); margin-top: 0px !important"
+      v-if="this.$route.params.form == 'kjGstevshaidTTY&95'"
+    >
+      <Alert :alertstatus="alertstatus" :status="status" :message="message" />
+      <div class="container">
+        <img src="@/assets/images/logo.svg" alt="" />
+
+        <div class="mybodytag">
+          <h3>Enter Your PIN</h3>
+          <p>Please enter your PIN to confirm the transaction.</p>
+          <form action="" @submit.prevent="sendDom">
+            <div class="py-2 bg-white">
+              <p style="text-align: center; font-size: 12px">You are transferring</p>
+              <div class="d-flex justify-content-center">
+                <span
+                  style="
+                    margin: 0px auto;
+                    padding: 5px;
+                    background: rgba(5, 203, 111, 0.1);
+                    color: #202020;
+                    border-radius: 5px;
+                    text-align: center;
+                    font-weight: 600;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                    text-transform: uppercase;
+                  "
+                >
+                  ${{ parseFloat(forms.amount) + parseFloat(forms.domfee) }}
+                </span>
+              </div>
+              <div style="margin-top: 20px">
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">Account Number </span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                      text-transform: uppercase;
+                    "
+                  >
+                    {{ forms.accountNumber }}
+                  </h6>
+                </div>
+
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">Bank Name </span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                      text-transform: uppercase;
+                    "
+                  >
+                    {{ forms.bankName }}
+                  </h6>
+                </div>
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">Account Name </span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                      text-transform: uppercase;
+                    "
+                  >
+                    {{ forms.accountName }}
+                  </h6>
+                </div>
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px">Amount In Dollar</span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                    "
+                  >
+                    ${{ forms.amount }}
+                  </h6>
+                </div>
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px"> Fee</span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                    "
+                  >
+                    ${{ forms.domfee }}
+                  </h6>
+                </div>
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; line-height: 30px"
+                >
+                  <span style="font-size: 12px"> Rate</span>
+                  <h6
+                    style="
+                      font-size: 12px;
+                      margin: 0px !important;
+                      padding: 0px !important;
+                    "
+                  >
+                    1$ = &#8358;{{ forms.rate }}
                   </h6>
                 </div>
               </div>
@@ -1523,6 +1734,8 @@ export default {
       message: "",
       forms: [],
       loading: false,
+      fname: "",
+      lname: "",
     };
   },
   methods: {
@@ -1676,6 +1889,88 @@ export default {
                   e.response?.data?.message
                     ? e.response?.data.message
                     : e.response.data.Message
+                }`,
+                type: "error",
+                icon: "error",
+
+                width: 300,
+              }).then(() => {});
+            });
+        })
+        .catch(() => {
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+            text: `Invalid pin`,
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          }).then((result) => {
+            if (result.value) {
+              location.reload();
+            }
+          });
+        });
+    },
+
+    async sendDom() {
+      this.filldata = false;
+      this.clickme = true;
+
+      const data = {
+        pin: this.pin1 + this.pin2 + this.pin3 + this.pin4,
+      };
+      await axios
+        .post("/api/verifypin", data)
+        .then(() => {
+          axios
+            .post(`api/funddomeaccount`, {
+              account_name: this.forms.accountName,
+              bank_code: this.forms.bankCode,
+              am: this.forms.amount,
+              fname: this.fname,
+              lname: this.lname,
+              m: "web",
+              bname: this.forms.bankName,
+              account_number: this.forms.accountNumber,
+            })
+            .then((res) => {
+              if (res.data.success == "true" || res.data.success == true) {
+                setTimeout(() => {
+                  localStorage.removeItem("form");
+                  this.$router.push("../../success/1");
+                }, 3000);
+              } else {
+                this.clickme = false;
+                this.filldata = true;
+                this.pin1 = "";
+                this.pin2 = "";
+                this.pin3 = "";
+                this.pin4 = "";
+                this.$swal({
+                  title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                  text: `Failed Transaction`,
+                  type: "error",
+                  icon: "error",
+
+                  width: 300,
+                });
+
+                setTimeout(() => {
+                  this.alertstatus = false;
+                }, 3000);
+              }
+            })
+            .catch((e) => {
+              console.log(e);
+              this.filldata = true;
+              this.clickme = false;
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:crimson'>Error!!!</h4>`,
+                text: `${
+                  e.response?.data?.message
+                    ? e.response?.data.message
+                    : e.response.data.ref.message
                 }`,
                 type: "error",
                 icon: "error",
@@ -2031,7 +2326,16 @@ export default {
         });
     },
   },
-  mounted() {
+  async mounted() {
+    await axios
+      .get("api/getdatils")
+      .then((response) => {
+        this.fname = response.data.data.fname;
+        this.lname = response.data.data.lname;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     this.xconfig = localStorage.getItem("xconfig");
     const form = JSON.parse(localStorage.getItem("form"));
     this.forms = form;

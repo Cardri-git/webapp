@@ -35,13 +35,23 @@
                   selectedItem.type != 15 &&
                   selectedItem.type != 17 &&
                   selectedItem.type != 18 &&
-                  selectedItem.type != 20
+                  selectedItem.type != 20 &&
+                  selectedItem.type != 31
                 "
               >
                 <span>Receiver</span>
                 <span style="font-weight: 600; font-size: 14px">{{
                   selectedItem.reciever
                 }}</span>
+              </div>
+              <div
+                class="d-flex justify-content-between align-center mt-2"
+                v-if="selectedItem.type == 31"
+              >
+                <span>Receiver</span>
+                <span style="font-weight: 600; font-size: 14px"
+                  >({{ selectedItem.reciever }}){{ selectedItem.plan }}</span
+                >
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
@@ -158,6 +168,11 @@
                   >Alipay Payment</span
                 >
                 <span
+                  v-if="selectedItem.type == 31"
+                  style="font-weight: 600; font-size: 14px"
+                  >DOM Funding</span
+                >
+                <span
                   v-if="selectedItem.type == 36"
                   style="font-weight: 600; font-size: 14px"
                   >Wechat Payment</span
@@ -224,8 +239,13 @@
                 <span>Amount Paid</span>
                 <span
                   style="font-weight: 600; font-size: 14px"
-                  v-if="selectedItem.type != 17"
+                  v-if="selectedItem.type != 17 && selectedItem.type != 31"
                   >&#8358;{{ selectedItem.amount }}</span
+                >
+                <span
+                  style="font-weight: 600; font-size: 14px"
+                  v-if="selectedItem.type == 31"
+                  >&#36;{{ selectedItem.amount }}</span
                 >
                 <span
                   style="font-weight: 600; font-size: 14px"
@@ -897,7 +917,7 @@
                   <span v-if="defaultcurrenct == 'GBP'">&#163;</span>
                   <span v-if="defaultcurrenct == 'ZAR'">&#8373;</span>
                   <span v-if="defaultcurrenct == 'KES'">&#404;</span
-                  >{{ Intl.NumberFormat().format(defaultavailable) }}
+                  >{{ Intl.NumberFormat().format(defaultbalance) }}
                 </div>
                 <div
                   class="myledger"
@@ -1059,37 +1079,62 @@
                   :key="item.id"
                   @click="todetails(item)"
                 >
-                  <td>{{ item.ref }}</td>
+                  <td style="text-align: left">{{ item.ref }}</td>
 
-                  <td v-if="item.type != 20 && item.type != 17">
+                  <td
+                    style="text-align: left"
+                    v-if="
+                      item.type != 20 &&
+                      item.type != 17 &&
+                      item.type != 18 &&
+                      item.type != 31
+                    "
+                  >
                     &#8358;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
-                  <td v-if="item.type == 20">
+                  <td v-if="item.type == 20" style="text-align: left">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount) }}
                   </td>
-                  <td v-if="item.type == 17">
+                  <td v-if="item.type == 17" style="text-align: left">
                     &#36;
                     {{ Intl.NumberFormat().format(item.amount / 100) }}
                   </td>
+                  <td v-if="item.type == 18" style="text-align: left">
+                    &#36;
+                    {{ Intl.NumberFormat().format(item.amount / 100) }}
+                  </td>
+                  <td v-if="item.type == 31" style="text-align: left">
+                    ${{ Intl.NumberFormat().format(item.amount) }}
+                  </td>
 
-                  <td v-if="item.type == 16">{{ item.user }}</td>
-                  <td v-if="item.type == 18">{{ item.plan }}</td>
-                  <td v-if="item.type == 20">Dollar Card</td>
-                  <td v-if="item.type == 12">{{ item.reciever }}</td>
+                  <td v-if="item.type == 16" style="text-align: left">
+                    {{ item.user }}
+                  </td>
+                  <td v-if="item.type == 18" style="text-align: left">{{ item.plan }}</td>
+                  <td v-if="item.type == 20" style="text-align: left">Dollar Card</td>
+                  <td v-if="item.type == 12" style="text-align: left">
+                    {{ item.reciever }}
+                  </td>
+                  <td v-if="item.type == 31" style="text-align: left">
+                    {{ item.reciever }}{{ item.plan }}
+                  </td>
+
                   <td
                     v-if="
                       item.type != 20 &&
                       item.type != 16 &&
                       item.type != 12 &&
-                      item.type != 18
+                      item.type != 18 &&
+                      item.type != 31
                     "
+                    style="text-align: left"
                   >
                     {{ item.reciever }}
                   </td>
 
-                  <td v-if="item.type == 1">
+                  <td v-if="item.type == 1" style="text-align: left">
                     {{
                       item.name == 1
                         ? "MTN"
@@ -1103,7 +1148,7 @@
                     }}
                     Airtime
                   </td>
-                  <td v-if="item.type == 2">
+                  <td v-if="item.type == 2" style="text-align: left">
                     {{
                       item.name == 1
                         ? "MTN"
@@ -1130,11 +1175,13 @@
                   <td v-if="item.type == 15">Currency Swap</td>
                   <td v-if="item.type == 19">Stamp Duty</td>
 
-                  <td v-if="item.type == 16">Currency swap(P2P)</td>
                   <td v-if="item.type == 30">API Transfer</td>
+
                   <td v-if="item.type == 35">Alipay Payment</td>
                   <td v-if="item.type == 36">Wechat Payment</td>
+                  <td v-if="item.type == 31">DOM Funding</td>
 
+                  <td v-if="item.type == 16">Currency swap(P2P)</td>
                   <td>
                     <span
                       style="

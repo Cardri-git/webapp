@@ -72,6 +72,9 @@
                 id="Wallet"
                 placeholder="Enter Amount(RMB/Yuan)"
               />
+              <span style="color: crimson; font-size: 14px" v-show="messageerror"
+                >Invalid amount</span
+              >
             </div>
             <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
@@ -377,6 +380,9 @@
                 id="Wallet"
                 placeholder="Enter Amount(RMB/Yuan)"
               />
+              <span style="color: crimson; font-size: 14px" v-show="messageerror"
+                >Invalid amount</span
+              >
             </div>
             <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
@@ -806,6 +812,7 @@ export default {
       foreigncountry: "",
       foreigncurrency: "",
       userid: "",
+      messageerror: false,
     };
   },
   methods: {
@@ -832,18 +839,25 @@ export default {
         });
     },
     async sendData(ty) {
-      const data = {
-        amount: this.totalAmount,
-        accountname: this.accountName,
-        userid: this.userid,
-        m: "web",
-        type: ty,
-        fee: this.fee,
-        convertedAmount: this.convertedAmount,
-      };
-      //console.log(data);
-      localStorage.setItem("form", JSON.stringify(data));
-      this.$router.push("../transaction/payment/TYYSbqjdh89fiw273&");
+      if (this.amount > 0) {
+        this.messageerror = false;
+
+        const data = {
+          amount: this.amount,
+          mainNairaamount: this.totalAmount,
+          accountname: this.accountName,
+          userid: this.userid,
+          m: "web",
+          type: ty,
+          fee: this.fee,
+          convertedAmount: this.convertedAmount,
+        };
+        console.log(data);
+        localStorage.setItem("form", JSON.stringify(data));
+        this.$router.push("../transaction/payment/TYYSbqjdh89fiw273&");
+      } else {
+        this.messageerror = true;
+      }
     },
     getAddAmount() {
       if (this.amount > 0) {
@@ -1014,7 +1028,7 @@ export default {
     await axios
       .get("api/getmanagement")
       .then((res) => {
-        // console.log(res);
+        //console.log(res);
         this.fee = res.data.data.chinapafee;
         this.rate = res.data.data.chinapayrate;
         // this.successloading = false;

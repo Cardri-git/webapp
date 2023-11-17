@@ -527,6 +527,147 @@
 
       <!-- End foreign -->
 
+      <!--- to DOM -->
+      <div id="myDom" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="d-flex justify-content-between" style="align-item: center">
+            <h3>DOM Account Funding</h3>
+
+            <span class="close material-icons" @click="closeModal">close</span>
+          </div>
+
+          <form @submit.prevent="sendDom">
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px"></div>
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+              <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+                <div
+                  class="d-flex justify-content-between"
+                  style="align-items: center; margin-bottom: 10px"
+                >
+                  <label for="Wallet">Bank Name</label>
+                </div>
+                <select
+                  type="text"
+                  class="form-control my-select-menu"
+                  v-model="selectedbank"
+                  required
+                  @change="getBankDetails"
+                >
+                  <option :value="item" v-for="item in customBank" :key="item">
+                    {{ item.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex" style="margin-bottom: 10px; flex-direction: column">
+              <label for="Wallet" style="text-align: left">Account Number</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="accountNumber"
+                required
+                @keyup="getBankDetails"
+                placeholder="Account Number"
+              />
+            </div>
+
+            <div
+              style="text-align: center; color: green; font-weight: 600; font-size: 13px"
+              v-if="success == true"
+            >
+              {{ accountName }}
+            </div>
+            <div
+              style="text-align: center; color: red; font-weight: 600; font-size: 13px"
+              v-if="successloading == true"
+            >
+              {{ loadingerrormessage }}
+            </div>
+
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+              <div
+                class="d-flex justify-content-between"
+                style="align-items: center; margin-bottom: 10px"
+              >
+                <label for="Wallet">Amount in Dollar (1$ = {{ domrate }}NGN)</label>
+              </div>
+
+              <input
+                type="text"
+                class="form-control"
+                v-model="amountindollar"
+                required
+                min="5"
+                step="0.1"
+                @keyup="getAddTotal"
+              />
+              <span style="color: crimson; font-size: 14px" v-show="showerror"
+                >Minimum amount is $5</span
+              >
+            </div>
+
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+              <div
+                class="d-flex justify-content-between"
+                style="align-items: center; margin-bottom: 10px"
+              >
+                <label for="Wallet">Fee (In Dollar)</label>
+              </div>
+              <input
+                type="tel"
+                required
+                readonly
+                v-model="domfee"
+                class="form-control"
+                id="Wallet"
+                placeholder="Account Number"
+              />
+            </div>
+
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+              <div
+                class="d-flex justify-content-between"
+                style="align-items: center; margin-bottom: 10px"
+              >
+                <label for="Wallet">Total amount (In Naira) </label>
+              </div>
+              <input
+                type="tel"
+                required
+                v-model="totalAmount"
+                class="form-control"
+                id="Wallet"
+                placeholder="Enter Amount"
+                readonly
+              />
+            </div>
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+              <div
+                class="d-flex justify-content-between"
+                style="align-items: center; margin-bottom: 10px"
+              >
+                <label for="Wallet">Narration</label>
+              </div>
+              <textarea
+                type="text"
+                required
+                class="form-control"
+                id="Wallet"
+                v-model="narration"
+                placeholder="Narration"
+              >
+              </textarea>
+            </div>
+
+            <button class="btn" type="submit">Continue</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- End DOM -->
+
       <div id="myBeneficiary" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -816,7 +957,7 @@
             <div class="col-md-6 col-lg-6">
               <div
                 class="card mycard2"
-                @click="toForeign"
+                @click="toDom"
                 style="background: rgb(245, 245, 255)"
               >
                 <div class="card-body">
@@ -886,6 +1027,7 @@ export default {
       selecteds: "",
       loading: true,
       amount: 0,
+      narration: "",
       ledger: 0,
       mainbalance: 0,
       benfirstname: "",
@@ -921,7 +1063,10 @@ export default {
       accountName: "",
       fillData: false,
       benAccountNumber: "",
+      selectedbank: [],
+      customBank: [],
       bns: false,
+      loadingerrormessage: " Please wait, while getting the details...",
       sesid: "",
       nationalId: "",
       charges: 0,
@@ -937,104 +1082,11 @@ export default {
       foreignAccountNumber: "",
       foreigncountry: "",
       foreigncurrency: "",
-      currency: [
-        {
-          name: "Naira Balance",
-          currency: "NGN",
-          status: 1,
-          balance: 0,
-          ledger: 0,
-          image: "NGN.svg",
-        },
-        {
-          name: "Commission Balance",
-          currency: "Com",
-          status: 1,
-          balance: 0,
-          ledger: 0,
-          image: "NGN.svg",
-        },
-        {
-          name: "Euro Balance",
-          currency: "EUR",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "EUR.svg",
-        },
-        {
-          name: "Dollar Balance",
-          currency: "USD",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "USD.svg",
-        },
-        {
-          name: "Pounds Balance",
-          currency: "GBP",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "GBP.svg",
-        },
-        {
-          name: "South Africa Balance",
-          currency: "ZAR",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "ZAR.svg",
-        },
-        {
-          name: "French  Franca  Rand",
-          currency: "XAF",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "ZAF.svg",
-        },
-        {
-          name: "Canadian Dollar Balance",
-          currency: "CAD",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "GBP.svg",
-        },
-        {
-          name: "Chinesse Yuan Balance",
-          currency: "CNY",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "AED.svg",
-        },
-        {
-          name: "Australia Dollar Balance",
-          currency: "AUD",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "GBP.svg",
-        },
-        {
-          name: "Ghannian cedis Balance",
-          currency: "GHS",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "AED.svg",
-        },
-        {
-          name: "Emirati Dirham Balance",
-          currency: "AED",
-          status: 0,
-          balance: 0,
-          ledger: 0,
-          image: "AED.svg",
-        },
-      ],
+      domfee: 0,
+      domrate: 0,
+      totalAmount: 0,
+      amountindollar: 0,
+      showerror: false,
     };
   },
   methods: {
@@ -1043,6 +1095,17 @@ export default {
       if (event.key == "-") {
         event.preventDefault();
         return false;
+      }
+    },
+    getAddTotal() {
+      if (this.amountindollar >= 5) {
+        this.showerror = false;
+
+        this.totalAmount =
+          parseFloat(this.domrate * this.amountindollar) +
+          parseFloat(this.domfee * this.domrate);
+      } else {
+        this.showerror = true;
       }
     },
     async deletebene(item) {
@@ -1059,6 +1122,33 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    async getBankDetails() {
+      if (this.accountNumber.length == 10 && this.selectedbank.code) {
+        this.successloading = true;
+        this.success = false;
+        const data = {
+          bank_code: this.selectedbank.code,
+          account_number: this.accountNumber,
+        };
+
+        await axios
+          .post(`api/verifydombanks`, data)
+          .then((res) => {
+            //  console.log(res);
+            this.accountName = res.data.data.account_name;
+            this.successloading = false;
+
+            this.success = true;
+          })
+          .catch((e) => {
+            console.log(e);
+            this.accountName = "Unable to get details. Try again.";
+            this.successloading = true;
+            this.success = false;
+            this.loadingerrormessage = "Unable to fetch details, try again";
+          });
+      }
     },
     async sendData() {
       const data = {
@@ -1129,6 +1219,10 @@ export default {
       var modal = document.getElementById("myForeign");
       modal.style.display = "block";
     },
+    toDom() {
+      var modal = document.getElementById("myDom");
+      modal.style.display = "block";
+    },
     closeModal() {
       var modal = document.getElementById("myModal");
       var modalsss = document.getElementById("myForeign");
@@ -1136,7 +1230,9 @@ export default {
       var modals = document.getElementById("myBeneficiary");
       var modalss = document.getElementById("myaddbeneficiary");
       var modalssss = document.getElementById("myforeignBeneficiary");
+      var modalsssss = document.getElementById("myDom");
 
+      modalsssss.style.display = "none";
       modal.style.display = "none";
       modals.style.display = "none";
       modalss.style.display = "none";
@@ -1240,6 +1336,32 @@ export default {
       localStorage.setItem("form", JSON.stringify(data));
       this.$router.push("../transaction/payment/kjGstevshaidTTY&");
     },
+
+    sendDom() {
+      if (this.amountindollar >= 5 && this.accountName != "") {
+        this.showerror = false;
+
+        const data = {
+          // beneficiaryId: this.myben.id,
+          // purposeId: this.purposeid,
+          /// currencyfrom: this.wallet,
+          amount: this.amountindollar,
+          rate: this.domrate,
+          domfee: this.domfee,
+          accountName: this.accountName,
+          accountNumber: this.accountNumber,
+          bankName: this.selectedbank.name,
+          naration: this.narration,
+          bankCode: this.selectedbank.code,
+          totalAmount: this.totalAmount,
+        };
+        // console.log(data);
+        localStorage.setItem("form", JSON.stringify(data));
+        this.$router.push("../transaction/payment/kjGstevshaidTTY&95");
+      } else {
+        this.showerror = true;
+      }
+    },
   },
 
   async mounted() {
@@ -1251,81 +1373,31 @@ export default {
         this.username = response.data.data.username;
         this.fname = response.data.data.fname;
         this.lname = response.data.data.lname;
-        /*
-        this.currency[0].balance = response.data.data.ngn_ld;
-        this.currency[0].ledger = response.data.data.ngn_ld;
-        this.defaultbalance = response.data.data.ngn_ld;
-
-        this.currency[1].balance = response.data.data.commission;
-        this.currency[1].ledger = 0;
-
-        this.currency[2].status = response.data.data.EUR;
-        this.currency[2].balance = response.data.data.eur_b;
-        this.currency[2].ledger = response.data.data.eur_ld;
-
-        this.currency[3].status = response.data.data.USD;
-        this.currency[3].balance = response.data.data.usd_b;
-        this.currency[3].ledger = response.data.data.usd_ld;
-
-        this.currency[4].status = response.data.data.GBP;
-        this.currency[4].balance = response.data.data.gbp_b;
-        this.currency[4].ledger = response.data.data.gbp_ld;
-
-        this.currency[5].status = response.data.data.ZAR;
-        this.currency[5].balance = response.data.data.zar_b;
-        this.currency[5].ledger = response.data.data.zar_ld;
-
-        this.currency[6].status = response.data.data.XAF;
-        this.currency[6].balance = response.data.data.xaf_b;
-        this.currency[6].ledger = response.data.data.xaf_ld;
-
-        this.currency[7].status = response.data.data.CAD;
-        this.currency[7].balance = response.data.data.cad_b;
-        this.currency[7].ledger = response.data.data.cad_ld;
-
-        this.currency[8].status = response.data.data.CNY;
-        this.currency[8].balance = response.data.data.cny_b;
-        this.currency[8].ledger = response.data.data.cny_ld;
-
-        this.currency[9].status = response.data.data.AUD;
-        this.currency[9].balance = response.data.data.aud_b;
-        this.currency[9].ledger = response.data.data.aud_ld;
-
-        this.currency[10].status = response.data.data.GHS;
-        this.currency[10].balance = response.data.data.ghs_b;
-        this.currency[10].ledger = response.data.data.ghs_ld;
-
-        this.currency[11].status = response.data.data.AED;
-        this.currency[11].balance = response.data.data.aed_b;
-        this.currency[11].ledger = response.data.data.aed_ld;
-        */
-        if (response.data.data.bank == null) {
-          axios
-            .get("api/createbank")
-            .then(() => {})
-            .catch(() => {
-              //  console.log(err);
-            });
-        }
-        if (response.data.data.p_status == "false") {
-          this.$router.push("../auth/type");
-        }
       })
       .catch((e) => {
         console.log(e);
       });
-    /*
-     
+    await axios
+      .get("api/getdombanks")
+      .then((res) => {
+        //console.log(res);
+        this.customBank = res.data.data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
 
     await axios
-      .get("api/gettransaction")
+      .get("api/getmanagement")
       .then((res) => {
-        this.transaction = res.data.data.reverse();
+        console.log(res);
+        //  this.transaction = res.data.data.reverse();
+        this.domrate = res.data.data.domrate;
+        this.domfee = res.data.data.domfee;
       })
       .catch((err) => {
         console.log(err);
       });
-      */
 
     await axios
       .get("api/getcurrencies")
