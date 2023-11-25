@@ -503,6 +503,8 @@
                   <td v-if="item.type == 35">Alipay Payment</td>
                   <td v-if="item.type == 36">Wechat Payment</td>
                   <td v-if="item.type == 31">DOM Funding</td>
+                  <td v-if="item.type == 32">Auto Refund</td>
+
 
                   <td>
                     <span

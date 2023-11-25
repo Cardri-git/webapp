@@ -1081,6 +1081,8 @@
                   <td v-if="item.type == 31">DOM Funding</td>
 
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
+                  <td v-if="item.type == 32" >Auto Refund</td>
+
                   <td>
                     <span
                       style="
@@ -1316,7 +1318,7 @@ export default {
       var modals = document.getElementById("mywallet");
       modals.style.display = "block";
     },
-    
+
     todeposit() {
       var modal = document.getElementById("myModal");
       modal.style.display = "block";

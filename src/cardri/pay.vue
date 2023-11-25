@@ -272,7 +272,7 @@ export default {
     await axios
       .get("api/getdatils")
       .then((response) => {
-        console.log(response);
+     //   console.log(response);
         this.mainbalance = response.data.data.ngn_ld;
         this.ledger = response.data.data.NGN;
         this.username = response.data.data.username;

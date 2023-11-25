@@ -7,10 +7,7 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Transaction Details</h3>
 
             <span
@@ -26,11 +23,7 @@
           >
             <div
               class="card-body"
-              style="
-                padding: 5px !important;
-                margin: 0px !important;
-                cursor: pointer;
-              "
+              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
             >
               <div
                 class="d-flex justify-content-between align-center mt-2"
@@ -49,9 +42,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever != username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever != username"
               >
                 <span>Bought from</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -60,9 +51,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever == username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever == username"
               >
                 <span>Buyer</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -92,11 +81,7 @@
                 <span>Service</span>
                 <span
                   v-if="selectedItem.type == 1"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -113,11 +98,7 @@
                 </span>
                 <span
                   v-if="selectedItem.type == 2"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -209,11 +190,7 @@
               >
                 <span>Receiver Name</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.network }}</span
                 >
               </div>
@@ -223,11 +200,7 @@
               >
                 <span>Plan</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.plan }}</span
                 >
               </div>
@@ -284,16 +257,10 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img
-            src="@/assets/images/back.svg"
-            alt=""
-            @click="this.$router.go(-1)"
-          />
+          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
-        <div
-          class="w-100 p-2 d-flex justify-content-between align-items-center"
-        >
+        <div class="w-100 p-2 d-flex justify-content-between align-items-center">
           <div style="max-width: 450px; width: 100%; display: flex; gap: 20px">
             <div class="form-group">
               <input
@@ -319,8 +286,8 @@
           </div>
         </div>
         <div class="p-2">
-          <div class="row " >
-            <div class="p-0" style="max-width:500px;width:100%;">
+          <div class="row">
+            <div class="p-0" style="max-width: 500px; width: 100%">
               <div class="card p-0 border-0">
                 <div class="card-body">
                   <div class="w-100 d-flex justify-content-center">
@@ -347,7 +314,7 @@
                     class="w-100 text-center"
                     style="text-transform: uppercase; line-height: 30px"
                   >
-                    <h2 class="my-3" style="font-size:1.3rem">{{ customer.name }}</h2>
+                    <h2 class="my-3" style="font-size: 1.3rem">{{ customer.name }}</h2>
                   </div>
                   <div
                     class="w-100"
@@ -391,12 +358,12 @@
                   <button class="withdrawfund" @click="withdrawFundTocardri">
                     <span style="color: #fff" v-if="clickme == false">Withdraw</span>
 
-                      <vue-loaders-ball-clip-rotate
-                color="#fff"
-                scale="1"
-                v-if="clickme == true"
-              ></vue-loaders-ball-clip-rotate>
-                    </button>
+                    <vue-loaders-ball-clip-rotate
+                      color="#fff"
+                      scale="1"
+                      v-if="clickme == true"
+                    ></vue-loaders-ball-clip-rotate>
+                  </button>
                 </div>
               </div>
             </div>
@@ -421,15 +388,11 @@
                         <span>fetching balance...</span>
                       </div>
                     </div>
-                   
                   </div>
                 </div>
               </div>
               <div class="w-100 p-2">
-                <h3
-                  style="font-size: 14px; color: rgb(145, 145, 145)"
-                  class="mb-3 mt-3"
-                >
+                <h3 style="font-size: 14px; color: rgb(145, 145, 145)" class="mb-3 mt-3">
                   Transactions
                 </h3>
                 <div class="table_section" id="content">
@@ -483,9 +446,7 @@
                             </td>
                             -->
                             <td>
-                              {{
-                                moment(item.RealDate).format("DD-MM-YYYY h:ma")
-                              }}
+                              {{ moment(item.RealDate).format("DD-MM-YYYY h:ma") }}
                             </td>
                           </tr>
                         </tbody>
@@ -528,7 +489,7 @@
     </div>
   </div>
 </template>
-    <script>
+<script>
 import axios from "axios";
 import moment from "moment";
 import sidebar from "@/components/sidebar.vue";
@@ -558,7 +519,7 @@ export default {
       split: "",
       lname: "",
       page: 1,
-      clickme:false,
+      clickme: false,
       fname: "",
       username: "",
       moment: moment,
@@ -603,57 +564,51 @@ export default {
           console.log(err);
         });
     },
-    async withdrawFundTocardri (){
-      if(this.main_balance !== 0){
+    async withdrawFundTocardri() {
+      if (this.main_balance !== 0) {
+        this.clickme = true;
+        const data = {
+          amount: parseFloat(this.main_balance / 100),
+          trackingReference: this.$route.params.id,
+        };
+        await axios
+          .post("api/removeandaddmoneyoncardri", data)
+          .then(() => {
+            // console.log(res)
 
-      
-      this.clickme =  true
-      const data ={ 
-        amount:this.main_balance,
-        trackingReference: this.$route.params.id
+            this.clickme = false;
+            this.main_balance = 0;
+            this.$swal({
+              title: `<h4 style='font-size:14x;color:#202020'>Success</h4>`,
+              text: `Funds withdraw succesfully`,
+              type: "success",
+              icon: "success",
+
+              width: 300,
+            }).then(() => {});
+          })
+          .catch((e) => {
+            console.log(e);
+            this.clickme = false;
+            this.$swal({
+              title: `<h4 style='font-size:14x;color:#202020'>Error!!!</h4>`,
+              text: `An error occur`,
+              type: "error",
+              icon: "error",
+
+              width: 300,
+            }).then(() => {});
+          });
+      } else {
+        this.$swal({
+          title: `<h4 style='font-size:14x;color:#202020'>Error!!!</h4>`,
+          text: `Account Balance is low`,
+          type: "error",
+          icon: "error",
+
+          width: 300,
+        }).then(() => {});
       }
-      await axios.post('api/removeandaddmoneyoncardri',data).then(()=>{
-       // console.log(res)
-       
-        this.clickme =  false
-        this.main_balance = 0
-        this.$swal({
-            title: `<h4 style='font-size:14x;color:#202020'>Success</h4>`,
-            text: `Funds withdraw succesfully`,
-            type: "success",
-            icon: "success",
-
-            width: 300,
-          }).then(() => {
-           
-          });
-
-      }).catch((e)=>{
-        console.log(e)
-        this.clickme =  false
-        this.$swal({
-            title: `<h4 style='font-size:14x;color:#202020'>Error!!!</h4>`,
-            text: `An error occur`,
-            type: "error",
-            icon: "error",
-
-            width: 300,
-          }).then(() => {
-           
-          });
-      })
-    }else{
-      this.$swal({
-            title: `<h4 style='font-size:14x;color:#202020'>Error!!!</h4>`,
-            text: `Account Balance is low`,
-            type: "error",
-            icon: "error",
-
-            width: 300,
-          }).then(() => {
-           
-          });
-    }
     },
     todetails(item) {
       var modals = document.getElementById("myModal");
@@ -767,7 +722,7 @@ export default {
   },
 };
 </script>
-    <style scoped lang="scss">
+<style scoped lang="scss">
 .bgbig {
   background: #fff;
   overflow: hidden;
@@ -1111,7 +1066,7 @@ tr td {
   }
 }
 .table_section {
- // height: 500px;
+  // height: 500px;
   overflow: auto;
   -webkit-scrollbar: 1px;
 
@@ -1195,16 +1150,15 @@ table:-webkit-scrollbar {
     display: none;
   }
 }
-.withdrawfund{
+.withdrawfund {
   border-radius: 8px;
   border: none;
   outline: none;
   background: #4705af;
-  color:#ffffff;
-  margin-top:20px;
+  color: #ffffff;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 </style>
-    
