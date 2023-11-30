@@ -505,7 +505,6 @@
                   <td v-if="item.type == 31">DOM Funding</td>
                   <td v-if="item.type == 32">Auto Refund</td>
 
-
                   <td>
                     <span
                       style="
@@ -550,6 +549,13 @@
                 </tr>
               </tbody>
             </table>
+            <vue-awesome-paginate
+              :total-items="totalcount"
+              :items-per-page="20"
+              :max-pages-shown="5"
+              v-model="currentPage"
+              :on-click="onClickHandler"
+            />
           </div>
         </div>
       </div>
@@ -578,6 +584,7 @@ export default {
   data() {
     return {
       showdrop: false,
+      currentPage: 1,
       selecteds: "",
       loading: true,
       ledger: 0,
@@ -585,6 +592,7 @@ export default {
       selectedItem: [],
       lname: "",
       fname: "",
+      totalcount: 0,
       username: "",
       moment: moment,
       transaction: [],
@@ -619,6 +627,17 @@ export default {
   },
 
   methods: {
+    async onClickHandler(page) {
+      await axios
+        .get(`api/gettransaction?page=${page}`)
+        .then((res) => {
+          this.transaction = res.data.data?.data?.reverse();
+          this.loading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     todetails(item) {
       var modals = document.getElementById("myModal");
       modals.style.display = "block";
@@ -641,7 +660,7 @@ export default {
       await axios
         .get("api/gettransaction")
         .then((res) => {
-          this.transaction = res.data.data?.reverse();
+          this.transaction = res.data.data?.data?.reverse();
           this.loading = false;
         })
         .catch((err) => {
@@ -687,8 +706,9 @@ export default {
     await axios
       .get("api/gettransaction")
       .then((res) => {
-        this.transaction = res.data.data?.reverse();
+        this.transaction = res.data.data?.data?.reverse();
         this.loading = false;
+        this.totalcount = res.data.data.total;
       })
       .catch((err) => {
         console.log(err);
@@ -1137,5 +1157,38 @@ td {
   background: #f5f5f5;
   border-radius: 8px;
   padding: 0px 20px 0px 20px;
+}
+</style>
+<style>
+.pagination-container {
+  display: flex;
+  column-gap: 5px;
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-top: 30px;
+}
+.paginate-buttons {
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: rgb(242, 242, 242);
+  border: 1px solid rgb(217, 217, 217);
+  color: black;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.paginate-buttons:hover {
+  background-color: #d8d8d8;
+}
+.active-page {
+  background-color: #4705af;
+  border: 1px solid #4705af;
+  color: white;
+}
+.active-page:hover {
+  background-color: #4705af;
 }
 </style>

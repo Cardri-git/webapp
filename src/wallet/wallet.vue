@@ -887,7 +887,7 @@
                   <span v-if="defaultcurrenct == 'GBP'">&#163;</span>
                   <span v-if="defaultcurrenct == 'ZAR'">&#8373;</span>
                   <span v-if="defaultcurrenct == 'KES'">&#404;</span>
-                  {{ new Intl.NumberFormat().format(defaultbalance) }}
+                  {{ new Intl.NumberFormat().format(defaultavailable) }}
                 </h5>
                 <h5
                   style="
@@ -1181,7 +1181,6 @@
                   <td v-if="item.type == 36">Wechat Payment</td>
                   <td v-if="item.type == 31">DOM Funding</td>
                   <td v-if="item.type == 32">Auto Refund</td>
-
 
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
                   <td>
@@ -1511,7 +1510,7 @@ export default {
       await axios
         .get("api/gettransaction")
         .then((res) => {
-          this.transaction = res.data.data.reverse();
+          this.transaction = res.data.data.data?.reverse();
           this.loading = false;
         })
         .catch((err) => {
@@ -1617,7 +1616,7 @@ export default {
     await axios
       .get("api/gettransaction")
       .then((res) => {
-        this.transaction = res.data.data.reverse();
+        this.transaction = res.data.data.data?.reverse();
         this.loading = false;
       })
       .catch((err) => {

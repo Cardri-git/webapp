@@ -19,6 +19,7 @@
     "moment": "^2.29.4",
     "v-pagination-3": "^0.1.7",
     "vue": "^3.2.47",
+    "vue-awesome-paginate": "^1.1.46",
     "vue-camera-lib": "^1.0.4",
     "vue-loader": "^17.0.1",
     "vue-loaders": "^4.1.4",

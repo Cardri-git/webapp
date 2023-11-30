@@ -13,6 +13,8 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import VueCameraLib from 'vue-camera-lib'
 import AOS from 'aos'
+import VueAwesomePaginate from "vue-awesome-paginate";
+
 import 'aos/dist/aos.css'
 
 
@@ -21,6 +23,6 @@ require('@/store/subscriber')
 
 
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
-    createApp(App).use(router).use(store).use(VueSweetalert2).use(VueLoaders).use(AOS.init()).use(VueCameraLib).mount('#app')
+    createApp(App).use(router).use(store).use(VueSweetalert2).use(VueLoaders).use(AOS.init()).use(VueCameraLib).use(VueAwesomePaginate).mount('#app')
 
 })

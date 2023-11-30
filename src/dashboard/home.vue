@@ -1081,7 +1081,7 @@
                   <td v-if="item.type == 31">DOM Funding</td>
 
                   <td v-if="item.type == 16">Currency swap(P2P)</td>
-                  <td v-if="item.type == 32" >Auto Refund</td>
+                  <td v-if="item.type == 32">Auto Refund</td>
 
                   <td>
                     <span
@@ -1378,7 +1378,7 @@ export default {
       await axios
         .get("api/gettransaction")
         .then((res) => {
-          this.transaction = res.data.data.reverse();
+          this.transaction = res.data.data.data.reverse();
           this.loading = false;
         })
         .catch((err) => {
@@ -1504,11 +1504,9 @@ export default {
       });
 
     await axios
-      .get("api/gettransaction?page=20")
+      .get("api/gettransaction")
       .then((res) => {
-        // console.log(res)
-
-        this.transaction = res.data.data.reverse();
+        this.transaction = res.data.data.data.reverse();
         this.loading = false;
       })
       .catch((err) => {
