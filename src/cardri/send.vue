@@ -1390,7 +1390,6 @@ export default {
     await axios
       .get("api/getmanagement")
       .then((res) => {
-        console.log(res);
         //  this.transaction = res.data.data.reverse();
         this.domrate = res.data.data.domrate;
         this.domfee = res.data.data.domfee;

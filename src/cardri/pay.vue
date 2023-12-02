@@ -272,7 +272,9 @@ export default {
     await axios
       .get("api/getdatils")
       .then((response) => {
-     //   console.log(response);
+        //   console.log(response);
+        this.loading = false;
+
         this.mainbalance = response.data.data.ngn_ld;
         this.ledger = response.data.data.NGN;
         this.username = response.data.data.username;
@@ -295,16 +297,6 @@ export default {
       })
       .catch((e) => {
         console.log(e);
-      });
-
-    await axios
-      .get("api/gettransaction")
-      .then((res) => {
-        this.transaction = res.data.data.reverse();
-        this.loading = false;
-      })
-      .catch((err) => {
-        console.log(err);
       });
   },
 };
