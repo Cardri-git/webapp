@@ -11,10 +11,7 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Transaction Details</h3>
 
             <span
@@ -30,11 +27,7 @@
           >
             <div
               class="card-body"
-              style="
-                padding: 5px !important;
-                margin: 0px !important;
-                cursor: pointer;
-              "
+              style="padding: 5px !important; margin: 0px !important; cursor: pointer"
             >
               <div
                 class="d-flex justify-content-between align-center mt-2"
@@ -63,9 +56,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever != username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever != username"
               >
                 <span>Bought from</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -74,9 +65,7 @@
               </div>
               <div
                 class="d-flex justify-content-between align-center mt-2"
-                v-if="
-                  selectedItem.type == 16 && selectedItem.reciever == username
-                "
+                v-if="selectedItem.type == 16 && selectedItem.reciever == username"
               >
                 <span>Buyer</span>
                 <span style="font-weight: 600; font-size: 14px">{{
@@ -106,11 +95,7 @@
                 <span>Service</span>
                 <span
                   v-if="selectedItem.type == 1"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -127,11 +112,7 @@
                 </span>
                 <span
                   v-if="selectedItem.type == 2"
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: uppercase"
                 >
                   {{
                     selectedItem.name == 1
@@ -238,11 +219,7 @@
               >
                 <span>Receiver Name</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.network }}</span
                 >
               </div>
@@ -252,11 +229,7 @@
               >
                 <span>Plan</span>
                 <span
-                  style="
-                    font-weight: 600;
-                    font-size: 14px;
-                    text-transform: lowercase;
-                  "
+                  style="font-weight: 600; font-size: 14px; text-transform: lowercase"
                   >{{ selectedItem.plan }}</span
                 >
               </div>
@@ -322,30 +295,15 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img
-            src="@/assets/images/back.svg"
-            alt=""
-            @click="this.$router.go(-1)"
-          />
+          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            margin-top: 30px;
-          "
-        >
+        <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 30px">
           <h6>Transaction History</h6>
 
           <div class="d-flex w-100" style="justify-content: space-between">
             <div class="d-flex justify-content-between w-100">
-              <div
-                for=""
-                style="position: relative; width: 100%"
-                class="seacrh-con-lg"
-              >
+              <div for="" style="position: relative; width: 100%" class="seacrh-con-lg">
                 <span class="material-icons mysearchicon">search</span>
                 <input
                   type="search"
@@ -560,9 +518,7 @@
                       :style="
                         item.status == 1
                           ? 'background: #12BD89;padding-left:12px;padding-right:12px'
-                          : item.status == 2 &&
-                            item.type != 36 &&
-                            item.type != 35
+                          : item.status == 2 && item.type != 36 && item.type != 35
                           ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
                           : item.status == 5
                           ? 'background:#F1EB9C;padding-left:15px;padding-right:16px'
@@ -575,9 +531,7 @@
                       >{{
                         item.status == 1
                           ? "Success"
-                          : item.status == 2 &&
-                            item.type != 35 &&
-                            item.type != 36
+                          : item.status == 2 && item.type != 35 && item.type != 36
                           ? "Success"
                           : item.status == "2" && item.type == 35
                           ? "Processing"

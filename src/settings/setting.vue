@@ -12,15 +12,10 @@
         <!-- Modal content -->
         <form @submit.prevent="confirmCode">
           <div class="modal-content">
-            <div
-              class="d-flex justify-content-between"
-              style="align-item: center"
-            >
+            <div class="d-flex justify-content-between" style="align-item: center">
               <h3>Take a selfie</h3>
 
-              <span class="close material-icons" @click="closeModal"
-                >close</span
-              >
+              <span class="close material-icons" @click="closeModal">close</span>
             </div>
           </div>
         </form>
@@ -34,15 +29,10 @@
         <!-- Modal content -->
         <form @submit.prevent="confirmCode">
           <div class="modal-content">
-            <div
-              class="d-flex justify-content-between"
-              style="align-item: center"
-            >
+            <div class="d-flex justify-content-between" style="align-item: center">
               <h3>Enter Code</h3>
 
-              <span class="close material-icons" @click="closeModal"
-                >close</span
-              >
+              <span class="close material-icons" @click="closeModal">close</span>
             </div>
 
             <div class="form-group" style="margin-top: 30px">
@@ -60,11 +50,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn btn-primary w-100 mt-4"
               style="
                 color: #fff;
@@ -94,15 +80,10 @@
         <!-- Modal content -->
         <form @submit.prevent="confirmBVN">
           <div class="modal-content">
-            <div
-              class="d-flex justify-content-between"
-              style="align-item: center"
-            >
+            <div class="d-flex justify-content-between" style="align-item: center">
               <h3>Verify Your BVN</h3>
 
-              <span class="close material-icons" @click="closeModal"
-                >close</span
-              >
+              <span class="close material-icons" @click="closeModal">close</span>
             </div>
 
             <div class="form-group" style="margin-top: 30px">
@@ -120,11 +101,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
               class="btn btn-primary w-100 mt-4"
               style="
                 color: #fff;
@@ -151,10 +128,7 @@
       <div id="myverify" class="modal mynormalads">
         <!-- Modal content -->
         <div class="modal-content">
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Verification</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
@@ -162,9 +136,7 @@
           <p>Follow this simple steps for verification</p>
           <form action="" @submit.prevent="submitcurrecny">
             <div class="card" style="background: #f5f5ff" @click="setamount">
-              <div
-                class="card-body d-flex justify-content-between align-center"
-              >
+              <div class="card-body d-flex justify-content-between align-center">
                 <h4>Bank Verifcation Number (BVN)</h4>
                 <div class="containers">
                   <div class="round">
@@ -179,9 +151,7 @@
               </div>
             </div>
             <div class="card" style="background: #f5f5ff" @click="todata">
-              <div
-                class="card-body d-flex justify-content-between align-center"
-              >
+              <div class="card-body d-flex justify-content-between align-center">
                 <h4>Residential Address and Indentity verification</h4>
                 <div class="containers">
                   <div class="round">
@@ -219,9 +189,7 @@
               type="submit"
               class="btn btn-primary"
               style="background: #4705af; margin-top: 30px"
-              :disabled="
-                filledsetamount && filledsetrate == true ? false : true
-              "
+              :disabled="filledsetamount && filledsetrate == true ? false : true"
             >
               <span style="color: #fff" v-if="clickme == false">Continue</span>
               <vue-loaders-ball-clip-rotate
@@ -241,26 +209,16 @@
       <div id="mydata" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Residential Address and Indentity Verification</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendAddress">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -276,10 +234,7 @@
                 placeholder="Enter your house number"
               />
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -293,10 +248,7 @@
                 class="form-control"
               ></textarea>
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -324,37 +276,21 @@
               </select>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">City</label>
               </div>
-              <select
-                type="tel"
-                required
-                v-model="city"
-                class="form-control"
-                id="Wallet"
-              >
-                <option
-                  v-for="item in selectedstates"
-                  :key="item"
-                  :value="item.name"
-                >
+              <select type="tel" required v-model="city" class="form-control" id="Wallet">
+                <option v-for="item in selectedstates" :key="item" :value="item.name">
                   {{ item.name }}
                 </option>
               </select>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -369,26 +305,15 @@
                 placeholder="Enter Poster code"
               />
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">ID type</label>
               </div>
-              <select
-                type="tel"
-                required
-                v-model="type"
-                class="form-control"
-                id="Wallet"
-              >
-                <option value="NIGERIAN_DRIVER_LICENSE">
-                  NIGERIAN_DRIVER_LICENSE
-                </option>
+              <select type="tel" required v-model="type" class="form-control" id="Wallet">
+                <option value="NIGERIAN_DRIVER_LICENSE">NIGERIAN_DRIVER_LICENSE</option>
                 <option value="NIGERIAN_INTERNATIONAL_PASSPORT">
                   NIGERIAN_INTERNATIONAL_PASSPORT
                 </option>
@@ -396,10 +321,7 @@
               </select>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -415,10 +337,7 @@
               />
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <label
                 class="label"
                 style="
@@ -440,11 +359,7 @@
                 >
               </label>
             </div>
-            <button
-              type="submit"
-              class="btn"
-              :disabled="filldata ? false : true"
-            >
+            <button type="submit" class="btn" :disabled="filldata ? false : true">
               <span style="color: #fff" v-if="clickme == false">Continue</span>
               <vue-loaders-ball-clip-rotate
                 color="#fff"
@@ -462,26 +377,16 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Account Information</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendBill">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -497,10 +402,7 @@
                 id="Wallet"
               />
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -516,10 +418,7 @@
                 id="Wallet"
               />
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -536,29 +435,17 @@
               />
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">Phone Number</label>
               </div>
-              <input
-                type="tel"
-                required
-                readonly
-                v-model="phone"
-                class="form-control"
-              />
+              <input type="tel" required readonly v-model="phone" class="form-control" />
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -584,26 +471,16 @@
       <div id="mycabletv" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Edit Password</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendCableTv">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -619,10 +496,7 @@
                 placeholder="Enter Old Password"
               />
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -638,10 +512,7 @@
                 placeholder="Enter New Password"
               />
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -663,11 +534,7 @@
               type="submit"
               class="btn"
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #4705af' : 'background:#6E7173'"
             >
               <span style="color: #fff" v-if="clickme == false">Save</span>
               <vue-loaders-ball-clip-rotate
@@ -687,26 +554,16 @@
       <div id="myairtime" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Update PIN</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="updatePin">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -723,10 +580,7 @@
               />
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -743,10 +597,7 @@
               />
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -770,119 +621,233 @@
       <!--End To  Airtime -->
       <headers :firstname="fname" :lastname="lname" />
 
-      <div class="bgbig" >
+      <div class="bgbig">
         <div class="backtag">
-          <img
-            src="@/assets/images/back.svg"
-            alt=""
-            @click="this.$router.go(-1)"
-          />
+          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
-        <div style="display:flex;max-width:320px;width:100%;padding:8px;align-items:center;gap:16px;margin-top:16px;margin-bottom:8px">
-          <span :style="tab==='Settings' ? 'border-bottom:2px solid #4705af' : ''" @click="tab='Settings'" class="tabsetting">Instruments</span>
-          <span :style="tab==='webhook' ? 'border-bottom:2px solid #4705af' : ''"  @click="tab='webhook'" class="tabsetting">Webhook</span>
+        <div
+          style="
+            display: flex;
+            max-width: 320px;
+            width: 100%;
+            padding: 8px;
+            align-items: center;
+            gap: 16px;
+            margin-top: 16px;
+            margin-bottom: 8px;
+          "
+        >
+          <span
+            :style="tab === 'Settings' ? 'border-bottom:2px solid #4705af' : ''"
+            @click="tab = 'Settings'"
+            class="tabsetting"
+            >Instruments</span
+          >
+          <span
+            :style="tab === 'webhook' ? 'border-bottom:2px solid #4705af' : ''"
+            @click="tab = 'webhook'"
+            class="tabsetting"
+            >API</span
+          >
         </div>
 
         <div class="webhook_tab" v-show="tab === 'webhook'">
-          <form style="display:flex;flex-direction:column;gap:10px;" @submit.prevent="UpdateWebhook">
-            <label for="webhook">Webhook</label>
-            <div style="display:flex;flex-direction:column;gap:16px">
-            <div style="display:flex;align-items:center;gap:8px;max-width:500px;width:100%"> 
-              <input type="text" style="width:100%;outline:none;border:none"  v-model="webhook" placeholder="Enter a valid webhook">
-              <span class="material-icons" style="color:#4705af;cursor:pointer" @click="copyURL(webhook)" v-show="copied === false">content_copy</span>
-              <span class="material-icons" style="color:green;cursor:pointer" @click="copyURL(webhook)" v-show="copied === true">done</span>
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="webhook" style="font-weight: 500; font-size: 16px">Token</label>
 
-
-            </div>
-            <button type="submit" class="btn btn-primary" style="max-width:186px" :disabled="loader">
-             <span v-if="loader === false">Update Webhook</span>
-
-               <vue-loaders-ball-clip-rotate
-                color="#fff"
-                scale="1"
-                v-if="loader ===  true"
-              ></vue-loaders-ball-clip-rotate> 
-              
-            </button>
-
-          </div>
-
-          </form>
-          
-        </div>
-        <div style="display:flex;flex-direction:column;gap:32px" v-show="tab === 'Settings'">
-
-        <div style="max-width: 320px; width: 100%; margin: 10px">
-          <div class="row" style="margin-top: 20px">
-            <div class="col">
               <div
-                class="card"
-                style="box-shadow: none !important; border: none !important"
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  max-width: 500px;
+                  width: 100%;
+                "
               >
-                <div class="card-body">
-                  <img
-                    src="@/assets/images/profile.svg"
-                    alt=""
-                    style="
-                      float: left;
+                <input
+                  type="text"
+                  style="width: 100%; outline: none; border: none"
+                  v-model="api"
+                  readonly
+                />
+                <span
+                  class="material-icons"
+                  style="color: #4705af; cursor: pointer"
+                  @click="copyURL(api)"
+                  v-show="copied === false"
+                  >content_copy</span
+                >
+                <span
+                  class="material-icons"
+                  style="color: green; cursor: pointer"
+                  @click="copyURL(api)"
+                  v-show="copied === true"
+                  >done</span
+                >
+              </div>
+            </div>
+            <button
+              type="button"
+              @click="RegenerateToken"
+              class="btn"
+              style="max-width: 220px; background: #f5f5ff; font-size: 12px; border: none"
+              :disabled="loader1"
+            >
+              <span v-if="loader1 === false" style="font-size: 14px"
+                >Generate New Token</span
+              >
 
-                      margin-right: 20px;
-                    "
-                  />
+              <vue-loaders-ball-clip-rotate
+                color="#4705af"
+                scale="1"
+                v-if="loader1 === true"
+              ></vue-loaders-ball-clip-rotate>
+            </button>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="webhook" style="font-weight: 500; font-size: 16px"
+                >Switch</label
+              >
 
-                  <div style="overflow: hidden">
-                    <div
-                      class="justify-content-between"
-                      style="align-items: center;"
-                    >
-                      <h3
-                        style="
-                          color: #202020;
-                          font-weight: 600;
-                          font-size: 1rem;
-                          margin-bottom: 0px;
-                        "
-                      >
-                        {{ fname }} {{ lname }}
-                      </h3>
-                      <span
-                        style="
-                          color: #f97316;
-                          font-size: 12px;
-                          margin-top: -10px;
-                        "
-                        >Regular Member</span
-                      >
-                    </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  max-width: 500px;
+                  width: 100%;
+                "
+              >
+                <select
+                  type="text"
+                  style="width: 100%; outline: none; border: none"
+                  v-model="tokenstatus"
+                  @change="switchToken(tokenstatus)"
+                >
+                  <option :value="1">ON</option>
+                  <option :value="0">OFF</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <form
+            style="display: flex; flex-direction: column; gap: 10px"
+            @submit.prevent="UpdateWebhook"
+          >
+            <label for="webhook" style="font-weight: 500; font-size: 16px">Webhook</label>
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  max-width: 500px;
+                  width: 100%;
+                "
+              >
+                <input
+                  type="text"
+                  style="width: 100%; outline: none; border: none"
+                  v-model="webhook"
+                  placeholder="Enter a valid webhook"
+                />
+                <span
+                  class="material-icons"
+                  style="color: #4705af; cursor: pointer"
+                  @click="copyURL(webhook)"
+                  v-show="copied === false"
+                  >content_copy</span
+                >
+                <span
+                  class="material-icons"
+                  style="color: green; cursor: pointer"
+                  @click="copyURL(webhook)"
+                  v-show="copied === true"
+                  >done</span
+                >
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="max-width: 186px"
+                :disabled="loader"
+              >
+                <span v-if="loader === false">Update Webhook</span>
 
-                    <div class="d-flex align-center" style="align-items:center">
-                      <span
-                        style="
-                          font-weight: 500;
-                          font-size: 0.7rem;
-                          margin-right: 10px;
-                        "
-                        >Account Number</span
-                      >
-                      <div
-                        style="
-                          display: flex;
-                          border-radius: 8px;
-                          background: #f5f5ff;
-                          color: #12bd89;
-                          font-size: 11px;
-                          padding: 4px;
-                          align-items: center;
-                        "
-                      >
-                        {{ accountNumber }}
-                        <span
-                          class="material-icons"
-                          style="font-size: 12px; margin-left: 5px"
-                          @click="copyURL(accountNumber)"
-                          >content_copy</span
+                <vue-loaders-ball-clip-rotate
+                  color="#fff"
+                  scale="1"
+                  v-if="loader === true"
+                ></vue-loaders-ball-clip-rotate>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div
+          style="display: flex; flex-direction: column; gap: 32px"
+          v-show="tab === 'Settings'"
+        >
+          <div style="max-width: 320px; width: 100%; margin: 10px">
+            <div class="row" style="margin-top: 20px">
+              <div class="col">
+                <div
+                  class="card"
+                  style="box-shadow: none !important; border: none !important"
+                >
+                  <div class="card-body">
+                    <img
+                      src="@/assets/images/profile.svg"
+                      alt=""
+                      style="
+                        float: left;
+
+                        margin-right: 20px;
+                      "
+                    />
+
+                    <div style="overflow: hidden">
+                      <div class="justify-content-between" style="align-items: center">
+                        <h3
+                          style="
+                            color: #202020;
+                            font-weight: 600;
+                            font-size: 1rem;
+                            margin-bottom: 0px;
+                          "
                         >
+                          {{ fname }} {{ lname }}
+                        </h3>
+                        <span style="color: #f97316; font-size: 12px; margin-top: -10px"
+                          >Regular Member</span
+                        >
+                      </div>
+
+                      <div class="d-flex align-center" style="align-items: center">
+                        <span
+                          style="font-weight: 500; font-size: 0.7rem; margin-right: 10px"
+                          >Account Number</span
+                        >
+                        <div
+                          style="
+                            display: flex;
+                            border-radius: 8px;
+                            background: #f5f5ff;
+                            color: #12bd89;
+                            font-size: 11px;
+                            padding: 4px;
+                            align-items: center;
+                          "
+                        >
+                          {{ accountNumber }}
+                          <span
+                            class="material-icons"
+                            style="font-size: 12px; margin-left: 5px"
+                            @click="copyURL(accountNumber)"
+                            >content_copy</span
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -890,215 +855,221 @@
               </div>
             </div>
           </div>
+
+          <div class="balamcebar">
+            <div class="row" style="margin-top: 20px">
+              <div class="col-md-6 col-lg-6">
+                <div class="card" style="background: #f5f5ff" @click="toelectricity">
+                  <div class="card-body">
+                    <img
+                      src="@/assets/images/edit.svg"
+                      alt=""
+                      style="
+                        float: left;
+
+                        width: 30px;
+                        margin-right: 20px;
+                      "
+                    />
+
+                    <div style="overflow: hidden">
+                      <div
+                        class="d-flex justify-content-between"
+                        style="align-items: center"
+                      >
+                        <h3 style="color: #202020">Account Information</h3>
+                      </div>
+
+                      <p>
+                        View the personal information like phone number and address linked
+                        to this account.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <div
+                  class="card"
+                  style="background: rgba(18, 189, 137, 0.1)"
+                  @click="tocabletv"
+                >
+                  <div class="card-body">
+                    <img
+                      src="@/assets/images/editpass.svg"
+                      alt=""
+                      style="
+                        float: left;
+                        position: relative;
+                        width: 30px;
+                        margin-right: 20px;
+                      "
+                    />
+
+                    <div style="overflow: hidden">
+                      <div
+                        class="d-flex justify-content-between"
+                        style="align-items: center"
+                      >
+                        <h3 style="color: #202020">Edit Password</h3>
+                      </div>
+
+                      <p>Change your account login password.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+              <div class="col-md-6 col-lg-6">
+                <div class="card" style="background: rgba(249, 115, 22, 0.1)">
+                  <div class="card-body">
+                    <img
+                      src="@/assets/images/bell.svg"
+                      alt=""
+                      style="
+                        float: left;
+
+                        width: 30px;
+                        margin-right: 20px;
+                      "
+                    />
+
+                    <div style="overflow: hidden">
+                      <div
+                        class="d-flex justify-content-between"
+                        style="align-items: center"
+                      >
+                        <h3 style="color: #202020">Email Notification</h3>
+                        <label class="switch" for="checkbox">
+                          <input type="checkbox" id="checkbox" />
+                          <div class="slider round"></div>
+                        </label>
+                      </div>
+
+                      <p style="margin-top: 10px">
+                        Get notified in your email whenever you login with another device.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <div
+                  class="card"
+                  style="background: rgba(242, 238, 255, 0.1)"
+                  @click="toairtime"
+                >
+                  <div class="card-body">
+                    <img
+                      src="@/assets/images/editpin.svg"
+                      alt=""
+                      style="
+                        float: left;
+
+                        width: 30px;
+                        margin-right: 20px;
+                      "
+                    />
+
+                    <div style="overflow: hidden">
+                      <div
+                        class="d-flex justify-content-between"
+                        style="align-items: center"
+                      >
+                        <h3 style="color: #202020">Edit Transaction Pin</h3>
+                      </div>
+
+                      <p>Change the 4 digit pin you use when performing transactions.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+              <div class="col-md-6 col-lg-6">
+                <div
+                  class="card"
+                  @click="toverify"
+                  style="background: rgba(0, 124, 238, 0.1)"
+                >
+                  <div class="card-body">
+                    <img
+                      src="@/assets/images/verifyicon.svg"
+                      alt=""
+                      style="
+                        float: left;
+
+                        width: 30px;
+                        margin-right: 20px;
+                      "
+                    />
+
+                    <div style="overflow: hidden">
+                      <div
+                        class="d-flex justify-content-between"
+                        style="align-items: center"
+                      >
+                        <h3 style="color: #202020">Verification</h3>
+                      </div>
+
+                      <p>Update your KYC to be verified</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <div
+                  class="card"
+                  @click="deleteaccount"
+                  style="background: rgba(0, 124, 238, 0.1)"
+                >
+                  <div class="card-body">
+                    <img
+                      src="@/assets/images/delete.svg"
+                      alt=""
+                      style="
+                        float: left;
+
+                        width: 30px;
+                        margin-right: 20px;
+                      "
+                    />
+
+                    <div style="overflow: hidden">
+                      <div
+                        class="d-flex justify-content-between"
+                        style="align-items: center"
+                      >
+                        <h3 style="color: #202020">Account Deletion</h3>
+                      </div>
+
+                      <p>Delete your cardri Account</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary mt-5 mb-5"
+                :disabled="loader"
+                @click="upgradeToMerchanct"
+                v-if="usertype === '1'"
+                style="background: #4705af; border: none"
+              >
+                <span v-if="loader === false">Upgrade To Merchant</span>
+
+                <vue-loaders-ball-clip-rotate
+                  color="#fff"
+                  scale="1"
+                  v-if="loader === true"
+                ></vue-loaders-ball-clip-rotate>
+              </button>
+            </div>
+          </div>
         </div>
-
-        <div class="balamcebar" >
-          <div class="row" style="margin-top: 20px">
-            <div class="col-md-6 col-lg-6">
-              <div
-                class="card"
-                style="background: #f5f5ff"
-                @click="toelectricity"
-              >
-                <div class="card-body">
-                  <img
-                    src="@/assets/images/edit.svg"
-                    alt=""
-                    style="
-                      float: left;
-
-                      width: 30px;
-                      margin-right: 20px;
-                    "
-                  />
-
-                  <div style="overflow: hidden">
-                    <div
-                      class="d-flex justify-content-between"
-                      style="align-items: center"
-                    >
-                      <h3 style="color: #202020">Account Information</h3>
-                    </div>
-
-                    <p>
-                      View the personal information like phone number and
-                      address linked to this account.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6">
-              <div
-                class="card"
-                style="background: rgba(18, 189, 137, 0.1)"
-                @click="tocabletv"
-              >
-                <div class="card-body">
-                  <img
-                    src="@/assets/images/editpass.svg"
-                    alt=""
-                    style="
-                      float: left;
-                      position: relative;
-                      width: 30px;
-                      margin-right: 20px;
-                    "
-                  />
-
-                  <div style="overflow: hidden">
-                    <div
-                      class="d-flex justify-content-between"
-                      style="align-items: center"
-                    >
-                      <h3 style="color: #202020">Edit Password</h3>
-                    </div>
-
-                    <p>Change your account login password.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="margin-top: 20px">
-            <div class="col-md-6 col-lg-6">
-              <div class="card" style="background: rgba(249, 115, 22, 0.1)">
-                <div class="card-body">
-                  <img
-                    src="@/assets/images/bell.svg"
-                    alt=""
-                    style="
-                      float: left;
-
-                      width: 30px;
-                      margin-right: 20px;
-                    "
-                  />
-
-                  <div style="overflow: hidden">
-                    <div
-                      class="d-flex justify-content-between"
-                      style="align-items: center"
-                    >
-                      <h3 style="color: #202020">Email Notification</h3>
-                      <label class="switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider round"></div>
-                      </label>
-                    </div>
-
-                    <p style="margin-top: 10px">
-                      Get notified in your email whenever you login with another
-                      device.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6">
-              <div
-                class="card"
-                style="background: rgba(242, 238, 255, 0.1)"
-                @click="toairtime"
-              >
-                <div class="card-body">
-                  <img
-                    src="@/assets/images/editpin.svg"
-                    alt=""
-                    style="
-                      float: left;
-
-                      width: 30px;
-                      margin-right: 20px;
-                    "
-                  />
-
-                  <div style="overflow: hidden">
-                    <div
-                      class="d-flex justify-content-between"
-                      style="align-items: center"
-                    >
-                      <h3 style="color: #202020">Edit Transaction Pin</h3>
-                    </div>
-
-                    <p>
-                      Change the 4 digit pin you use when performing
-                      transactions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="margin-top: 20px">
-            <div class="col-md-6 col-lg-6">
-              <div
-                class="card"
-                @click="toverify"
-                style="background: rgba(0, 124, 238, 0.1)"
-              >
-                <div class="card-body">
-                  <img
-                    src="@/assets/images/verifyicon.svg"
-                    alt=""
-                    style="
-                      float: left;
-
-                      width: 30px;
-                      margin-right: 20px;
-                    "
-                  />
-
-                  <div style="overflow: hidden">
-                    <div
-                      class="d-flex justify-content-between"
-                      style="align-items: center"
-                    >
-                      <h3 style="color: #202020">Verification</h3>
-                    </div>
-
-                    <p>Update your KYC to be verified</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6">
-              <div
-                class="card"
-                @click="deleteaccount"
-                style="background: rgba(0, 124, 238, 0.1)"
-              >
-                <div class="card-body">
-                  <img
-                    src="@/assets/images/delete.svg"
-                    alt=""
-                    style="
-                      float: left;
-
-                      width: 30px;
-                      margin-right: 20px;
-                    "
-                  />
-
-                  <div style="overflow: hidden">
-                    <div
-                      class="d-flex justify-content-between"
-                      style="align-items: center"
-                    >
-                      <h3 style="color: #202020">Account Deletion</h3>
-                    </div>
-
-                    <p>Delete your cardri Account</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       </div>
     </div>
   </div>
@@ -1128,6 +1099,7 @@ export default {
     return {
       showdrop: false,
       selecteds: "",
+      tokenstatus: "",
       loading: true,
       ledger: 0,
       mainbalance: 0,
@@ -1148,7 +1120,8 @@ export default {
       meterNumber: "",
       filledsetamount: false,
       amount: 0,
-      tab:'Settings',
+      tab: "Settings",
+      sw: 1,
 
       plans: [],
       accountName: "",
@@ -1158,16 +1131,19 @@ export default {
       mainloader: false,
       oldpassword: "",
       newpassword: "",
-      copied:false,
+      copied: false,
       lga: [],
       states: [],
       cpassword: "",
+      api: "",
       name: "",
       address: "",
       phone: "",
       housenumber: "",
       homeaddress: "",
+      usertype: null,
       state: "",
+      loader1: false,
       city: "",
       postalcode: "",
       type: "",
@@ -1180,7 +1156,7 @@ export default {
       charges: 0,
       message: "",
       service: [],
-      webhook:'null',
+      webhook: "null",
       addressstatus: false,
       provider: [
         {
@@ -1280,53 +1256,137 @@ export default {
     };
   },
   methods: {
-    async  UpdateWebhook(){
-     // var url = document.getElementById("url").value;
-    var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-    if (this.webhook != "") {
+    async upgradeToMerchanct() {
+      this.loader = true;
+      axios
+        .post("/api/chnagetoken")
+        .then(() => {
+          axios.get("api/getdatils").then((response) => {
+            this.loader = false;
+            this.usertype = response.data.data.type;
+          });
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Updated</h4>`,
+            text: `User Upgraded Successfully`,
+            type: "success",
+            icon: "success",
+
+            width: 300,
+          });
+        })
+        .catch((e) => {
+          this.loader = false;
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+            text: e.response?.data ? e.response?.data.message : "An error occur",
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          });
+        });
+    },
+    async switchToken(data) {
+      axios
+        .post("/api/updatetokenstaus", {
+          status: data,
+        })
+        .then(() => {
+          //   console.log(res);
+
+          axios.get("api/getdatils").then((response) => {
+            this.tokenstatus = response.data.data.tstatus;
+          });
+        })
+        .catch((e) => {
+          this.loader1 = false;
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+            text: e.response?.data ? e.response?.data.message : "An error occur",
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          });
+        });
+    },
+    async RegenerateToken() {
+      this.loader1 = true;
+      axios
+        .post("/api/chnagetoken")
+        .then(() => {
+          axios.get("api/getdatils").then((response) => {
+            this.loader1 = false;
+            this.api = response.data.data.token;
+          });
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Updated</h4>`,
+            text: `Token Regenerated successfully`,
+            type: "success",
+            icon: "success",
+
+            width: 300,
+          });
+        })
+        .catch((e) => {
+          this.loader1 = false;
+          this.$swal({
+            title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+            text: e.response?.data ? e.response?.data.message : "An error occur",
+            type: "error",
+            icon: "error",
+
+            width: 300,
+          });
+        });
+    },
+    async UpdateWebhook() {
+      // var url = document.getElementById("url").value;
+      var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+      if (this.webhook != "") {
         if (!regexp.test(this.webhook)) {
           this.$swal({
-              title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
-              text: 'Please, enter a valid url',
-              type: "warining",
-              icon: "warning",
+            title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+            text: "Please, enter a valid url",
+            type: "warining",
+            icon: "warning",
 
-              width: 300,
-            });
+            width: 300,
+          });
         } else {
           //  window.location.assign(url);
           this.loader = true;
-      axios.post('/api/updatewebhook',{webhook: this.webhook}).then(()=>{
-        //console.log(res)
+          axios
+            .post("/api/updatewebhook", { webhook: this.webhook })
+            .then(() => {
+              //console.log(res)
 
-        axios
-      .get("api/getdatils")
-      .then((response) => {
-        this.loader = false
-        this.webhook = response.data.data.webhook
+              axios.get("api/getdatils").then((response) => {
+                this.loader = false;
+                this.webhook = response.data.data.webhook;
+              });
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:#202020'>Updated</h4>`,
+                text: `Webhook Updated successfully`,
+                type: "success",
+                icon: "success",
 
-      })
-        this.$swal({
-              title: `<h4 style='font-size:14x;color:#202020'>Updated</h4>`,
-              text: `Webhook Updated successfully`,
-              type: "success",
-              icon: "success",
+                width: 300,
+              });
+            })
+            .catch((e) => {
+              this.loader = false;
+              this.$swal({
+                title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
+                text: e.response?.data ? e.response?.data.message : "An error occur",
+                type: "error",
+                icon: "error",
 
-              width: 300,
+                width: 300,
+              });
             });
-      }).catch((e)=>{
-        this.loader =false
-        this.$swal({
-              title: `<h4 style='font-size:14x;color:#202020'>Error</h4>`,
-              text: e.response?.data ?  e.response?.data.message : 'An error occur',
-              type: "success",
-              icon: "success",
-
-              width: 300,
-            });
-      })
-    }
-    }
+        }
+      }
     },
     async updatePin() {
       if (this.newpin === this.cnewpin) {
@@ -1557,14 +1617,13 @@ export default {
     async copyURL(mytext) {
       try {
         await navigator.clipboard.writeText(mytext);
-        this.alertstatus = true
-        this.copied = true
-        this.status = "success"
-         this.message = "Copied to clipboard"
+        this.alertstatus = true;
+        this.copied = true;
+        this.status = "success";
+        this.message = "Copied to clipboard";
         setTimeout(() => {
           this.alertstatus = false;
-          this.copied = false
-
+          this.copied = false;
         }, 3000);
       } catch ($e) {
         this.alertstatus = true;
@@ -1594,7 +1653,7 @@ export default {
           axios
             .post("api/delete")
             .then((res) => {
-             // console.log(res);
+              // console.log(res);
               if (res.data.data.status == "true") {
                 this.clickme = false;
                 this.$swal({
@@ -1613,7 +1672,7 @@ export default {
               }
             })
             .catch(() => {
-             // console.log(e);
+              // console.log(e);
               this.clickme = false;
 
               this.$swal({
@@ -1858,18 +1917,21 @@ export default {
         this.lname = response.data.data.lname;
         this.email = response.data.data.email;
         this.accountNumber = response.data.data.bank;
-        this.webhook = response.data.data.webhook
+        this.webhook = response.data.data.webhook;
+        this.api = response.data.data.token;
+        this.tokenstatus = response.data.data.tstatus;
+        this.usertype = response.data.data.type;
+
         this.phone = response.data.data.phone;
         this.accountName = response.data.data.accountName;
         this.bankName = response.data.data.bankname;
         this.bvnstatus = response.data.data.bvnstatus == "true" ? true : false;
         this.addressstatus = response.data.data.address == "2" ? true : false;
-        this.loading = false
+        this.loading = false;
       })
       .catch((e) => {
         console.log(e);
       });
-  
   },
 };
 </script>
@@ -2148,13 +2210,12 @@ input:checked + .slider:before {
 .slider.round {
   border-radius: 34px;
 }
-.tabsetting{
+.tabsetting {
   font-size: 14px;
   cursor: pointer;
   font-weight: 500;
   letter-spacing: 2%;
   line-height: 19.6px;
-
 }
 
 .slider.round:before {
@@ -2240,10 +2301,10 @@ label.label input[type="file"] {
 .round input[type="checkbox"]:checked + label:after {
   opacity: 1;
 }
-.webhook_tab{
+.webhook_tab {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding:8px;
+  padding: 8px;
 }
 </style>

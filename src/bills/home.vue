@@ -11,26 +11,16 @@
       <div id="mydata" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Mobile Data</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendData">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -54,10 +44,7 @@
                 </option>
               </select>
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -150,35 +137,19 @@
               </select>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">Recipient</label>
               </div>
-              <input
-                type="tel"
-                required
-                v-model="number"
-                class="form-control"
-              />
+              <input type="tel" required v-model="number" class="form-control" />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div
-                  class="loader"
-                  style="margin-right: 20px"
-                  v-if="mainloader"
-                ></div>
+                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="
-                    error
-                      ? 'color:red;font-weight:600'
-                      : 'color:green;font-weight'
-                  "
+                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -187,10 +158,7 @@
               </div>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -218,26 +186,16 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Electricity</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendBill">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -261,37 +219,21 @@
                 </option>
               </select>
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">Payment Plan</label>
               </div>
-              <select
-                type="tel"
-                required
-                v-model="plan"
-                class="form-control"
-                id="Wallet"
-              >
-                <option
-                  v-for="item in plans"
-                  :key="item"
-                  :value="item.variation_code"
-                >
+              <select type="tel" required v-model="plan" class="form-control" id="Wallet">
+                <option v-for="item in plans" :key="item" :value="item.variation_code">
                   {{ item.name }}
                 </option>
               </select>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -306,18 +248,10 @@
                 @blur="verify"
               />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div
-                  class="loader"
-                  style="margin-right: 20px"
-                  v-if="mainloader"
-                ></div>
+                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="
-                    error
-                      ? 'color:red;font-weight:600'
-                      : 'color:green;font-weight'
-                  "
+                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -326,10 +260,7 @@
               </div>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -357,26 +288,16 @@
       <div id="mycabletv" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Cable Tv</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendCableTv">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -400,10 +321,7 @@
                 </option>
               </select>
             </div>
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -432,10 +350,7 @@
               </select>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -450,18 +365,10 @@
                 @blur="verify"
               />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div
-                  class="loader"
-                  style="margin-right: 20px"
-                  v-if="mainloader"
-                ></div>
+                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="
-                    error
-                      ? 'color:red;font-weight:600'
-                      : 'color:green;font-weight'
-                  "
+                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -470,10 +377,7 @@
               </div>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -502,26 +406,16 @@
       <div id="myairtime" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert
-            :status="status"
-            :alertstatus="alertstatus"
-            :message="message"
-          />
+          <alert :status="status" :alertstatus="alertstatus" :message="message" />
 
-          <div
-            class="d-flex justify-content-between"
-            style="align-item: center"
-          >
+          <div class="d-flex justify-content-between" style="align-item: center">
             <h3>Airtime</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendAirtime">
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -546,10 +440,7 @@
               </select>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -565,18 +456,10 @@
                 minlength="11"
               />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div
-                  class="loader"
-                  style="margin-right: 20px"
-                  v-if="mainloader"
-                ></div>
+                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="
-                    error
-                      ? 'color:red;font-weight:600'
-                      : 'color:green;font-weight'
-                  "
+                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -585,10 +468,7 @@
               </div>
             </div>
 
-            <div
-              class="form-group"
-              style="margin-top: 20px; margin-bottom: 20px"
-            >
+            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -614,11 +494,7 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img
-            src="@/assets/images/back.svg"
-            alt=""
-            @click="this.$router.go(-1)"
-          />
+          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -689,11 +565,7 @@
 
           <div class="row" style="margin-top: 20px">
             <div class="col-md-6 col-lg-6">
-              <div
-                class="card"
-                style="background: #f5f5ff"
-                @click="toelectricity"
-              >
+              <div class="card" style="background: #f5f5ff" @click="toelectricity">
                 <div class="card-body">
                   <img
                     src="@/assets/images/electricity.svg"
@@ -714,9 +586,7 @@
                       <h3 style="color: #202020">Electricity</h3>
                     </div>
 
-                    <p>
-                      Pay for electricity subscription with your meter code.
-                    </p>
+                    <p>Pay for electricity subscription with your meter code.</p>
                   </div>
                 </div>
               </div>
