@@ -2,11 +2,13 @@
   <div class="container-xxl">
     <Alert :alertstatus="alertstatus" :status="status" :message="message" />
     <div class="container">
-      <img src="@/assets/images/logo.svg" alt="" />
+      <img src="@/assets/images/newlogocard.png" alt="" style="height: 42px" />
 
       <div class="mybodytag">
         <h3>Transaction Successful</h3>
-        <p>Transaction successfully completed continue to do more with Cardri.</p>
+        <p>
+          Transaction successfully completed continue to do more with Cardri.
+        </p>
         <div class="d-flex justify-content-center">
           <img
             src="@/assets/images/mark.svg"
@@ -60,7 +62,12 @@ export default {
       sendOtp: "auth/sendOtp",
     }),
     getvalidated() {
-      if (this.pin1 != "" && this.pin2 != "" && this.pin3 != "" && this.pin4 != "") {
+      if (
+        this.pin1 != "" &&
+        this.pin2 != "" &&
+        this.pin3 != "" &&
+        this.pin4 != ""
+      ) {
         this.filldata = true;
       } else {
         this.filldata = false;

@@ -31,7 +31,10 @@
         <div class="text_tag">Cardri Tag:</div>
         <div class="main_tag">
           <span class="text-tag">{{ username }}</span>
-          <span class="material-icons" @click="copyText(username)" style="cursor: pointer"
+          <span
+            class="material-icons"
+            @click="copyText(username)"
+            style="cursor: pointer"
             >content_copy</span
           >
         </div>
@@ -49,11 +52,11 @@
         <span class="text">Wallet</span>
       </router-link>
       --->
-      <router-link to="/cardri/pay" class="button">
+      <router-link to="/available/soon" class="button">
         <span class="material-icons">error</span>
         <span class="text">Cardri Pay</span>
       </router-link>
-      <router-link to="/swap/fund" class="button">
+      <router-link to="/available/soon" class="button">
         <span class="material-icons">swap_horiz</span>
         <span class="text">Swap Fund</span>
       </router-link>
@@ -73,7 +76,7 @@
         <span class="material-icons">receipt_long</span>
         <span class="text">Customer</span>
       </router-link>
-      <router-link to="/china/pay" class="button">
+      <router-link to="/available/soon" class="button">
         <span class="material-icons">receipt_long</span>
         <span class="text">China Pay</span>
       </router-link>

@@ -27,16 +27,16 @@ export default {
     this.bindEvents();
 
     if (navigator.onLine) {
-     // console.log("true");
+      // console.log("true");
     } else {
-      if(this.$route.path !== '/')
-      this.$swal({
-        title: `<h4 style='font-size:14x;color:#202020'>Network Error</h4>`,
-        text: "Please, check your connection",
-        type: "error",
-        icon: "error",
-        width: "300",
-      });
+      if (this.$route.path !== "/")
+        this.$swal({
+          title: `<h4 style='font-size:14x;color:#202020'>Network Error</h4>`,
+          text: "Please, check your connection",
+          type: "error",
+          icon: "error",
+          width: "300",
+        });
     }
 
     /*
@@ -123,13 +123,16 @@ export default {
     logout() {
       // perform logout logic here
       this.signOut().then(() => {
-       if(this.$route.path !== '/auth/login' && this.$route.path !== '/auth/register' ) 
-        this.$router.push("../auth/login");
+        if (
+          this.$route.path !== "/auth/login" &&
+          this.$route.path !== "/auth/register"
+        )
+          this.$router.push("../auth/login");
         location.reload();
       });
     },
     /*
-    
+
     setTimers: function () {
       this.logoutTimer = setTimeout(this.logoutUser, 2000000);
     },
@@ -171,13 +174,11 @@ export default {
 </script>
 
 <style lang="scss">
-
-
 .frm_form_field .grecaptcha-badge {
   display: none;
 }
 :root {
-  --primary: #4705af;
+  --primary: #d70d4a;
   --sidebar-width: 250px;
   --menu-title: #3f4254;
 }
@@ -239,28 +240,26 @@ select:focus,
     font-size: 18px;
     font-weight: bold;
   }
-  /* Could be more or less, depending on screen size */
   h3 {
     font-size: 14px;
   }
 }
-.container-xxl{
+.container-xxl {
   max-width: 2000px !important;
   width: 100% !important;
   margin: 0px auto !important;
-
 }
-button{
+button {
   padding: 10px 20px 10px 20px !important;
   font-size: 16px !important;
   font-weight: 600 !important;
 }
-input, select{
-  height: 46px;
+input,
+select {
+  height: 42px;
   font-size: 1rem;
   line-height: 24px;
   font-weight: 500px;
   border-radius: 8px;
-
 }
 </style>

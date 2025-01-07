@@ -11,16 +11,26 @@
       <div id="mydata" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Mobile Data</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendData">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -44,12 +54,15 @@
                 </option>
               </select>
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
-                <label for="Wallet">Payment Plan</label>
+                <label for="Wallet">Plan</label>
               </div>
 
               <select
@@ -61,95 +74,46 @@
                 @change="this.amount = plan.amount"
               >
                 <option
-                  v-for="item in mtnapi === '1' && id === '1'
-                    ? filterplans.slice(0, 6)
-                    : mtnapi === '3' && id === '1'
-                    ? filtermtnplan
-                    : mtnapi === '2' && id === '1'
-                    ? plansdata2[1]
-                    : airtelapi === '2' && id === '4'
-                    ? filterplans
-                    : airtelapi === '3' && id === '4'
-                    ? filterairtelplan
-                    : gloapi === '2' && id === '2'
-                    ? filterplans
-                    : gloapi === '3' && id == '2'
-                    ? filterglolan
-                    : mobileapi === '1' && id === '3'
-                    ? airtimeplans
-                    : mtnapi === '6' && id === '1'
-                    ? filtermtnplanhusmo
-                    : gloapi === '6' && id === '2'
-                    ? filterglolanhusmo
-                    : airtelapi === '6' && id === '4'
-                    ? filterairtelplanHusmodata
-                    : mobileapi === '6' && id === '3'
-                    ? filtermobileplanHusmo
-                    : filtermobileplan"
-                  :key="item"
-                  :value="{
-                    id:
-                      mtnapi == '1' && service.id == '1'
-                        ? item.plan
-                        : airtelapi == '2' && service.id == '2'
-                        ? item.planid
-                        : gloapi == '2' && service.id == '4'
-                        ? item.planid
-                        : mtnapi === '3' && service.id === '1'
-                        ? item.id
-                        : airtelapi === '3' && service.id === '2'
-                        ? item.id
-                        : gloapi === '3' && service.id === '4'
-                        ? item.id
-                        : mobileapi === '3' && service.id === '3'
-                        ? item.id
-                        : mtnapi === '6' && service.id === '1'
-                        ? item.id
-                        : airtelapi === '6' && service.id === '2'
-                        ? item.id
-                        : gloapi === '6' && service.id === '4'
-                        ? item.id
-                        : mobileapi === '6' && service.id === '3'
-                        ? item.id
-                        : item.id,
-                    amount: item.price,
-                    name: item.name,
-                    planname: item.plan,
-                    plan:
-                      mtnapi == '1' && service.id == '1'
-                        ? item.plan
-                        : (airtelapi == '2' && service.id == '2') ||
-                          (gloapi == '2' && service.id == '4')
-                        ? item.forx
-                        : mtnapi === '6' && service.id === '1'
-                        ? item.planid
-                        : airtelapi === '6' && service.id === '2'
-                        ? item.planid
-                        : gloapi === '6' && service.id === '4'
-                        ? item.planid
-                        : mobileapi === '6' && service.id === '3'
-                        ? item.planid
-                        : item.planid,
-                  }"
+                  v-for="item in filteredPlans"
+                  :key="item.id"
+                  :value="generateOptionValue(item)"
                 >
                   {{ item.name }} {{ item.plan }} &#8358;{{ item.price }}
                 </option>
               </select>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">Recipient</label>
               </div>
-              <input type="tel" required v-model="number" class="form-control" />
+              <input
+                type="tel"
+                required
+                v-model="number"
+                class="form-control"
+                placeholder="Enter recipient"
+                @input="filterNumeric"
+              />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
+                <div
+                  class="loader"
+                  style="margin-right: 20px"
+                  v-if="mainloader"
+                ></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
+                  :style="
+                    error
+                      ? 'color:red;font-weight:600'
+                      : 'color:green;font-weight'
+                  "
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -158,7 +122,10 @@
               </div>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -186,16 +153,26 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-items: center"
+          >
             <h3>Electricity</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendBill">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -219,21 +196,37 @@
                 </option>
               </select>
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet">Payment Plan</label>
               </div>
-              <select type="tel" required v-model="plan" class="form-control" id="Wallet">
-                <option v-for="item in plans" :key="item" :value="item.variation_code">
+              <select
+                type="tel"
+                required
+                v-model="plan"
+                class="form-control"
+                id="Wallet"
+              >
+                <option
+                  v-for="item in plans"
+                  :key="item"
+                  :value="item.variation_code"
+                >
                   {{ item.name }}
                 </option>
               </select>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -248,10 +241,18 @@
                 @blur="verify"
               />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
+                <div
+                  class="loader"
+                  style="margin-right: 20px"
+                  v-if="mainloader"
+                ></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
+                  :style="
+                    error
+                      ? 'color:red;font-weight:600'
+                      : 'color:green;font-weight'
+                  "
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -260,7 +261,10 @@
               </div>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -288,16 +292,26 @@
       <div id="mycabletv" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-items: center"
+          >
             <h3>Cable Tv</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendCableTv">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -321,7 +335,10 @@
                 </option>
               </select>
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -350,7 +367,10 @@
               </select>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -365,10 +385,18 @@
                 @blur="verify"
               />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
+                <div
+                  class="loader"
+                  style="margin-right: 20px"
+                  v-if="mainloader"
+                ></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
+                  :style="
+                    error
+                      ? 'color:red;font-weight:600'
+                      : 'color:green;font-weight'
+                  "
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -377,7 +405,10 @@
               </div>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -406,16 +437,26 @@
       <div id="myairtime" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :alertstatus="alertstatus" :message="message" />
+          <alert
+            :status="status"
+            :alertstatus="alertstatus"
+            :message="message"
+          />
 
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-items: center"
+          >
             <h3>Airtime</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendAirtime">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -440,7 +481,10 @@
               </select>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -456,10 +500,18 @@
                 minlength="11"
               />
               <div class="d-flex" style="align-items: center" v-if="loader">
-                <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
+                <div
+                  class="loader"
+                  style="margin-right: 20px"
+                  v-if="mainloader"
+                ></div>
                 <span
                   style="font-size: 12px; color: #202020"
-                  :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
+                  :style="
+                    error
+                      ? 'color:red;font-weight:600'
+                      : 'color:green;font-weight'
+                  "
                 >
                   {{ loadermessage }}
                   {{ name }} <br />
@@ -468,7 +520,10 @@
               </div>
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -494,7 +549,11 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
+          <img
+            src="@/assets/images/back.svg"
+            alt=""
+            @click="this.$router.go(-1)"
+          />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -565,7 +624,11 @@
 
           <div class="row" style="margin-top: 20px">
             <div class="col-md-6 col-lg-6">
-              <div class="card" style="background: #f5f5ff" @click="toelectricity">
+              <div
+                class="card"
+                style="background: #f5f5ff"
+                @click="toelectricity"
+              >
                 <div class="card-body">
                   <img
                     src="@/assets/images/electricity.svg"
@@ -586,7 +649,9 @@
                       <h3 style="color: #202020">Electricity</h3>
                     </div>
 
-                    <p>Pay for electricity subscription with your meter code.</p>
+                    <p>
+                      Pay for electricity subscription with your meter code.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -657,7 +722,7 @@ export default {
       datacharges: 0,
       ledger: 0,
       mainbalance: 0,
-      number: 0,
+      number: "",
       lname: "",
       amount: 0,
       selectedbox: 1,
@@ -777,17 +842,22 @@ export default {
     };
   },
   methods: {
+    filterNumeric(event) {
+      this.number = event.target.value.replace(/[^0-9]/g, ""); // Allow only digits
+    },
     getdataplan() {
       const id = this.service.id;
       this.id = this.service.id;
 
       this.airtimeplans = this.plansdata2[this.id];
+      //console.log(this.mtnapi);
 
       if (this.mtnapi == "1") {
         this.myplans2 = this.plansdata;
         // this.id = "1";
       } else {
         this.myplans = this.plansdata2[id];
+        console.log(this.plansdata2[id]);
       }
 
       if (id == "2") {
@@ -814,6 +884,52 @@ export default {
       console.log(this.id)
       */
     },
+    generateOptionValue(item) {
+      const id =
+        (this.mtnapi === "1" && this.service.id === "1") ||
+        (this.airtelapi === "2" && this.service.id === "2") ||
+        (this.gloapi === "2" && this.service.id === "4")
+          ? item.plan
+          : this.mtnapi === "3" && this.service.id === "1"
+          ? item.id
+          : this.airtelapi === "3" && this.service.id === "2"
+          ? item.id
+          : this.gloapi === "3" && this.service.id === "4"
+          ? item.id
+          : this.mobileapi === "3" && this.service.id === "3"
+          ? item.id
+          : this.mtnapi === "6" && this.service.id === "1"
+          ? item.id
+          : this.airtelapi === "6" && this.service.id === "2"
+          ? item.id
+          : this.gloapi === "6" && this.service.id === "4"
+          ? item.id
+          : this.mobileapi === "6" && this.service.id === "3"
+          ? item.id
+          : item.id;
+
+      return {
+        id,
+        amount: item.price,
+        name: item.name,
+        planname: item.plan,
+        plan:
+          (this.mtnapi === "1" && this.service.id === "1") ||
+          (this.airtelapi === "2" && this.service.id === "2") ||
+          (this.gloapi === "2" && this.service.id === "4")
+            ? item.forx
+            : this.mtnapi === "6" && this.service.id === "1"
+            ? item.planid
+            : this.airtelapi === "6" && this.service.id === "2"
+            ? item.planid
+            : this.gloapi === "6" && this.service.id === "4"
+            ? item.planid
+            : this.mobileapi === "6" && this.service.id === "3"
+            ? item.planid
+            : item.planid,
+      };
+    },
+
     sendData() {
       var current = new Date();
       const data = {
@@ -1070,7 +1186,7 @@ export default {
     await axios
       .get("/api/getmtnplans")
       .then((res) => {
-        //  console.log(res)
+        //console.log("mtnplans", res);
         this.plansdata = res.data.data;
       })
       .catch((e) => {
@@ -1079,7 +1195,7 @@ export default {
     await axios
       .get("/api/getclubconnectdata")
       .then((res) => {
-        // console.log(res)
+        //  console.log("clubkonnect", res);
         this.clubkonnectdata = res.data.data;
       })
       .catch((e) => {
@@ -1089,7 +1205,7 @@ export default {
     await axios
       .get(`/api/getclubhmusdata`)
       .then((res) => {
-        //console.log(res);
+        // console.log("husmodata", res);
         this.husmodata = res.data.data;
       })
       .catch((e) => {
@@ -1102,6 +1218,27 @@ export default {
       return this.plansdata.filter((item) => {
         return item.planid.match(this.id);
       });
+    },
+    filteredPlans() {
+      if (this.mtnapi === 6 && this.id === "1") return this.filtermtnplanhusmo;
+      if (this.mtnapi === "1" && this.id === "1")
+        return this.filterplans.slice(0, 6);
+      if (this.mtnapi === "3" && this.id === "1") return this.filtermtnplan;
+      if (this.mtnapi === "2" && this.id === "1") return this.plansdata2[1];
+      if (this.airtelapi === "2" && this.id === "4") return this.filterplans;
+      if (this.airtelapi === "3" && this.id === "4")
+        return this.filterairtelplan;
+      if (this.gloapi === "2" && this.id === "2") return this.filterplans;
+      if (this.gloapi === "3" && this.id === "2") return this.filterglolan;
+      if (this.mobileapi === "1" && this.id === "3") return this.airtimeplans;
+
+      if (this.gloapi === "6" && this.id === "2") return this.filterglolanhusmo;
+      if (this.airtelapi === "6" && this.id === "4")
+        return this.filterairtelplanHusmodata;
+      if (this.mobileapi === "6" && this.id === "3")
+        return this.filtermobileplanHusmo;
+
+      return this.filtermobileplan;
     },
     filtermtnplan: function () {
       return this.clubkonnectdata?.filter((item) => {
