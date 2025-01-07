@@ -25,7 +25,7 @@
               >
                 <span
                   style="
-                    color: #4705af;
+                    color: #d70d4a;
                     font-weight: 500;
                     cursor: pointer;
                     font-size: 12px;
@@ -262,7 +262,10 @@
                 placeholder="Beneficiary Bank"
               >
                 <option
-                  :value="{ currency: item.currencyName, country: item.countryName }"
+                  :value="{
+                    currency: item.currencyName,
+                    country: item.countryName,
+                  }"
                   v-for="item in listcurrency"
                   :key="item"
                 >
@@ -364,7 +367,7 @@
               style="
                 text-align: center;
                 font-weight: 600;
-                color: #4705af;
+                color: #d70d4a;
                 font-size: 13px;
                 cursor: pointer;
               "
@@ -695,7 +698,7 @@
                   padding: 5px;
                   border-radius: 5px;
                   background: #f5f5ff;
-                  color: #4705af;
+                  color: #d70d4a;
                   font-weight: 600;
                   cursor: pointer;
                 "
@@ -825,7 +828,7 @@
           <div class="row" style="margin-top: 20px">
             <!--
             <div class="col-md-6 col-lg-6">
-             
+
               <div class="card" style="background: #f5f5ff" @click="tocardri('cardri')">
                 <div class="card-body">
                   <img
@@ -1622,7 +1625,7 @@ label {
 }
 form {
   .btn {
-    background: #4705af;
+    background: #d70d4a;
     color: #fff;
     border-radius: 8px;
     outline: none;
@@ -1633,7 +1636,7 @@ form {
 }
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #4705af; /* Blue */
+  border-top: 16px solid #d70d4a; /* Blue */
   border-radius: 50%;
   width: 10px;
   height: 10px;

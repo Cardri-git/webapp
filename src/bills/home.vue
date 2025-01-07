@@ -1324,7 +1324,7 @@ label {
 }
 form {
   .btn {
-    background: #4705af;
+    background: #d70d4a;
     color: #fff;
     border-radius: 8px;
     outline: none;
@@ -1335,7 +1335,7 @@ form {
 }
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #4705af; /* Blue */
+  border-top: 16px solid #d70d4a; /* Blue */
   border-radius: 50%;
   width: 10px;
   height: 10px;
@@ -1358,7 +1358,7 @@ form {
 }
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #4705af; /* Blue */
+  border-top: 16px solid #d70d4a; /* Blue */
   border-radius: 50%;
   width: 10px;
   height: 10px;

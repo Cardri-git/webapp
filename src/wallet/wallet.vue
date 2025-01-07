@@ -10,7 +10,7 @@
       <div id="myModals" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div class="d-flex justify-content-between" style="align-items: center">
             <h3>Transaction Details</h3>
 
             <span

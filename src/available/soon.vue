@@ -22,7 +22,7 @@
             border-radius: 5px;
             outline: none;
             margin: 30px 0px;
-            background: #4705af;
+            background: #d70d4a;
           "
           @click="this.$router.push('../../dashboard/home')"
         >

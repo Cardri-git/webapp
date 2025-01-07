@@ -5,7 +5,7 @@
         <div
           style="
             font-weight: 600;
-            color: #4705af;
+            color: #d70d4a;
             align-items: center;
             text-transform: capitalize;
           "
@@ -50,8 +50,7 @@
           "
         >
           <span style="text-transform: capitalize; font-size: 7px"
-            >{{ firstname.substring(0, 1) }}
-            {{ lastname.substring(0, 1) }}</span
+            >{{ firstname.substring(0, 1) }} {{ lastname.substring(0, 1) }}</span
           >
         </div>
       </div>

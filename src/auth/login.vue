@@ -1,5 +1,12 @@
 <template>
   <div class="container-xxl" style="height: 100vh">
+    <verifyAuthPin
+      :isOverlayVisible="isOverlayVisible"
+      :apiEndpoint="'api/auth/verifydevice'"
+      :uid="uid"
+      :id="userid"
+      @code-verified="handleCodeVerified"
+    />
     <div class="row">
       <div
         class="col-md-6 col-lg-6 py-2 bg-white d-flex position-relative"
@@ -7,7 +14,7 @@
       >
         <Alert :alertstatus="alertstatus" :message="message" :status="status" />
         <div class="container byborder">
-          <img src="@/assets/images/logo.svg" alt="" />
+          <img src="@/assets/images/newlogocard.png" alt="" style="height: 64px" />
           <h3>LOGIN</h3>
           <p>Welcome back! Kindly enter your details</p>
           <form @submit.prevent="submitForm">
@@ -38,8 +45,8 @@
             <div
               style="
                 text-align: right;
-                gont-weight: 400;
-                color: #4705af;
+                font-weight: 400;
+                color: #d70d4a;
                 margin-top: 20px;
               "
             >
@@ -47,8 +54,8 @@
                 to="../forget/reset"
                 style="
                   text-align: right;
-                  gont-weight: 400;
-                  color: #4705af;
+                  font-weight: 400;
+                  color: #d70d4a;
                   text-decoration: none;
                 "
               >
@@ -66,11 +73,7 @@
                 outline: none;
                 padding: 11px;
               "
-              :style="
-                filldata == true
-                  ? '  background: #4705af'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background:#D70D4A' : 'background:#6E7173'"
               :disabled="filldata ? false : true"
             >
               <span style="color: #fff" v-if="clickme == false">Continue</span>
@@ -105,7 +108,7 @@
       <div
         class="col-md-6 col-lg-6 py-2 d-none d-md-flex d-lg-flex mydownbg"
         style="
-          background: #4705af;
+          background: #d70d4a;
           height: 100vh;
           opacity: 0.85;
           justify-content: center;
@@ -122,12 +125,15 @@
 import Alert from "@/components/alert.vue";
 import { mapActions } from "vuex";
 import { VueRecaptcha } from "vue-recaptcha";
+import verifyAuthPin from "@/components/verifyAuthPin.vue";
+import useBrowserUUID from "@/utilities/uniqueIndentifier";
 
 export default {
   name: "myRegistrationForm",
   components: {
     Alert,
     VueRecaptcha,
+    verifyAuthPin,
   },
   data() {
     return {
@@ -146,26 +152,46 @@ export default {
       recapchatoken: null,
       error: false,
       clickme: false,
+      isOverlayVisible: false,
+      uid: "",
+      userid: "",
     };
+  },
+  created() {
+    const { getUUID } = useBrowserUUID();
+    this.uid = getUUID();
   },
   methods: {
     ...mapActions({
       signIn: "auth/signIn",
     }),
+    handleVerificationFailure(field, value, message, route) {
+      localStorage.setItem("xconfig", value);
+
+      this.alertstatus = true;
+      this.status = "failed";
+      this.clickme = false;
+      this.message = message;
+
+      setTimeout(() => {
+        this.alertstatus = false;
+        this.$router.push(route);
+      }, 3000);
+    },
     mxVerify(response) {
       this.error = false;
       this.recapchatoken = response;
     },
     submit() {
       document.getElementById("demo-form").submit();
-     // console.log(token);
+      // console.log(token);
     },
 
     onloadCallback() {
       alert("grecaptcha is ready!");
     },
     getselectedbox(id) {
-     // console.log(id);
+      // console.log(id);
       this.selectedbox = id;
     },
     getvalidated() {
@@ -182,64 +208,73 @@ export default {
         const data = {
           id: this.id,
           password: this.password,
-          medium: 'web'
+          medium: "web",
+          uid: this.uid,
         };
         this.signIn(data)
           .then((res) => {
-            this.clickme = false;
+            console.log(res);
+            const { p_status, e_status, phone, email } = res.data.data;
 
+            this.clickme = false;
             this.alertstatus = true;
-            this.message = "Login Succesful";
+            this.message = "Login Successful";
             this.status = "success";
             this.$router.push("../dashboard/home");
 
-            if (res.data.data.p_status == "false") {
-              localStorage.setItem("xconfig", res.data.data.phone);
-
-              this.alertstatus = true;
-              this.status = "failed";
-              this.clickme = false;
-
-              this.message = "Your phone Number has not been verified.";
-              setTimeout(() => {
-                this.alertstatus = false;
-                this.$router.push("../auth/type");
-              }, 3000);
-            } else if (res.data.data.e_status == "false") {
-              localStorage.setItem("xconfig", res.data.data.email);
-
-              this.alertstatus = true;
-              this.status = "failed";
-              this.clickme = false;
-
-              this.message = "Your email Number has not been verified.";
-              setTimeout(() => {
-                this.alertstatus = false;
-                this.$router.push("../auth/verifyemail");
-              }, 3000);
-            } else {
-              setTimeout(() => {
-                this.alertstatus = false;
-                this.$router.push("../dashboard/home");
-              }, 3000);
+            if (p_status === "false") {
+              this.handleVerificationFailure(
+                "phone",
+                phone,
+                "Your phone number has not been verified.",
+                "../auth/type"
+              );
+              return;
             }
+
+            if (e_status === "false") {
+              this.handleVerificationFailure(
+                "email",
+                email,
+                "Your email has not been verified.",
+                "../auth/verifyemail"
+              );
+              return;
+            }
+
+            setTimeout(() => {
+              this.alertstatus = false;
+              this.$router.push("../dashboard/home");
+            }, 3000);
           })
           .catch((e) => {
+            console.log(e);
+
             this.alertstatus = true;
 
+            if (e.response.status === 401) {
+              this.alertstatus = true;
+              this.status = "success";
+              this.message = "Verification code has been sent.";
+              this.isOverlayVisible = !this.isOverlayVisible;
+              this.clickme = false;
+              this.userid = e.response.data.userid;
+            }
+
+            if (e.response.status === 400) {
+              this.alertstatus = true;
+              this.status = "failed";
+              this.message = "Incorrect Credentials.";
+              // this.isOverlayVisible = !this.isOverlayVisible;
+              this.clickme = false;
+              // this.userid = e.resmponse.data.userid;
+            }
             if (e.response.status == 403) {
               this.status = "failed";
               this.clickme = false;
 
               this.message =
                 "Your  account has been deleted or suspended, kindly contact customer care.";
-            } else {
-              this.status = "failed";
-              this.message =
-                e.code == "ERR_NETWORK"
-                  ? "Network Error"
-                  : e.response.data.message;
-              this.clickme = false;
             }
             setTimeout(() => {
               this.alertstatus = false;
@@ -347,7 +382,7 @@ export default {
     margin-top: 20px;
     margin-bottom: 20px;
     a {
-      color: #4705af;
+      color: #d70d4a;
       font-size: 12px;
     }
   }

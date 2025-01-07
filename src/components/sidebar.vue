@@ -7,7 +7,7 @@
     id="aside"
   >
     <div class="logo d-flex">
-      <img src="@/assets/images/logo.svg" alt="" />
+      <img src="@/assets/images/newlogocard.png" alt="" style="height: 32px" />
     </div>
     <div class="menu-toggle-wrap">
       <button class="menu-toggle" style="border: none; background: none">
@@ -31,10 +31,7 @@
         <div class="text_tag">Cardri Tag:</div>
         <div class="main_tag">
           <span class="text-tag">{{ username }}</span>
-          <span
-            class="material-icons"
-            @click="copyText(username)"
-            style="cursor: pointer"
+          <span class="material-icons" @click="copyText(username)" style="cursor: pointer"
             >content_copy</span
           >
         </div>
@@ -45,11 +42,13 @@
         <span class="material-icons" title="Dashboard">dashboard</span>
         <span class="text">Dashboard</span>
       </router-link>
+      <!---
 
       <router-link to="/wallet/wallet" class="button">
         <span class="material-icons" title="Transaction">wallet</span>
         <span class="text">Wallet</span>
       </router-link>
+      --->
       <router-link to="/cardri/pay" class="button">
         <span class="material-icons">error</span>
         <span class="text">Cardri Pay</span>
@@ -62,7 +61,7 @@
         <span class="material-icons">receipt_long</span>
         <span class="text">Bills</span>
       </router-link>
-      <router-link to="/card/home" class="button">
+      <router-link to="/available/soon" class="button">
         <span class="material-icons">credit_card</span>
         <span class="text">Card</span>
       </router-link>
@@ -78,7 +77,7 @@
         <span class="material-icons">receipt_long</span>
         <span class="text">China Pay</span>
       </router-link>
-      <router-link to="/market/home" class="button">
+      <router-link to="/available/soon" class="button">
         <span class="material-icons">manage_accounts</span>
         <span class="text">P2P Market</span>
       </router-link>
@@ -202,7 +201,7 @@ aside {
     margin-left: -5px;
 
     img {
-      width: 177px;
+      height: 42px;
     }
   }
   .menu-toggle-wrap {
@@ -259,9 +258,9 @@ aside {
         font-size: 14px !important;
       }
       &:hover {
-        background: #4705af;
+        background: #d70d4a;
         transition: 0.2s ease-out;
-        background: #4705af;
+        background: #d70d4a;
         .text {
           color: #fff;
           font-weight: 600;
@@ -278,7 +277,7 @@ aside {
         }
       }
       &.router-link-exact-active {
-        background: #4705af;
+        background: #d70d4a;
         .text {
           color: #fff;
           font-weight: 600;
@@ -324,7 +323,7 @@ aside {
     }
     .logo {
       img {
-        width: 130px;
+        height: 42px;
       }
     }
     .dropdown-menu {

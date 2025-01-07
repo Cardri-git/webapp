@@ -2,7 +2,7 @@
   <div class="container-xxl">
     <Alert :alertstatus="alertstatus" :message="message" :status="status" />
     <div class="container">
-      <img src="@/assets/images/logo.svg" alt="" />
+      <img src="@/assets/images/newlogocard.png" alt="" style="height: 64px" />
 
       <div class="mybodytag">
         <h3>Verify BVN</h3>
@@ -33,7 +33,7 @@
               border-radius: 5px;
               outline: none;
               margin: 30px 0px;
-              background: #4705af;
+              background: #d70d4a;
             "
             :disabled="clickme"
           >
