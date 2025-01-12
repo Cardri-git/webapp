@@ -7,7 +7,7 @@
     >
       <Alert :alertstatus="alertstatus" :status="status" :message="message" />
       <div class="container">
-        <img src="@/assets/images/logo.svg" alt="" />
+        <img src="@/assets/images/newlogocard.png" alt="" style="height: 42px" />
         <div class="mybodytag">
           <h3>Enter Your PIN</h3>
           <p>Please enter your PIN to confirm the transaction.</p>
@@ -105,9 +105,7 @@
                       padding: 0px !important;
                     "
                   >
-                    &#8358;{{
-                      parseFloat(forms.charges) + parseFloat(forms.amount)
-                    }}
+                    &#8358;{{ parseFloat(forms.charges) + parseFloat(forms.amount) }}
                   </h6>
                 </div>
                 <div
@@ -172,11 +170,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -227,9 +221,7 @@
           <p>Please enter your PIN to confirm the transaction.</p>
           <form action="" @submit.prevent="SwapCurrency">
             <div class="py-2 bg-white">
-              <p style="text-align: center; font-size: 12px">
-                You are swapping
-              </p>
+              <p style="text-align: center; font-size: 12px">You are swapping</p>
               <div class="d-flex justify-content-center">
                 <span
                   style="
@@ -387,11 +379,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -442,9 +430,7 @@
           <p>Please enter your PIN to confirm the transaction.</p>
           <form action="" @submit.prevent="sendForeign">
             <div class="py-2 bg-white">
-              <p style="text-align: center; font-size: 12px">
-                You are transferring
-              </p>
+              <p style="text-align: center; font-size: 12px">You are transferring</p>
               <div class="d-flex justify-content-center">
                 <span
                   style="
@@ -552,10 +538,7 @@
                       padding: 0px !important;
                     "
                   >
-                    {{
-                      parseFloat(forms.rate).toFixed(4) *
-                      parseFloat(forms.amount)
-                    }}
+                    {{ parseFloat(forms.rate).toFixed(4) * parseFloat(forms.amount) }}
                     {{ forms.bencurrency }}
                   </h6>
                 </div>
@@ -638,11 +621,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -860,11 +839,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1076,11 +1051,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1293,11 +1264,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1363,9 +1330,7 @@
                     text-transform: uppercase;
                   "
                 >
-                  &#8358;{{
-                    parseFloat(forms.mainNairaamount).toLocaleString()
-                  }}
+                  &#8358;{{ parseFloat(forms.mainNairaamount).toLocaleString() }}
                 </span>
               </div>
               <div style="margin-top: 20px">
@@ -1495,11 +1460,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1549,9 +1510,7 @@
           <p>Please enter your PIN to confirm the transaction.</p>
           <form action="" @submit.prevent="sendDom">
             <div class="py-2 bg-white">
-              <p style="text-align: center; font-size: 12px">
-                You are transferring
-              </p>
+              <p style="text-align: center; font-size: 12px">You are transferring</p>
               <div class="d-flex justify-content-center">
                 <span
                   style="
@@ -1712,11 +1671,7 @@
             </div>
             <button
               :disabled="filldata ? false : true"
-              :style="
-                filldata == true
-                  ? '  background: #d70d4a'
-                  : 'background:#6E7173'
-              "
+              :style="filldata == true ? '  background: #d70d4a' : 'background:#6E7173'"
               class="btn w-100 mt-4"
               style="
                 color: #fff;
@@ -1789,12 +1744,7 @@ export default {
       sendOtp: "auth/sendOtp",
     }),
     getvalidated() {
-      if (
-        this.pin1 != "" &&
-        this.pin2 != "" &&
-        this.pin3 != "" &&
-        this.pin4 != ""
-      ) {
+      if (this.pin1 != "" && this.pin2 != "" && this.pin3 != "" && this.pin4 != "") {
         this.filldata = true;
       } else {
         this.filldata = false;

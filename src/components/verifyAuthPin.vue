@@ -14,14 +14,7 @@
           >Kindly,enter the code sent to your phone number</span
         >
       </div>
-      <div
-        style="
-          display: flex;
-          flex-direction: column;
-          gap: 40px;
-          margin-top: 30px;
-        "
-      >
+      <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 30px">
         <div class="code-inputs">
           <input
             v-for="(digit, index) in code"
@@ -126,15 +119,20 @@ export default {
 
           if (res.status === 200) {
             this.$emit("code-verified", true);
-            const { p_status, e_status, phone, email } = res.data.data;
+            //const { p_status, e_status, phone, email } = res.data.data;
 
             this.clickme = false;
             this.alertstatus = true;
             this.message = "Your device has succesfully bind.";
             this.status = "success";
-            //this.$router.push("../dashboard/home");
-            window.location.href = "../dashboard/home";
 
+            setTimeout(() => {
+              this.alertstatus = false;
+              this.$router.push("../dashboard/home");
+            }, 3000);
+            //this.$router.push("../dashboard/home");
+            //    window.location.href = "../dashboard/home";
+            /**
             if (p_status === "false") {
               this.handleVerificationFailure(
                 "phone",
@@ -154,11 +152,7 @@ export default {
               );
               return;
             }
-
-            setTimeout(() => {
-              this.alertstatus = false;
-              this.$router.push("../dashboard/home");
-            }, 3000);
+              */
           } else {
             alert("Invalid code. Please try again.");
           }
