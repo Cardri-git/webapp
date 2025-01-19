@@ -86,7 +86,7 @@ export default {
             }).then((result) => {
               if (result.value) {
                 this.signOut().then(() => {
-                  this.$router.push("../auth/login");
+                  this.$router.push("/");
                 });
               } else {
                 this.timer = 0;
@@ -123,11 +123,8 @@ export default {
     logout() {
       // perform logout logic here
       this.signOut().then(() => {
-        if (
-          this.$route.path !== "/auth/login" &&
-          this.$route.path !== "/auth/register"
-        )
-          this.$router.push("../auth/login");
+        if (this.$route.path !== "/" && this.$route.path !== "/auth/register")
+          this.$router.push("/");
         location.reload();
       });
     },

@@ -37,6 +37,7 @@
 <script>
 import axios from "axios";
 import Alert from "./alert.vue";
+//import store from "@/store";
 
 export default {
   name: "VerrifyAuthLogin",
@@ -104,66 +105,50 @@ export default {
     },
     async submitCode() {
       const enteredCode = this.code.join("");
-      if (enteredCode.length === 4) {
-        this.isLoading = true;
 
-        try {
-          const res = await axios.post(this.apiEndpoint, {
-            code: enteredCode,
-            id: this.id,
-            phone: this.uid,
-            token: "",
-          });
+      if (enteredCode.length !== 4) {
+        alert("Please enter a valid 4-digit code.");
+        return;
+      }
 
-          console.log(res.status);
+      this.isLoading = true;
 
-          if (res.status === 200) {
-            this.$emit("code-verified", true);
-            //const { p_status, e_status, phone, email } = res.data.data;
+      try {
+        const payload = {
+          code: enteredCode,
+          id: this.id,
+          phone: this.uid,
+          token: "",
+        };
 
-            this.clickme = false;
-            this.alertstatus = true;
-            this.message = "Your device has succesfully bind.";
-            this.status = "success";
+        const response = await axios.post(this.apiEndpoint, payload);
 
-            setTimeout(() => {
-              this.alertstatus = false;
-              this.$router.push("../dashboard/home");
-            }, 3000);
-            //this.$router.push("../dashboard/home");
-            //    window.location.href = "../dashboard/home";
-            /**
-            if (p_status === "false") {
-              this.handleVerificationFailure(
-                "phone",
-                phone,
-                "Your phone number has not been verified.",
-                "../auth/type"
-              );
-              return;
-            }
+        if (response.status === 200) {
+          const { token } = response.data;
+          this.$store.dispatch("auth/attempt", token); // Replace "auth/attempt" with the correct namespace if namespaced
 
-            if (e_status === "false") {
-              this.handleVerificationFailure(
-                "email",
-                email,
-                "Your email has not been verified.",
-                "../auth/verifyemail"
-              );
-              return;
-            }
-              */
-          } else {
-            alert("Invalid code. Please try again.");
-          }
-        } catch (error) {
-          console.error(error);
-          alert("An error occurred while verifying the code.");
-        } finally {
-          this.isLoading = false;
+          this.alertstatus = true;
+          this.message = "Your device has been successfully bound.";
+          this.status = "success";
+          this.$router.push("../dashboard/home");
+
+          // Auto-hide alert after 3 seconds
+          setTimeout(() => {
+            this.alertstatus = false;
+          }, 3000);
+
+          this.$emit("code-verified", true);
+        } else {
+          alert("Invalid code. Please try again.");
         }
-      } else {
-        alert("Please fill in all fields.");
+      } catch (error) {
+        console.error("Error verifying code:", error);
+
+        const errorMessage =
+          error.response?.data?.message || "An error occurred while verifying the code.";
+        alert(errorMessage);
+      } finally {
+        this.isLoading = false;
       }
     },
   },
@@ -233,7 +218,7 @@ export default {
 }
 
 .submit-btn:hover {
-  background: #6846b3;
+  background: #d70d4a;
 }
 
 .submit-btn:disabled {

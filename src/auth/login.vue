@@ -14,7 +14,7 @@
       >
         <Alert :alertstatus="alertstatus" :message="message" :status="status" />
         <div class="container byborder">
-          <img src="@/assets/images/newlogocard.png" alt="" style="height: 64px" />
+          <img src="@/assets/images/newlogocard.png" alt="" style="height: 46px" />
           <h3>LOGIN</h3>
           <p>Welcome back! Kindly enter your details</p>
           <form @submit.prevent="submitForm">
@@ -208,7 +208,7 @@ export default {
         const data = {
           id: this.id,
           password: this.password,
-          medium: "web",
+          // medium: "web",
           uid: this.uid,
         };
         this.signIn(data)
@@ -275,6 +275,12 @@ export default {
 
               this.message =
                 "Your  account has been deleted or suspended, kindly contact customer care.";
+            }
+            if (e.response.status == 409) {
+              this.status = "failed";
+              this.clickme = false;
+
+              this.message = "Error while trying to login. pls try again later";
             }
             setTimeout(() => {
               this.alertstatus = false;
