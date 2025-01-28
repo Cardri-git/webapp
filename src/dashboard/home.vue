@@ -853,11 +853,7 @@
                 margin-bottom: 15px;
               "
             >
-              <div
-                class="col"
-                @click="todeposit"
-                style="cursor: pointer; background: #ea125d0d !important"
-              >
+              <div class="col" @click="todeposit" style="cursor: pointer">
                 <div class="mylgroe">
                   <img src="@/assets/images/fund.svg" alt="" />
                   <span>Deposit</span>
@@ -875,10 +871,7 @@
                 </router-link>
               </div>
               <div class="col">
-                <router-link
-                  to="../../swap/fund"
-                  style="text-decoration: none !important"
-                >
+                <router-link to="#" style="text-decoration: none !important">
                   <div class="mylgroe">
                     <img src="@/assets/images/fund.svg" alt="" />
                     <span>Swap Fund</span>
@@ -1045,6 +1038,7 @@
                   v-for="item in filtertransaction.slice(0, 4)"
                   :key="item.id"
                   @click="todetails(item)"
+                  style="font-size: 16px"
                 >
                   <td style="text-align: left">{{ item.ref }}</td>
 

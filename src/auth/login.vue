@@ -14,7 +14,11 @@
       >
         <Alert :alertstatus="alertstatus" :message="message" :status="status" />
         <div class="container byborder">
-          <img src="@/assets/images/newlogocard.png" alt="" style="height: 46px" />
+          <img
+            src="@/assets/images/newlogocard.png"
+            alt=""
+            style="height: 46px"
+          />
           <h3>LOGIN</h3>
           <p>Welcome back! Kindly enter your details</p>
           <form @submit.prevent="submitForm">
@@ -73,7 +77,9 @@
                 outline: none;
                 padding: 11px;
               "
-              :style="filldata == true ? '  background:#D70D4A' : 'background:#6E7173'"
+              :style="
+                filldata == true ? '  background:#D70D4A' : 'background:#6E7173'
+              "
               :disabled="filldata ? false : true"
             >
               <span style="color: #fff" v-if="clickme == false">Continue</span>
@@ -94,15 +100,6 @@
               {{ errorcaptcha }}</small
             >
           </form>
-
-          <h5>
-            Don't have an account ?
-            <router-link
-              to="/auth/registerform/1"
-              style="text-decoration: none; font-weight: 600"
-              >Sign Up</router-link
-            >
-          </h5>
         </div>
       </div>
       <div

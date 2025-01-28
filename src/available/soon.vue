@@ -2,7 +2,7 @@
   <div class="container-xxl">
     <Alert :alertstatus="alertstatus" :message="message" :status="status" />
     <div class="container">
-      <img src="@/assets/images/logo.svg" alt="" />
+      <img src="@/assets/images/newlogocard.png" style="height: 36px" alt="" />
 
       <div class="mybodytag">
         <h3>Available Soon</h3>

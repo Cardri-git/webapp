@@ -1,5 +1,5 @@
 <template>
-  <div class="container-xxl" style="height: 100vh; : 1px solid red">
+  <div class="container-xxl" style="height: 100vh">
     <div class="row">
       <div class="col-md-6 col-lg-6 py-2 bg-white d-flex" style="height: 100vh">
         <div class="container byborder">
@@ -50,7 +50,8 @@
             Continue
           </button>
           <h5>
-            Already have an account ? <router-link to="/auth/login">Login</router-link>
+            Already have an account ?
+            <router-link to="/auth/login">Login</router-link>
           </h5>
         </div>
       </div>

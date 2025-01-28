@@ -125,19 +125,16 @@ export default {
 
         if (response.status === 200) {
           const { token } = response.data;
-          this.$store.dispatch("auth/attempt", token); // Replace "auth/attempt" with the correct namespace if namespaced
+          this.$store.dispatch("auth/attempt", token);
 
           this.alertstatus = true;
-          this.message = "Your device has been successfully bound.";
+          this.message = "Your device has been successfully bound.Pls login";
           this.status = "success";
-          this.$router.push("../dashboard/home");
 
-          // Auto-hide alert after 3 seconds
-          setTimeout(() => {
-            this.alertstatus = false;
-          }, 3000);
+          // Notify the parent to hide the modal
+          this.$emit("update:isOverlayVisible", false);
 
-          this.$emit("code-verified", true);
+          this.$router.push("/dashboard/home");
         } else {
           alert("Invalid code. Please try again.");
         }

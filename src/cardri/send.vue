@@ -11,32 +11,24 @@
       <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>To {{ benbank == "cardri" ? "Cardri" : "Nigerian Bank" }}</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendData">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
-              <div
-                class="d-flex justify-content-between"
-                style="align-items: center; margin-bottom: 10px"
-              >
-                <span
-                  style="
-                    color: #d70d4a;
-                    font-weight: 500;
-                    cursor: pointer;
-                    font-size: 12px;
-                    text-align: right;
-                  "
-                  @click="tobeneificiary"
-                  >To beneficiaries ?</span
-                >
-              </div>
-            </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            ></div>
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -49,16 +41,18 @@
                 v-model="bankCode"
                 required
                 id="Wallet"
-                :placeholder="benbank == 'cardri' ? 'Cardri' : 'Select beneficiary bank'"
+                :placeholder="
+                  benbank == 'cardri' ? 'Cardri' : 'Select beneficiary bank'
+                "
                 v-if="benbank == 'bank'"
                 @change="verifybank"
               >
                 <option
-                  :value="{ name: item.bankName, code: item.bankCode }"
+                  :value="{ name: item.BankName, code: item.BankCode }"
                   v-for="item in banks"
-                  :key="item.bankCode"
+                  :key="item.BankCode"
                 >
-                  {{ item.bankName }}
+                  {{ item.BankName }}
                 </option>
               </select>
 
@@ -68,13 +62,18 @@
                 disabled
                 v-model="bankCode"
                 id="Wallet"
-                :placeholder="benbank == 'cardri' ? 'Cardri' : 'Select beneficiary bank'"
+                :placeholder="
+                  benbank == 'cardri' ? 'Cardri' : 'Select beneficiary bank'
+                "
                 v-if="benbank == 'cardri'"
               >
                 <option value="cardri">Cardri</option>
               </select>
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -93,15 +92,26 @@
               />
             </div>
             <div class="d-flex" style="align-items: center" v-if="loader">
-              <div class="loader" style="margin-right: 20px" v-if="mainloader"></div>
+              <div
+                class="loader"
+                style="margin-right: 20px"
+                v-if="mainloader"
+              ></div>
               <span
                 style="font-size: 12px; color: #202020"
-                :style="error ? 'color:red;font-weight:600' : 'color:green;font-weight'"
+                :style="
+                  error
+                    ? 'color:red;font-weight:600'
+                    : 'color:green;font-weight'
+                "
               >
                 {{ loadermessage }}
               </span>
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -121,7 +131,10 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -152,17 +165,33 @@
       <div id="myforeignBeneficiary" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <alert :status="status" :message="message" :alertstatus="alertstatus" />
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <alert
+            :status="status"
+            :message="message"
+            :alertstatus="alertstatus"
+          />
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>Add Beneficiary</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="addForbeneficiarys">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px"></div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
-              <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            ></div>
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
+              <div
+                class="form-group"
+                style="margin-top: 20px; margin-bottom: 20px"
+              >
                 <div
                   class="d-flex justify-content-between"
                   style="align-items: center; margin-bottom: 10px"
@@ -246,7 +275,10 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -288,7 +320,10 @@
               placeholder="Select Country"
             />
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -306,7 +341,10 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -333,16 +371,28 @@
       <div id="myForeign" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>To Foreign</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendForeign">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px"></div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
-              <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            ></div>
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
+              <div
+                class="form-group"
+                style="margin-top: 20px; margin-bottom: 20px"
+              >
                 <div
                   class="d-flex justify-content-between"
                   style="align-items: center; margin-bottom: 10px"
@@ -375,7 +425,10 @@
             >
               Add Beneficiary
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -416,7 +469,10 @@
               readonly
               placeholder="Beneficiary County"
             />
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -434,7 +490,10 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -452,7 +511,10 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -471,14 +533,19 @@
                 placeholder="Enter Amount"
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
                 <label for="Wallet"
                   >Amount
-                  {{ myben.currency != undefined ? `(In ${myben.currency})` : "" }}</label
+                  {{
+                    myben.currency != undefined ? `(In ${myben.currency})` : ""
+                  }}</label
                 >
               </div>
               <input
@@ -492,18 +559,31 @@
               />
             </div>
             <div
-              style="text-align: center; color: red; font-weight: 600; font-size: 13px"
+              style="
+                text-align: center;
+                color: red;
+                font-weight: 600;
+                font-size: 13px;
+              "
               v-if="success == true"
             >
               {{ wallet }} : {{ rate }}{{ myben.currency }}
             </div>
             <div
-              style="text-align: center; color: red; font-weight: 600; font-size: 13px"
+              style="
+                text-align: center;
+                color: red;
+                font-weight: 600;
+                font-size: 13px;
+              "
               v-if="successloading == true"
             >
               Please wait, while getting the rate...
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -534,16 +614,28 @@
       <div id="myDom" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <div class="d-flex justify-content-between" style="align-item: center">
+          <div
+            class="d-flex justify-content-between"
+            style="align-item: center"
+          >
             <h3>DOM Account Funding</h3>
 
             <span class="close material-icons" @click="closeModal">close</span>
           </div>
 
           <form @submit.prevent="sendDom">
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px"></div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
-              <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            ></div>
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
+              <div
+                class="form-group"
+                style="margin-top: 20px; margin-bottom: 20px"
+              >
                 <div
                   class="d-flex justify-content-between"
                   style="align-items: center; margin-bottom: 10px"
@@ -564,8 +656,13 @@
               </div>
             </div>
 
-            <div class="d-flex" style="margin-bottom: 10px; flex-direction: column">
-              <label for="Wallet" style="text-align: left">Account Number</label>
+            <div
+              class="d-flex"
+              style="margin-bottom: 10px; flex-direction: column"
+            >
+              <label for="Wallet" style="text-align: left"
+                >Account Number</label
+              >
               <input
                 type="text"
                 class="form-control"
@@ -577,24 +674,39 @@
             </div>
 
             <div
-              style="text-align: center; color: green; font-weight: 600; font-size: 13px"
+              style="
+                text-align: center;
+                color: green;
+                font-weight: 600;
+                font-size: 13px;
+              "
               v-if="success == true"
             >
               {{ accountName }}
             </div>
             <div
-              style="text-align: center; color: red; font-weight: 600; font-size: 13px"
+              style="
+                text-align: center;
+                color: red;
+                font-weight: 600;
+                font-size: 13px;
+              "
               v-if="successloading == true"
             >
               {{ loadingerrormessage }}
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
               >
-                <label for="Wallet">Amount in Dollar (1$ = {{ domrate }}NGN)</label>
+                <label for="Wallet"
+                  >Amount in Dollar (1$ = {{ domrate }}NGN)</label
+                >
               </div>
 
               <input
@@ -611,7 +723,10 @@
               >
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -629,7 +744,10 @@
               />
             </div>
 
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -646,7 +764,10 @@
                 readonly
               />
             </div>
-            <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px"
+            >
               <div
                 class="d-flex justify-content-between"
                 style="align-items: center; margin-bottom: 10px"
@@ -686,7 +807,9 @@
                 "
                 @click="closeModal"
               >
-                <span class="material-icons" style="font-size: 12px">arrow_back</span>
+                <span class="material-icons" style="font-size: 12px"
+                  >arrow_back</span
+                >
                 <span style="font-size: 12px">Back</span>
               </div>
             </div>
@@ -704,13 +827,21 @@
                 "
                 @click="showaddbneficiary"
               >
-                <span class="material-icons" style="font-size: 12px; margin-right: 5px"
+                <span
+                  class="material-icons"
+                  style="font-size: 12px; margin-right: 5px"
                   >person</span
                 >
                 <span style="font-size: 12px">Add</span>
               </div>
             </div>
-            <h3 style="margin-bottom: 0px !important; font-size: 12px; font-weight: 700">
+            <h3
+              style="
+                margin-bottom: 0px !important;
+                font-size: 12px;
+                font-weight: 700;
+              "
+            >
               Beneficiaries
             </h3>
             <span style="font-size: 10px">Choose a recipient</span>
@@ -763,14 +894,24 @@
                 class="d-flex border"
                 style="align-items: center; padding: 5px; border-radius: 5px"
               >
-                <span class="material-icons" style="font-size: 12px">arrow_back</span>
+                <span class="material-icons" style="font-size: 12px"
+                  >arrow_back</span
+                >
                 <span style="font-size: 12px">Back</span>
               </div>
             </div>
-            <h3 style="margin-bottom: 0px !important; font-size: 700; margin-top: 20px">
+            <h3
+              style="
+                margin-bottom: 0px !important;
+                font-size: 700;
+                margin-top: 20px;
+              "
+            >
               Beneficiaries
             </h3>
-            <span style="font-size: 10px">Fill this sections to add beneficiaries </span>
+            <span style="font-size: 10px"
+              >Fill this sections to add beneficiaries
+            </span>
             <div class="w-100 mybene">
               <!-- <span class="material-icons">search</span> -->
 
@@ -807,7 +948,11 @@
                     />
                   </div>
 
-                  <button type="submit" class="btn btn-primary" :disabled="fillData">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    :disabled="fillData"
+                  >
                     Submit
                   </button>
                 </form>
@@ -821,7 +966,11 @@
 
       <div class="bgbig">
         <div class="backtag">
-          <img src="@/assets/images/back.svg" alt="" @click="this.$router.go(-1)" />
+          <img
+            src="@/assets/images/back.svg"
+            alt=""
+            @click="this.$router.go(-1)"
+          />
           <span style="text-transform: capitalize">{{ this.$route.name }}</span>
         </div>
         <div class="balamcebar">
@@ -904,8 +1053,8 @@
                     </div>
 
                     <p>
-                      Send money to friend or family or business partner using their bank
-                      details
+                      Send money to friend or family or business partner using
+                      their bank details
                     </p>
                   </div>
                 </div>
@@ -948,8 +1097,8 @@
                     </div>
 
                     <p>
-                      Send money to friend or family or business partner using their
-                      foreign bank details
+                      Send money to friend or family or business partner using
+                      their foreign bank details
                     </p>
                   </div>
                 </div>
@@ -1175,7 +1324,9 @@ export default {
         this.loader = true;
         this.mainloader = true;
         await axios
-          .get(`api/getname?bank=${this.accountNumber}&code=${this.bankCode.code}`)
+          .get(
+            `api/getname?bank=${this.accountNumber}&code=${this.bankCode.code}`
+          )
           .then((res) => {
             //  console.log(res);
 
@@ -1400,7 +1551,6 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-
     await axios
       .get("api/getcurrencies")
       .then((res) => {
@@ -1430,11 +1580,14 @@ export default {
     await axios
       .get("api/getbanks")
       .then((res) => {
+        console.log(res);
         this.banks = res.data.Data.banks;
       })
       .catch((e) => {
         console.log(e);
       });
+
+    console.log(this.banks);
   },
   computed: {
     filterBeneficiary: function () {
