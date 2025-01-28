@@ -14,11 +14,7 @@
       >
         <Alert :alertstatus="alertstatus" :message="message" :status="status" />
         <div class="container byborder">
-          <img
-            src="@/assets/images/newlogocard.png"
-            alt=""
-            style="height: 46px"
-          />
+          <img src="@/assets/images/newlogocard.png" alt="" style="height: 46px" />
           <h3>LOGIN</h3>
           <p>Welcome back! Kindly enter your details</p>
           <form @submit.prevent="submitForm">
@@ -77,10 +73,7 @@
                 outline: none;
                 padding: 11px;
               "
-              :style="
-                filldata == true ? '  background:#D70D4A' : 'background:#6E7173'
-              "
-              :disabled="filldata ? false : true"
+              :style="filldata == true ? '  background:#D70D4A' : 'background:#6E7173'"
             >
               <span style="color: #fff" v-if="clickme == false">Continue</span>
               <vue-loaders-ball-clip-rotate
