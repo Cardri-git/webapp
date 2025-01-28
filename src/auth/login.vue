@@ -193,96 +193,98 @@ export default {
     },
     async submitForm() {
       this.clickme = true;
-      if (this.recapchatoken != null) {
-        this.filldata = false;
-        const data = {
-          id: this.id,
-          password: this.password,
-          // medium: "web",
-          uid: this.uid,
-        };
-        this.signIn(data)
-          .then((res) => {
-            console.log(res);
-            const { p_status, e_status, phone, email } = res.data.data;
+      //if (this.recapchatoken != null) {
+      this.filldata = false;
+      const data = {
+        id: this.id,
+        password: this.password,
+        // medium: "web",
+        uid: this.uid,
+      };
+      this.signIn(data)
+        .then((res) => {
+          console.log(res);
+          const { p_status, e_status, phone, email } = res.data.data;
 
-            this.clickme = false;
-            this.alertstatus = true;
-            this.message = "Login Successful";
-            this.status = "success";
+          this.clickme = false;
+          this.alertstatus = true;
+          this.message = "Login Successful";
+          this.status = "success";
+          this.$router.push("../dashboard/home");
+
+          if (p_status === "false") {
+            this.handleVerificationFailure(
+              "phone",
+              phone,
+              "Your phone number has not been verified.",
+              "../auth/type"
+            );
+            return;
+          }
+
+          if (e_status === "false") {
+            this.handleVerificationFailure(
+              "email",
+              email,
+              "Your email has not been verified.",
+              "../auth/verifyemail"
+            );
+            return;
+          }
+
+          setTimeout(() => {
+            this.alertstatus = false;
             this.$router.push("../dashboard/home");
+          }, 3000);
+        })
+        .catch((e) => {
+          console.log(e);
 
-            if (p_status === "false") {
-              this.handleVerificationFailure(
-                "phone",
-                phone,
-                "Your phone number has not been verified.",
-                "../auth/type"
-              );
-              return;
-            }
+          this.alertstatus = true;
 
-            if (e_status === "false") {
-              this.handleVerificationFailure(
-                "email",
-                email,
-                "Your email has not been verified.",
-                "../auth/verifyemail"
-              );
-              return;
-            }
-
-            setTimeout(() => {
-              this.alertstatus = false;
-              this.$router.push("../dashboard/home");
-            }, 3000);
-          })
-          .catch((e) => {
-            console.log(e);
-
+          if (e.response.status === 401) {
             this.alertstatus = true;
+            this.status = "success";
+            this.message = "Verification code has been sent.";
+            this.isOverlayVisible = !this.isOverlayVisible;
+            this.clickme = false;
+            this.userid = e.response.data.userid;
+          }
 
-            if (e.response.status === 401) {
-              this.alertstatus = true;
-              this.status = "success";
-              this.message = "Verification code has been sent.";
-              this.isOverlayVisible = !this.isOverlayVisible;
-              this.clickme = false;
-              this.userid = e.response.data.userid;
-            }
+          if (e.response.status === 400) {
+            this.alertstatus = true;
+            this.status = "failed";
+            this.message = "Incorrect Credentials.";
+            // this.isOverlayVisible = !this.isOverlayVisible;
+            this.clickme = false;
+            // this.userid = e.resmponse.data.userid;
+          }
+          if (e.response.status == 403) {
+            this.status = "failed";
+            this.clickme = false;
 
-            if (e.response.status === 400) {
-              this.alertstatus = true;
-              this.status = "failed";
-              this.message = "Incorrect Credentials.";
-              // this.isOverlayVisible = !this.isOverlayVisible;
-              this.clickme = false;
-              // this.userid = e.resmponse.data.userid;
-            }
-            if (e.response.status == 403) {
-              this.status = "failed";
-              this.clickme = false;
+            this.message =
+              "Your  account has been deleted or suspended, kindly contact customer care.";
+          }
+          if (e.response.status == 409) {
+            this.status = "failed";
+            this.clickme = false;
 
-              this.message =
-                "Your  account has been deleted or suspended, kindly contact customer care.";
-            }
-            if (e.response.status == 409) {
-              this.status = "failed";
-              this.clickme = false;
-
-              this.message = "Error while trying to login. pls try again later";
-            }
-            setTimeout(() => {
-              this.alertstatus = false;
-              this.filldata = true;
-            }, 3000);
-          });
+            this.message = "Error while trying to login. pls try again later";
+          }
+          setTimeout(() => {
+            this.alertstatus = false;
+            this.filldata = true;
+          }, 3000);
+        });
+      /***
       } else {
         this.clickme = false;
 
         this.errorcaptcha = "Kindly check the recaptcha ";
         this.error = true;
       }
+        */
     },
   },
   mounted() {
